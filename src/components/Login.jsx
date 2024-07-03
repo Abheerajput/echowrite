@@ -1,4 +1,5 @@
 import React from 'react';
+import { FcGoogle } from "react-icons/fc";
 import bgimg from "../assets/images/loginbgimg.png";
 import logo from "../assets/svg/logo.svg";
 import { Link } from 'react-router-dom';
@@ -56,9 +57,12 @@ const Login = () => (
               className="bg-white text-gray-700 border border-gray-300 py-2 px-4 rounded-lg w-full flex items-center justify-center"
               type="button"
             >
-              <img src="/path/to/google-icon.svg" alt="Google" className="w-6 h-6 mr-2" />
+               <FcGoogle className="mr-2 h-[16px] w-[16px]" />
               Continue with Google
             </button>
+              {/* <button className="bg-white  border text-[10px]  font-medium inter_ff py-2 px-4 rounded-full flex items-center">
+               Continue with Google
+              </button> */}
           </form>
         </div>
       </div>
