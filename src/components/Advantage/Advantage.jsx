@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import firsticon from "../../assets/svg/icon.svg";
 import secondicon from "../../assets/svg/secondicon.svg";
 import PhoneIcon from "../../assets/svg/phoneicon.svg";
 
 const Advantage = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   const advantages = [
     {
       icon: firsticon,
@@ -15,7 +17,7 @@ const Advantage = () => {
       icon: secondicon,
       title: 'Multi-Language Support',
       description: 'Transcribe speech in multiple languages, accommodating diverse users and expanding your global reach effortlessly.',
-      borderClass: 'border-0 shadow-2xl'
+      borderClass: 'border-2 '
     },
     {
       icon: PhoneIcon,
@@ -40,15 +42,28 @@ const Advantage = () => {
     return formattedDescription;
   };
 
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
+
   return (
-    <div className="container mx-auto mb-8 px-4">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="container mx-auto px-4 mt-[4%] mb-[6%]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ml-[2%]">
         {advantages.map((advantage, index) => (
-          <div key={index} className={`p-6 rounded-2xl ${advantage.borderClass}`}>
+          <div
+            key={index}
+            className={`p-6 rounded-2xl ${advantage.borderClass} ${hoveredIndex === index ? 'shadow-2xl' : ''}`}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          >
             <div className="flex flex-col items-center text-center md:items-start md:text-left">
               <img src={advantage.icon} alt="" className="mb-4" />
               <h3 className="font-bold text-xl inter_ff mb-2">{advantage.title}</h3>
-              <p className="inter_ff" dangerouslySetInnerHTML={{ __html: formatDescription(advantage.description) }}>
+              <p className="inter_ff text-[#5C606C] text-[17px] font-normal" dangerouslySetInnerHTML={{ __html: formatDescription(advantage.description) }}>
               </p>
             </div>
           </div>

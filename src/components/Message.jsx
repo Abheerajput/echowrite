@@ -39,7 +39,7 @@ const Message = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-8 xs:px-0 xs:">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="pt-8 lg:pt-20 lg:ml-20">
             <p><img src={messageIcon} alt="Message Icon" className="mx-auto lg:mx-0" /></p>

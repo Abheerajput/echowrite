@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from "../../assets/svg/logo.svg";
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Login from "../Login.jsx"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoginFormOpen, setIsLoginFormOpen] = useState(false);
   const [isTrialFormOpen, setIsTrialFormOpen] = useState(false);
   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleLoginForm = () => {
-    setIsLoginFormOpen(!isLoginFormOpen);
   };
 
   const toggleTrialForm = () => {
@@ -26,92 +23,42 @@ const Navbar = () => {
     setIsSuccessMessageVisible(true);
     setTimeout(() => {
       setIsSuccessMessageVisible(false);
-    }, 3000); // Hide the success message after 3 seconds
+    }, 3000); 
   };
 
   return (
     <div className="relative bg-white ">
       <div className="flex justify-between items-center py-5 px-4 md:px-8">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Logo" className="w-8 h-8" />
-          <p className="flex text-[23px] libre_ff font-bold">
-            ECHO
-            <span className="text-[23px] libre_ff text-[#008CD2] font-bold">WRITE</span>
-          </p>
+        <div className="flex items-center gap-4 ml-[60px]">
+          <img src={logo} alt="Logo" />
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-2xl focus:outline-none">
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
-        <div className="hidden md:flex justify-center items-center gap-4">
-          <p className="text-[15px] font-medium inter_ff">Features</p>
-          <p className="text-[15px] font-medium inter_ff">About Us</p>
-          <p className="text-[15px] font-medium inter_ff">FAQs</p>
-          <p className="text-[15px] font-medium inter_ff">Contact</p>
+        <div className="hidden md:flex ml-[-12%] gap-4 pt-2">
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">
+          <Link to="/Dashboard" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Dashboard</Link></p>
+         
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</p>
         </div>
         <div className="hidden md:flex items-center gap-5">
-          <button onClick={toggleLoginForm}>Login</button>
-          <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl">Start free trial</button>
+          <Link to="/login" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Login</Link>
+          <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-[white] font-medium inter_ff">Start Free Trial</button>
         </div>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden flex flex-col items-center gap-4 pb-4">
-          <p className="text-[15px] font-medium inter_ff">Features</p>
-          <p className="text-[15px] font-medium inter_ff">About Us</p>
-          <p className="text-[15px] font-medium inter_ff">FAQs</p>
-          <p className="text-[15px] font-medium inter_ff">Contact</p>
+        <div className="md:hidden flex flex-col items-center gap-4 p ">
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</p>
           <div className="flex flex-col items-center gap-5">
-            <button onClick={toggleLoginForm}>Login</button>
-            <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl">Start free trial</button>
-          </div>
-        </div>
-      )}
-      {isLoginFormOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg w-[90%] md:w-[30%]">
-            <h2 className="text-2xl font-bold mb-4">Login</h2>
-            <form>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                  Email
-                </label>
-                <input
-                  className="border rounded-lg w-full py-2 px-3 text-gray-700"
-                  id="email"
-                  type="email"
-                  placeholder="Your Email"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  className="border rounded-lg w-full py-2 px-3 text-gray-700"
-                  id="password"
-                  type="password"
-                  placeholder="Your Password"
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-[#008CD2] text-white font-bold py-2 px-4 rounded-3xl w-full"
-                  type="button"
-                >
-                  Login
-                </button>
-              </div>
-              <div className="flex items-center justify-center mt-4">
-                <button
-                  className="text-sm text-gray-500 underline"
-                  type="button"
-                  onClick={toggleLoginForm}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+            <Link to="/Login" className='text-[15px] text-[#161C2D] font-medium inter_ff'>Login</Link>
+            <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-[white] font-medium inter_ff">Start Free Trial</button>
           </div>
         </div>
       )}
@@ -189,17 +136,17 @@ const Navbar = () => {
           </div>
         </div>
       )}
-     {isSuccessMessageVisible && (
-  <div className="fixed top-12 left-1/2 transform -translate-x-1/2 bg-green-500 w-1/3 text-white py-2 px-4 rounded-lg shadow-lg">
-    Successfully Submitted!
-  </div>
-)}
-
+      {isSuccessMessageVisible && (
+        <div className="fixed top-12 left-1/2 transform -translate-x-1/2 bg-green-500 w-1/3 text-white py-2 px-4 rounded-lg shadow-lg">
+          Successfully Submitted!
+        </div>
+      )}
     </div>
   );
 };
 
 export default Navbar;
+;
 
 
 

@@ -12,10 +12,6 @@ const Footer = () => {
                 <div className="pt-10 lg:pt-14 space-y-4 lg:space-y-6">
                     <div className="flex items-center space-x-2">
                         <img src={logo} alt="Logo" />
-                        <p className="text-2xl libre_ff font-bold">
-                            ECHO
-                            <span className="text-2xl libre_ff text-[#008CD2] font-bold">WRITE</span>
-                        </p>
                     </div>
                     <p className="text-gray-600 text-base">
                         With lots of unique blocks, you can easily build a page without coding. Build your next landing page.

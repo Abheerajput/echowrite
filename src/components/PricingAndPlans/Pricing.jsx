@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import bgimg from "../../assets/images/bgimg.png"
 const Pricing = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(false);
@@ -58,19 +58,23 @@ const Pricing = () => {
   };
 
   return (
-    <div className="bg-[#04324D] py-24 mt-12">
+    <div className=" py-24 " style={{
+      backgroundImage: `url(${bgimg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}>
       <div className="text-center mb-12">
-        <h1 className="font-bold text-5xl text-white inter_ff">Pricing & Plans</h1>
-        <p className="text-[#ffffff] opacity-50 mt-4">
+        <h1 className="font-bold text-[40px]  text-white inter_ff">Pricing & Plans</h1>
+        <p className="text-[#ffffff] opacity-50 mt-4 text-[17] font-normal inter_ff">
           With lots of unique blocks, you can easily build a page without coding. Build
           <br />
           your next landing page.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-[10%]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 sm:px-[2%] w-full gap-8 px-[10%]">
         {pricingPlans.map((plan, index) => (
-          <div key={index} className="bg-white rounded-2xl p-8 text-center mx-auto max-w-xs">
+          <div key={index} className="bg-white rounded-2xl pb-4 px-2  text-center mx-auto max-w-xs">
             <div className="mb-6">
               <p className={`${plan.textColor} ${plan.titleBgColor} px-10 py-2 rounded-full inline-block`}>{plan.title}</p>
             </div>
@@ -80,7 +84,7 @@ const Pricing = () => {
               {plan.description}
             </p>
             <p>
-              <button onClick={handleOpenForm} className={`text-white ${plan.btnColor} px-8 py-2 font-bold rounded-full`}>
+              <button onClick={handleOpenForm} className={`text-white ${plan.btnColor} text-nowrap px-8 py-2 font-bold rounded-full`}>
                 {plan.buttonText}
               </button>
             </p>

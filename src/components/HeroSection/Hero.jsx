@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import mainImg from "../../assets/svg/mainpage.svg";
+import background from "../../assets/images/background.png"
 import "./hero.css";
 
 const Hero = () => {
@@ -25,17 +26,23 @@ const Hero = () => {
 
   return (
     <>
-      <div className="grid grid-cols-6 gap-4 mt-[6rem] custom-bg pb-[28%] mb-[-24%]">
+      <div className="grid grid-cols-6 gap-4  custom-bg pb-[26%] mb-[-26%] "style={{
+      backgroundImage: `url(${background})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}> 
         <div className="col-start-2 col-span-4">
           <p className="font-bold text-5xl flex text-color justify-center pt-[70px] lbre_ff text-wrap">Revolutionary Voice-to-Text Technology</p>
         </div>
-        <div className="col-start-2 flex justify-center col-span-4">
-          <p className="small-text-color">
-            Experience seamless voice-to-text conversion with our cutting-edge AI. Whether you're dictating notes, writing <br /> articles, or capturing ideas, our tool guarantees fast, reliable, and accurate transcriptions.
+        <div className="col-start-2  col-span-4">
+          <p className="small-text-color px-[5%]">
+            Experience seamless voice-to-text conversion with our cutting-edge AI. Whether you're dictating notes, writing  
           </p>
+          <p className='small-text-color px-[13%]'> articles, or capturing ideas, our tool guarantees fast, reliable, and accurate transcriptions.</p>
         </div>
+
         <div className="col-start-2 flex justify-center col-span-4 pt-5">
-          <button onClick={handleOpenForm} className="bg-[#008CD2] text-white font-bold py-2 px-4 rounded-3xl">Get Started Free</button>
+          <button onClick={handleOpenForm} className="bg-[#008CD2] text-white font-medium inter_ff text-[17px] py-2 px-6 rounded-3xl">Get Started For Free</button>
         </div>
       </div>
       <div className="col-start-2 flex justify-center col-span-4 relative">
