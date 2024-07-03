@@ -53,7 +53,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden flex flex-col items-center gap-4 p ">
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</p>
-          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</p>
+         <p> <Link to="/Dashboard" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Dashboard</Link></p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</p>
           <div className="flex flex-col items-center gap-5">
