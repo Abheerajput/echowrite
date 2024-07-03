@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Login = () => (
   <div>
-    <div className="xs:flex bg-white min-h-screen shadow-lg rounded-lg md:flex md:flex-col-reverse sm:flex sm:flex-col-reverse xs:flex-col-reverse overflow-hidden w-full max-w-4xl">
+    <div className="xs:flex bg-white  shadow-lg rounded-lg flex min-h-screen   lg:flex  lg:w-full lg:flrx lg:flex-row lg:justify-between  md:flex md:flex- sm:flex sm:flex-col-reverse xs:flex-col-reverse overflow-hidden w-full max-w-4xl">
       <div className="w-full p-8 flex flex-col justify-center">
         <div className="flex justify-between xs:flex-col xs:justify-center items-center mb-4">
           <img src={logo} alt="EchoWrite Logo" className="w-32" />
@@ -67,7 +67,7 @@ const Login = () => (
         </div>
       </div>
 
-      <div className="flex-1 lg:bg-cover lg:bg-center lg:relative"
+      <div className="lg:bg-cover lg:bg-center lg:relative"
        style={{
         backgroundImage: `url(${bgimg})`,
         backgroundSize: 'cover',
