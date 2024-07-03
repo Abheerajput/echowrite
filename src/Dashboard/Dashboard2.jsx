@@ -27,7 +27,8 @@ const Dashboard2 = () => {
     <div className="container mx-auto mt-[4%] px-8 pb-[3%]  bg-[#F1F4F5]" style={{
       backgroundImage: `url(${bgimg})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center'
+      backgroundPosition: 'center',
+         backgroundColor:"#F1F4F5"
     }}>
 
 
@@ -36,13 +37,15 @@ const Dashboard2 = () => {
         <span className='flex  items-center gap-4'>
           <p className='text-[16px] font-normal inter_ff'><Link to="/Dashboard3">Next</Link></p>
           <p className='text-[16px] font-normal inter_ff'>Support</p>
-          <p className='flex border rounded-2xl font-bold px-2 py-2  items-center'><span className='w-[32px] h-[32px] bg-[#FF9A26] flex justify-center items-center rounded-full text-white text-[14px]  inter_ff mr-[9px] '>J </span> John Doe</p>
+          <p className='flex border rounded-2xl font-bold px-2 -py-2 items-center' >
+            <span className='w-[32px] h-[32px] bg-[#FF9A26] flex justify-center items-center rounded-full text-white text-[14px] inter_ff mr-[9px]' style={{backgroundColor:"#FF9A26",height:"28px",width:"28px"}}>J</span> John Doe
+          </p>
         </span>
       </div>
 
       <div className="bg-white rounded-lg shadow-md pb-4 px-12">
         <div className='flex justify-between'>
-          <span className='mt-[20px]'>
+          <span className='mt-[20px]' style={{marginTop:"20px"}}>
             <h2 className="text-[30px]  font-bold inter_ff mb-1">Recorded to Text</h2>
             <p className="text-[#808080] mb-4">
               Quickly transcribe your audio to text.</p>
@@ -51,7 +54,7 @@ const Dashboard2 = () => {
             <p className="text-gray-600">
               Available conversion minute(s):
             </p>
-            <div className="bg-gray-200 rounded-full h-[5px] mt-2 overflow-hidden">
+            <div className="bg-gray-200 rounded-full h-[5px] mt-2 overflow-hidden"style={{height:"5px",backgroundColor:"#808080"}}>
               <div
                 className="bg-[#EBEEF5] rounded-full"
                 style={{ width: `${(remainingMinutes / 10) * 100}%` }}
@@ -68,7 +71,7 @@ const Dashboard2 = () => {
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleFileDrop}
         >
-          <div className='flex flex-col w-2/6' >
+          <div className='flex flex-col  items-center w-2/6' style={{width:"40%"}}>
             <p className='flex justify-center '>
 
               <img className='w-[94px] h-[94px] pl-[3%]' src={mike} alt="" />
@@ -77,11 +80,11 @@ const Dashboard2 = () => {
               your Voice to Text</p>
             <p className='pt-[2%]'><button className='bg-[#008CD2] text-white px-4 py-2 rounded-2xl' >Start Now</button></p>
           </div>
-          <div className='w-2/3 ' style={{ borderLeft: "1px solid #E4E4E4" }}>
+          <div className='w-2/3 ' style={{ borderLeft: "1px solid #E4E4E4",width:"66%" }}>
   <p className='text-[18px] font-bold flex justify-start py-2 ml-[2%]'>Converted text Here</p>
-  <div className="relative mx-[2%]">
+  <div className="relative  px-4 pb-4 ">
     <textarea
-      className="border border-gray-300  rounded-md px-5 py-2 w-full h-[200px] resize-none focus:outline-none focus:ring-blue-500 focus:ring-1 placeholder-center"
+      className="border border-gray-300  rounded-md px-5 py-2 w-full h-[200px] resize-none focus:outline-none focus:ring-blue-500 focus:ring-1 placeholder-center"style={{height:"200px"}}
       placeholder='Text Visible Here'
     ></textarea>
   </div>
@@ -89,16 +92,14 @@ const Dashboard2 = () => {
 
         </div>
 
-        <div className=" flex mb-4 pt-4 justify-between rounded-xl items-center border-2" style={{ borderTop: "0px " }}>
+        <div className="flex mb-4 pt-4 justify-between rounded-xl items-center border-2" style={{ borderTop: "0px " }}>
           <div className="flex gap-4 ml-[5%]">
             <div className="mb-4">
-              <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="language">
-                Choose Language
-              </label>
+              <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="language">Choose Language</label>
               <select
                 id="language"
                 className="border border-gray-300 rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
-              >
+                     style={{padding:"4px 12px 4px 12px",borderRadius:"7px"}}    >
                 <option value="en">English</option>
                 <option value="en">English</option>
                 <option value="en">English</option>
@@ -106,29 +107,25 @@ const Dashboard2 = () => {
               </select>
             </div>
             <div className="mb-4">
-              <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="format">
-                Output Format
-              </label>
+              <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="format">Output Format</label>
               <select
                 id="format"
                 className="border border-gray-300 rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
-              >
+                style={{padding:"4px 12px 4px 12px",borderRadius:"7px"}}  >
                 <option value="text">Text</option>
                 {/* Add more output format options */}
               </select>
-
             </div>
           </div>
-          <p className='mr-[6%] '>
+          <p className='mr-[6%] mr-4'>
             <button
-              className="bg-[#E4E4E4] text-[#808080]   font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
+              className="bg-[#E4E4E4]  text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
               onClick={handleConvert}
               disabled={remainingMinutes === 0}
-            >
-          Download as a Document
+              style={{backgroundColor:"#E4E4E4"}}>
+              Convert
             </button>
           </p>
-
         </div>
 
 
