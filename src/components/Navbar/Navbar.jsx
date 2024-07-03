@@ -38,10 +38,9 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden md:flex ml-[-12%] gap-4 pt-2">
-          <p className="text-[15px] text-[#161C2D] font-medium inter_ff"> <Link to="/login">Login </Link></p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff"></p>
          <p> <Link to="/Dashboard" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Dashboard</Link></p>
-         
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</p>
         </div>
@@ -52,12 +51,12 @@ const Navbar = () => {
       </div>
       {isMenuOpen && (
         <div className="md:hidden flex flex-col items-center gap-4 p ">
-    <p className="text-[15px] text-[#161C2D] font-medium inter_ff"> <Link to="/login">Login </Link></p>
+    <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</p>
          <p> <Link to="/Dashboard" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Dashboard</Link></p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</p>
           <div className="flex flex-col items-center gap-5">
-            <Link to="/Login" className='text-[15px] text-[#161C2D] font-medium inter_ff'>Login</Link>
+            <Link to="/login" className='text-[15px] text-[#161C2D] font-medium inter_ff'>Login</Link>
             <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-[white] font-medium inter_ff">Start Free Trial</button>
           </div>
         </div>
