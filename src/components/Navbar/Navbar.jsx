@@ -38,9 +38,9 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden md:flex ml-[-12%] gap-4 pt-2">
-          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</p>
-          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">
-          <Link to="/Dashboard" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Dashboard</Link></p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff"> <Link to="/login">Login </Link></p>
+          <p className="text-[15px] text-[#161C2D] font-medium inter_ff"></p>
+         <p> <Link to="/Dashboard" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Dashboard</Link></p>
          
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</p>
@@ -52,7 +52,7 @@ const Navbar = () => {
       </div>
       {isMenuOpen && (
         <div className="md:hidden flex flex-col items-center gap-4 p ">
-          <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</p>
+    <p className="text-[15px] text-[#161C2D] font-medium inter_ff"> <Link to="/login">Login </Link></p>
          <p> <Link to="/Dashboard" className='text-[15px] text-[#161C2D] font-medium inter_ff pt-2'>Dashboard</Link></p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</p>
           <p className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</p>
