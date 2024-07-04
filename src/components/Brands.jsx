@@ -13,7 +13,7 @@ const Brands = () => {
       <h1 className="font-bold text-3xl inter_ff md:text-4xl text-[#161C2D]">
         Trusted by Various Brands
       </h1>
-      <div className="overflow-hidden w-full h-24 md:h-28 lg:h-32 mt-4">
+      <div className="overflow-hidden w-full lg:pt-6 h-24 md:h-28 lg:h-32 mt-4">
         <div className="marquee flex">
           <img src={Brand1} alt="Brand1" className="h-full mx-4" />
           <img src={Brand2} alt="Brand2" className="h-full mx-4" />

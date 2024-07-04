@@ -83,7 +83,7 @@
 }
 .marquee {
   display: flex;
-  animation: marquee 4s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 @keyframes marquee {
