@@ -33,8 +33,8 @@ const Login = () => (
 
           <Link to="/signup" className="text-sm ">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
         </div>
-        <h2 className="text-3xl font-semibold mb-4 flex justify-center mt-[23%]">Welcome Back</h2>
-        <p className="text-sm text-gray-600 mb-8 flex justify-center mt-[-3%]"  >Login into your account</p>
+        <h2 className="text-[30px] inter_ff font-semibold mb-4 flex justify-center mt-[23%]">Welcome Back</h2>
+        <p className="text-[15px] inter_ff text-[#000000] mb-8 flex justify-center mt-[-3%]"  >Login into your account</p>
         <div className='flex justify-center'>
         <form className='w-2/3'>
           <div className="mb-4">
@@ -62,19 +62,19 @@ const Login = () => (
           <div className="flex items-center justify-between mb-4 xs:flex xs:flex-col">
             <label className="flex items-center">
               <input type="checkbox" className="form-checkbox" />
-              <span className="ml-2 text-gray-700 text-sm text-nowrap">Remember me</span>
+              <span className="ml-2 text-[#1A1A1A] font-normal text-[10px] text-nowrap">Remember me</span>
             </label>
-            <Link href="#" className="text-sm text-blue-600  text-nowrap">Recover Password</Link>
+            <Link href="#" className="text-[11px] text-[#D93F21] inter_ff  text-nowrap">Recover Password</Link>
           </div>
           <button
-            className="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full"
+            className="bg-blue-600text-[15px] font-normal inter_ff text-white  py-2 px-4 rounded-lg w-full"
             type="submit"
           >
             Log In
           </button>
           <div className="text-center text-gray-500 my-4">Or continue with</div>
           <button
-            className="bg-white text-gray-700 border border-gray-300 py-2 px-4 rounded-lg text-nowrap w-full flex items-center justify-center"
+            className="bg-white text-[#00000] text-[10px] inter_ff border border-gray-300 py-2 px-4 rounded-lg text-nowrap w-full flex items-center justify-center"
             type="button"
           >
             <FcGoogle className="mr-2 h-[16px] w-[16px] xs:flex" />

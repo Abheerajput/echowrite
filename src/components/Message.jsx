@@ -36,15 +36,16 @@ const Message = () => {
   };
 
   return (
-    <div className="bg-[#232734] py-8" style={{
+    <div className="bg-[#232734] py-8 xs:py-4" style={{
       backgroundImage: `url(${backgroundImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
-      <div className="container max-w-5xl mx-auto px-4">
+      <div className="container max-w-[1400px] mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="pt-8 lg:pt-20 lg:ml-20">
-            <p><img src={messageIcon} alt="Message Icon" className="mx-auto lg:mx-0" /></p>
+          <div className='flex justify-center items-center'>
+          <div className="pt-8 xs:pt-2 lg:pl-8 ">
+            <p className='xs:flex xs:justify-center '><img src={messageIcon} alt="Message Icon" className="mx-auto lg:mx-0" /></p>
             <h1 className='text-white text-[40px] font-bold inter_ff text-center lg:text-left mt-4'>
               Get a free consultancy from our experts!
             </h1>
@@ -52,7 +53,11 @@ const Message = () => {
               With lots of unique blocks, you can easily build a page without coding. Build your next landing page so quickly with Albino.
             </p>
           </div>
-          <div className="flex justify-center lg:justify-start">
+
+
+
+          </div>
+          <div className="flex justify-center items-center">
             <div className="bg-white p-6 lg:p-9 rounded-lg w-full lg:w-2/3">
               {isSubmitted ? (
                 <div className="text-center text-green-500 font-bold">

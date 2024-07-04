@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from "../assets/svg/logo.svg";
 import uploadicon from "../assets/svg/upload.svg";
 import bgimg from "../assets/svg/Dashboardbgimg.svg";
@@ -7,6 +8,7 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
   const [menuOpen, setMenuOpen] = useState(false);
+
   const handleFileDrop = (e) => {
     e.preventDefault();
     const files = e.dataTransfer.files;
@@ -41,43 +43,41 @@ const Dashboard = () => {
         backgroundImage: `url(${bgimg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height:"100vh"
+        height: "100vh"
       }}>
         <div className='py-4 flex justify-between items-center'>
-        <p><img src={logo} alt="Logo" /></p>
-        <div className='flex items-center gap-4'>
-          <div className='flex xs:pt-4 md:hidden lg:hidden'>
-            <button onClick={toggleMenu} className='text-gray-600 focus:outline-none'>
-              <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h16m-7 6h7'></path>
-              </svg>
-            </button>
-          </div>
-          <div className={`lg:flex md:flex items-center ${menuOpen ? ' flex' : 'hidden'} lg:block`}>
-            <p className='text-16 font-normal inter_ff lg:ml-4'><Link to="/Dashboard3">Next</Link></p>
-            <p className='text-16 font-normal inter_ff lg:ml-4'>Support</p>
-            <p className='flex border rounded-2xl font-bold px-2 xs:text-[14px] items-center lg:ml-4'>
-              <span className='w-8 h-8 xs:w-4 xs:h-4 bg-[#FF9A26] flex justify-center items-center rounded-full text-white text-14 xs:text-[10px] inter_ff mr-2'>J</span> John Doe
-            </p>
+          <p><img src={logo} alt="Logo" /></p>
+          <div className='flex items-center gap-4'>
+            <div className='flex xs:pt-4 md:hidden lg:hidden'>
+              <button onClick={toggleMenu} className='text-gray-600 focus:outline-none'>
+                {menuOpen ? <FaTimes className='w-6 h-6' /> : <FaBars className='w-6 h-6' />}
+              </button>
+            </div>
+            <div className={`lg:flex md:flex items-center ${menuOpen ? 'flex' : 'hidden'} lg:block`}>
+              <p className='text-16 font-normal inter_ff lg:ml-4'><Link to="/dashboard2">Next</Link></p>
+              <p className='text-16 font-normal inter_ff lg:ml-4'>Support</p>
+              <p className='flex border rounded-2xl font-bold px-2 xs:text-[14px] items-center lg:ml-4'>
+                <span className='w-8 h-8 xs:w-4 xs:h-4 bg-[#FF9A26] flex justify-center items-center rounded-full text-white text-14 xs:text-[10px] inter_ff mr-2'>J</span> John Doe
+              </p>
+            </div>
           </div>
         </div>
-      </div>
       
         <div className="bg-white rounded-lg shadow-md pb-4 px-12 xs:px-2">
           <div className='flex justify-between xs:flex xs:flex-col xs:justify-around'>
             <span className='mt-[20px]' style={{ marginTop: "20px" }}>
-              <h2 className="text-[30px] font-bold inter_ff">Recorded to Text</h2>
-              <p className="text-[#808080] mt-[-4px] ">Quickly transcribe your audio to text.</p>
+              <h2 className="text-[30px] font-bold inter_ff text-[#000000]">Recorded to Text</h2>
+              <p className="text-[15px] text-[#808080] font-normal inter_ff mt-[-4px] ">Quickly transcribe your audio to text.</p>
             </span>
             <div className="mt-6 mb-4">
-              <p className="text-gray-600">Available conversion minute(s):</p>
+              <p className=" text-[15px] text-[#808080] font-normal inter_ff0">Available conversion minute(s):</p>
               <div className="bg-gray-200 rounded-full h-[5px]  overflow-hidden" style={{ height: "5px", backgroundColor: "#808080" }}>
                 <div
                   className="bg-[#EBEEF5] rounded-full"
                   style={{ width: `${(remainingMinutes / 10) * 100}%` }}
                 ></div>
               </div>
-              <p className="text-gray-600 mt-1">Remaining: {remainingMinutes} minute(s)</p>
+              <p className="text-[15px] text-[#808080] font-normal inter_ff mt-1">Remaining: {remainingMinutes} minute(s)</p>
             </div>
           </div>
           <div className="border-2  border-gray-300 rounded-lg  text-center pb-3  cursor-pointer xs:w-full"
@@ -88,17 +88,17 @@ const Dashboard = () => {
 
               <img className='pt-6 ' src={uploadicon} alt="" />
             </div>
-            <p className="mt-4 font-bold text-black ">
+            <p className="mt-4 text-[18px] inter_ff font-bold text-black ">
               Drag and Drop files here
             </p>
-            <p className="mt-2 text-sm text-gray-500">Or</p>
+            <p className="mt-2 text-[15px] font-normal inter_ff text-gray-500">Or</p>
             <button
-              className="text-[15px] font-normal text-[#008CD2]  py-2 px-4 rounded-md"
+              className="text-[15px] font-normal inter_ff text-[#008CD2]  py-2 px-4 rounded-md"
               onClick={handleFileClick}
             >
               Click to upload files here
             </button>
-            <p className="mt-2 text-[15px] pb-6 font-normal text-[#808080]">
+            <p className="mt-2 text-[15px] pb-6 inter_ff font-normal text-[#808080]">
               Support MP4, MP3 formats.
             </p>
             <input
@@ -112,7 +112,7 @@ const Dashboard = () => {
 
               <div className="flex gap-4 ml-[5%] pt-2 ">
                 <div className="mb-4">
-                  <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="language">Choose Language</label>
+                  <label className="block text-[#808080] text-[15px] inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>
                   <select
                     id="language"
                     className="border border-gray-300 rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
@@ -152,7 +152,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
 
 
 

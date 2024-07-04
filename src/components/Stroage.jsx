@@ -12,9 +12,12 @@ const Storage = () => {
   return (
     <>
       <div className='bg-[#F4F7FA] py-8'>
-        <div className='container max-w-5xl mx-auto px-4 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8'>
-          <div className='pt-8 lg:pt-[15%]'>
-            <h1 className='text-[40px] font-bold inter_ff text-[#161C2D] '>
+        <div className=' container max-w-[1400px] w-full mx-auto px-3  grid grid-cols-1 lg:grid-cols-2 gap-8'>
+          <div className='pt-8 xs:pt-0 flex justify-center lg:pl-8 items-center xs:justify-center  '>
+            <span>
+
+           
+            <h1 className='text-[40px] xs:text-[33px] xs:ml-[3%] font-bold inter_ff text-[#161C2D] '>
               Safe and Reliable Cloud Storage
             </h1>
             <p className='text-[#696A6B] text-[17px] font-normal inter_ff pt-4'>
@@ -26,8 +29,10 @@ const Storage = () => {
                 <FaArrowRight className='text-white ml-2' />
               </button>
             </p>
+            </span>
           </div>
-          <div className='flex justify-center lg:justify-start pt-8 lg:pt-[5%] pb-8 lg:pb-[5%]'>
+
+          <div className='flex justify-center  pt-8 pb-8 lg:pb-[5%]'>
             <img src={pic3} alt="Cloud Storage" className='w-full max-w-md' />
           </div>
         </div>

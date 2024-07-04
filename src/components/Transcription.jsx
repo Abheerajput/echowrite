@@ -36,9 +36,9 @@ const Transcription = () => {
   ];
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 lg:px-8 pt-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white pb-8">
-        <div className="pt-8 md:pt-20 md:ml-20">
+    <div className=" px-4 lg:px-8 pt-8 xs:pt-2">
+      <div className="grid grid-cols-1 container max-w-[1400px] w-full mx-auto px-3 md:grid-cols-2 gap-8 bg-white pb-8">
+        <div className="pt-8 xs:pt-2 md:pt-20 md:ml-20 lg:ml-8">
           <h1 className="text-[40px] text-[#161C2D] inter_ff font-bold">
             Advanced AI for Accurate Transcriptions
           </h1>
@@ -64,7 +64,10 @@ const Transcription = () => {
             </span>
           </div>
         </div>
-        <div className="dropdown-container mx-auto md:mr-20 mt-8 md:mt-20 bg-gray-100 p-4 rounded-lg w-full max-w-md">
+
+
+        
+        <div className="dropdown-container  mx-auto md:mr-20 mt-8 md:mt-20 bg-gray-100 p-4 rounded-lg w-full max-w-md" style={{borderTop:"2px solid #FF9A26"}}>
           {dropdownData.map((item, index) => (
             <div key={index} className="mb-4">
               <div

@@ -31,24 +31,24 @@ const Hero = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}>
-        <div className="container max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-4 pb-[26%] mb-[-26%]">
-          <div className="md:col-start-2 md:col-span-4 text-center md:text-left">
-            <p className="font-bold text-[50px] text-[#04324D] inter_ff  pt-10 md:pt-20 ">
+        <div className=" grid grid-cols-1 md:grid-cols-6 gap-4 pb-[26%] mb-[-26%]">
+          <div className="md:col-start-2 md:col-span-4 text-center ">
+            <p className="font-bold text-center  xs:text-[40px] text-[50px] text-[#04324D] inter_ff  pt-10 md:pt-20 ">
               Revolutionary Voice-to-Text Technology
             </p>
           </div>
           <div className="md:col-start-2 md:col-span-4">
-            <p className="text-[17px] font-normal inter_ff text-[#545454] px-4 md:px-0 text-center md:text-left mt-4 md:mt-6">
+            <p className="text-[17px]  font-normal inter_ff text-[#545454] px-4 md:px-0 text-center mt-4 md:mt-6">
               Experience seamless voice-to-text conversion with our cutting-edge AI. Whether you're dictating notes, writing articles, or capturing ideas, our tool guarantees fast, reliable, and accurate transcriptions.
             </p>
           </div>
-          <div className="md:col-start-2 flex justify-center md:justify-center md:col-span-4 pt-5">
+          <div className="md:col-start-2 flex mb-4 justify-center md:justify-center md:col-span-4 pt-5">
             <button onClick={handleOpenForm} className="bg-[#008CD2] text-white font-medium inter_ff text-[17px] py-2 px-6 rounded-3xl">
               Get Started For Free
             </button>
           </div>
         </div>
-        <div className="container max-w-5xl mx-auto flex justify-center md:col-start-2 md:col-span-4 relative">
+        <div className=" flex justify-center md:col-start-2 md:col-span-4 relative">
           <img src={mainImg} alt="Main" />
         </div>
       </div>

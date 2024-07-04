@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import bgimg from "../../assets/images/bgimg.png";
 
+
+import React, { useState } from 'react';
+import bgimg from "../../assets/images/bgimg.png"
 const Pricing = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(false);
@@ -11,7 +12,7 @@ const Pricing = () => {
       price: "$29",
       frequency: "One time purchase",
       description: "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      buttonText: "Get Started Free",
+      buttonText: "Get Started for Free",
       bgColor: "bg-[#F4F7FA]",
       titleBgColor: "bg-[#F4F7FA]",
       textColor: "text-[#008CD2]",
@@ -22,7 +23,7 @@ const Pricing = () => {
       price: "$59",
       frequency: "Monthly subscription",
       description: "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      buttonText: "Get Started Free",
+      buttonText: "Get Started for Free",
       bgColor: "bg-[#E8F0FE]",
       titleBgColor: "bg-[#F4F7FA]",
       textColor: "text-[#0066CC]",
@@ -33,7 +34,7 @@ const Pricing = () => {
       price: "$99",
       frequency: "Annual subscription",
       description: "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      buttonText: "Get Started Free Trail Now",
+      buttonText: "Get Started for Free Trail Now",
       bgColor: "bg-[##FF9A26]",
       btnColor: "bg-[#FF9A26]",  // Orange button color for the Premium plan
       titleBgColor: "bg-[#F4F7FA]",
@@ -59,33 +60,34 @@ const Pricing = () => {
   };
 
   return (
-    <div className="py-24" style={{
+    <div className=" py-24 xs:py-4 xs:bg-[#04324D]  " style={{
       backgroundImage: `url(${bgimg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
+
     }}>
-      <div className="container max-w-5xl mx-auto text-center mb-12">
-        <h1 className="font-bold text-[40px] text-white inter_ff pt-4">Pricing & Plans</h1>
-        <p className="text-[#ffffff] opacity-70 mt-4 text-[17px] font-normal inter_ff">
+      <div className="text-center mb-12 xs:bg-[#04324D]">
+        <h1 className="font-bold text-[40px]  text-white inter_ff">Pricing & Plans</h1>
+        <p className="text-[#ffffff] opacity-50 mt-4 xs:px-2 text-[17] font-normal inter_ff">
           With lots of unique blocks, you can easily build a page without coding. Build
           <br />
           your next landing page.
         </p>
       </div>
 
-      <div className="container max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 sm:px-[2%] w-full gap-8 xs:px-2 px-[10%]">
         {pricingPlans.map((plan, index) => (
-          <div key={index} className="bg-white rounded-2xl pb-4 px-2 text-center mx-auto max-w-xs">
+          <div key={index} className="bg-white rounded-2xl pb-4 px-2  text-center mx-auto max-w-xs">
             <div className="mb-6">
-              <p className={`${plan.textColor} ${plan.titleBgColor}  px-10 py-2 mt-4 rounded-full inline-block`}>{plan.title}</p>
+              <p className={`${plan.textColor} ${plan.titleBgColor} xs:mt-2 xs:px-2 px-10 py-2 rounded-full inline-block`}>{plan.title}</p>
             </div>
             <p className="text-5xl font-bold inter_ff mb-4">{plan.price}</p>
-            <p className="text-[#5C606C]  inter_ff  font-bold mb-4">{plan.frequency}</p>
-            <p className="text-[#5C606C] text-[17] font-normal inter_ff mb-8">
+            <p className="text-[#5C606C] font-bold mb-4">{plan.frequency}</p>
+            <p className="text-[#5C606C] mb-8">
               {plan.description}
             </p>
             <p>
-              <button onClick={handleOpenForm} className={`text-white ${plan.btnColor}  text-nowrap w-full px-8 py-2 font-bold rounded-full`}>
+              <button onClick={handleOpenForm} className={`text-white ${plan.btnColor} text-nowrap px-8 py-2 font-bold rounded-full`}>
                 {plan.buttonText}
               </button>
             </p>
@@ -179,8 +181,21 @@ const Pricing = () => {
 
 export default Pricing;
 
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useState } from 'react';
-// import bgimg from "../../assets/images/bgimg.png"
+// import bgimg from "../../assets/images/bgimg.png";
+
 // const Pricing = () => {
 //   const [isFormOpen, setIsFormOpen] = useState(false);
 //   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(false);
@@ -191,7 +206,7 @@ export default Pricing;
 //       price: "$29",
 //       frequency: "One time purchase",
 //       description: "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-//       buttonText: "Get Started Free",
+//       buttonText: "Get Started for Free",
 //       bgColor: "bg-[#F4F7FA]",
 //       titleBgColor: "bg-[#F4F7FA]",
 //       textColor: "text-[#008CD2]",
@@ -202,7 +217,7 @@ export default Pricing;
 //       price: "$59",
 //       frequency: "Monthly subscription",
 //       description: "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-//       buttonText: "Get Started Free",
+//       buttonText: "Get Started for Free",
 //       bgColor: "bg-[#E8F0FE]",
 //       titleBgColor: "bg-[#F4F7FA]",
 //       textColor: "text-[#0066CC]",
@@ -239,40 +254,43 @@ export default Pricing;
 //   };
 
 //   return (
-//     <div className=" py-24 " style={{
+//     <div className="py-24" style={{
 //       backgroundImage: `url(${bgimg})`,
 //       backgroundSize: 'cover',
 //       backgroundPosition: 'center'
 //     }}>
-//       <div className="text-center mb-12">
-//         <h1 className="font-bold text-[40px]  text-white inter_ff">Pricing & Plans</h1>
-//         <p className="text-[#ffffff] opacity-50 mt-4 text-[17] font-normal inter_ff">
+//       <div className="container max-w-[1400px] w-full mx-auto">
+//       <div className=" text-center mb-12 pt-12">
+//         <h1 className="font-bold text-[40px] text-white inter_ff ">Pricing & Plans</h1>
+//         <p className="text-[#ffffff] opacity-70 mt-4 text-[17px] font-normal inter_ff">
 //           With lots of unique blocks, you can easily build a page without coding. Build
 //           <br />
 //           your next landing page.
 //         </p>
 //       </div>
+// <div className=' '>
 
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 sm:px-[2%] w-full gap-8 px-[10%]">
+
+//       <div className=" grid grid-rows-1 md:flex md:flex-col items-center gap-12">
 //         {pricingPlans.map((plan, index) => (
-//           <div key={index} className="bg-white rounded-2xl pb-4 px-2  text-center mx-auto max-w-xs">
+//           <div key={index} className="bg-white h-full rounded-lg px-10 py-7 text-center w-full sm:w-[50%] md:max-w-[33%]">
 //             <div className="mb-6">
-//               <p className={`${plan.textColor} ${plan.titleBgColor} px-10 py-2 rounded-full inline-block`}>{plan.title}</p>
+//               <p className={`${plan.textColor} ${plan.titleBgColor}  font-bold px-10 py-2 mt-4 rounded-full inline-block`}>{plan.title}</p>
 //             </div>
-//             <p className="text-5xl font-bold inter_ff mb-4">{plan.price}</p>
-//             <p className="text-[#5C606C] font-bold mb-4">{plan.frequency}</p>
-//             <p className="text-[#5C606C] mb-8">
+//             <p className="text-5xl font-bold inter_ff mb-4 pt-3">{plan.price}</p>
+//             <p className="text-[#5C606C]  inter_ff  font-bold mb-4">{plan.frequency}</p>
+//             <p className="text-[#5C606C] text-[17] font-normal inter_ff mb-8 pt-10">
 //               {plan.description}
 //             </p>
-//             <p>
-//               <button onClick={handleOpenForm} className={`text-white ${plan.btnColor} text-nowrap px-8 py-2 font-bold rounded-full`}>
+          
+//               <button onClick={handleOpenForm} className={`text-white ${plan.btnColor} mt-7 text-nowrap w-full px-8 py-2 font-bold rounded-full`}>
 //                 {plan.buttonText}
 //               </button>
-//             </p>
+           
 //           </div>
 //         ))}
 //       </div>
-
+//       </div>
 //       {isFormOpen && (
 //         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
 //           <div className="bg-white p-8 rounded-lg shadow-lg w-full md:w-1/3">
@@ -353,6 +371,7 @@ export default Pricing;
 //           Successfully Submitted!
 //         </div>
 //       )}
+//       </div>
 //     </div>
 //   );
 // };
