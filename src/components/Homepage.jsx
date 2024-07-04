@@ -10,7 +10,7 @@ import Transcription from './Transcription';
 import Message from './Message';
 import Ready from './Ready';
 import Footer from './Footer';
-
+import "../App.css"
 
 const Homepage = () => {
     return (

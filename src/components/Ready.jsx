@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 
 const Ready = () => {
@@ -25,15 +27,15 @@ const Ready = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 bg-[#04324D] p-8 lg:p-16">
       <div className="lg:pl-[18%] py-8 lg:py-[10%]">
-        <h1 className="text-3xl lg:text-4xl font-bold inter_ff text-white">
+        <h1 className="text-[40px]  font-bold inter_ff text-white">
           Ready to launch your next project?
         </h1>
-        <p className="text-base lg:text-lg text-[#A7B7C1] font-normal mt-4">
+        <p className="text-[18px] inter_ff text-[#A7B7C1] font-normal mt-4">
           With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
         </p>
       </div>
       <div className="flex justify-center items-center lg:pl-[21%]">
-        <button onClick={handleOpenForm} className="text-white bg-[#FF9A26] rounded-3xl px-8 lg:px-12 py-3 lg:py-4">
+        <button onClick={handleOpenForm} className="text-white bg-[#FF9A26] rounded-3xl font-semibold inter_ff px-8 lg:px-12 py-3 lg:py-4">
           Get started a project
         </button>
       </div>

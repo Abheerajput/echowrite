@@ -11,8 +11,8 @@ const Brands = () => {
   return (
     <div>
       <div className="text-center pt-[60px]">
-        <h1 className="font-bold text-4xl inter_ff text-[#161C2D] sm:text-[25px] md:text-[30px] xs:text-[20px]">
-          Trusted by Various BrandsSee what users say about EchoWrite
+        <h1 className="font-bold text-[40px] inter_ff text-[#161C2D] ">
+          Trusted by Various Brands
         </h1>
         <div className="flex justify-evenly pt-[49px] pb-[50px] flex-wrp">
           <p className="p-2 w-[150px] sm:w-[100px] md:w-[120px] lg:w-[150px] xs:w-[100px]"><img src={Brand1} alt="Brand1" className="" /></p>

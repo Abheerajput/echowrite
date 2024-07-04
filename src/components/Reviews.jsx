@@ -1,67 +1,67 @@
-
 import React from 'react';
 import { GiRoundStar } from "react-icons/gi";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
 import makeTech from "../assets/svg/maketeach.svg";
-import Reveiwer from "../assets/svg/pic1.svg";
-import Reveiwer2 from "../assets/svg/pic2.svg";
+import Reviewer from "../assets/svg/pic1.svg";
+import Reviewer2 from "../assets/svg/pic2.svg";
 
 const Reviews = () => {
   return (
     <>
       <div className='bg-[#F4F7FA] pb-[3%]'>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 pt-12 pb-8 md:px-[4%] lg:px-[4%] sm:px-[4%] xs:px-[20px]">
-          See what users say about EchoWrite
-        </h1>
-        <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-4 xl:pl-[4%] lg:pl-[4%]">
-          <div className="bg-white rounded-3xl p-6 lg:p-8 mx-4 mb-4 lg:mb-0 sm:h-1/2 md:h-3/4 md:w-3/4 lg:w-3/4   ">
-            <img className="mx-auto mb-4" src={makeTech} alt="MakeTech Icon" />
-            <p className="text-base md:text-lg lg:text-xl font-normal text-center">
-              "EchoWrite has revolutionized our meeting documentation. The real-time transcription is incredibly accurate, saving us hours every week. Highly recommend it!"
-            </p>
-            <div className="flex justify-center gap-2 mt-6  xl:mt-[20%] lg:mt-[36%]">
-              <input type="radio" name="rating1" id="rating1" />
-              <input type="radio" name="rating1" id="rating2" />
-              <input type="radio" name="rating1" id="rating3" />
-              <input type="radio" name="rating1" id="rating4" />
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-8   sm:h-1/2 md:h-3/4 md:w-3/4 xl:pr-[4%] lg:pr-[4%] lg:w-3/4 mx-4">
-            <div className="bg-white rounded-3xl p-4 lg:p-6">
-              <div className="flex items-center mb-4">
-                <img className="w-12 h-12 rounded-full mr-4" src={Reveiwer} alt="Reviewer 1" />
-                <p className="text-base md:text-lg lg:text-xl">
-                  "EchoWrite's speech-to-text technology is impressive. It converts my interviews to text effortlessly, allowing me to focus more on writing and less on transcribing."
-                </p>
+        <div className="container max-w-5xl  mx-auto">
+          <h1 className="text-[40px] text-[#161C2D] font-bold inter_ff text-center mb-8 pt-12 pb-8 px-4">
+            See what users say about EchoWrite
+          </h1>
+          <div className="flex flex-col container max-w-5xl  mx-auto lg:flex-row items-center px-4 justify-center lg:space-x-4">
+            <div className="bg-white rounded-3xl p-6 lg:p-8 mx-4 mb-4 lg:mb-0 w-full lg:w-1/2">
+              <img className="mx-auto mb-4" src={makeTech} alt="MakeTech Icon" />
+              <p className="text-[18px] font-normal inter_ff text-[#212529] text-center">
+                "EchoWrite has revolutionized our meeting documentation. The real-time transcription is incredibly accurate, saving us hours every week. Highly recommend it!"
+              </p>
+              <div className="flex justify-center gap-2 mt-6">
+                <input type="radio" name="rating1" id="rating1" />
+                <input type="radio" name="rating1" id="rating2" />
+                <input type="radio" name="rating1" id="rating3" />
+                <input type="radio" name="rating1" id="rating4" />
               </div>
-              <div className="flex items-center justify-start gap-4 lg:ml-[13%] sx:ml-[16%] md:ml-[9%]">
-                <p className="text-gray-600">By Christopher</p>
-                <div className="flex gap-1">
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <FaRegStarHalfStroke className="text-[#F47D1E]" />
+            </div>
+            <div className="flex flex-col gap-8 w-full lg:w-1/2 mx-4">
+              <div className="bg-white rounded-3xl p-4 lg:p-6">
+                <div className="flex items-center mb-4">
+                  <img className="w-12 h-12 rounded-full mr-4" src={Reviewer} alt="Reviewer 1" />
+                  <p className="text-[18px]  font-normal inter_ff text-[#212529]">
+                    "EchoWrite's speech-to-text technology is impressive. It converts my interviews to text effortlessly, allowing me to focus more on writing and less on transcribing."
+                  </p>
+                </div>
+                <div className="flex items-center justify-start gap-4 md:ml-[9%]">
+                  <p className="text-[#212529] text-[15px] font-normal inter_ff">By Christopher</p>
+                  <div className="flex gap-1">
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <FaRegStarHalfStroke className="text-[#F47D1E]" />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="bg-white rounded-3xl p-4  lg:p-6">
-              <div className="flex items-center mb-4">
-                <img className="w-12 h-12 rounded-full mr-4" src={Reveiwer2} alt="Reviewer 2" />
-                <p className="text-base md:text-lg lg:text-xl">
-                  "EchoWrite's speech-to-text technology is impressive. It converts my interviews to text effortlessly, allowing me to focus more on writing and less on transcribing."
-                </p>
-              </div>
-              <div className="flex items-center justify-start gap-4 ml-0 lg  md:ml-[9%]">
-                <p className="text-gray-600">By Christopher</p>
-                <div className="flex gap-1">
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <GiRoundStar className="text-[#F47D1E]" />
-                  <FaRegStarHalfStroke className="text-[#F47D1E]" />
+              <div className="bg-white rounded-3xl p-4 lg:p-6">
+                <div className="flex items-center mb-4">
+                  <img className="w-12 h-12 rounded-full mr-4" src={Reviewer2} alt="Reviewer 2" />
+                  <p className="text-[18px]  font-normal inter_ff text-[#212529]">
+                    "EchoWrite's speech-to-text technology is impressive. It converts my interviews to text effortlessly, allowing me to focus more on writing and less on transcribing."
+                  </p>
+                </div>
+                <div className="flex items-center justify-start gap-4 md:ml-[9%]">
+                  <p className="  text-[#212529] text-[15px] font-normal inter_ff">By Christopher</p>
+                  <div className="flex gap-1">
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <GiRoundStar className="text-[#F47D1E]" />
+                    <FaRegStarHalfStroke className="text-[#F47D1E]" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -73,6 +73,8 @@ const Reviews = () => {
 }
 
 export default Reviews;
+
+
 // import React from 'react';
 // import { GiRoundStar } from "react-icons/gi";
 // import { FaRegStarHalfStroke } from "react-icons/fa6";

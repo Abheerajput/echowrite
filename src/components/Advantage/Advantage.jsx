@@ -9,7 +9,7 @@ const Advantage = () => {
   const advantages = [
     {
       icon: firsticon,
-      title: 'Project management',
+      title: 'Real-Time Transcription',
       description: 'Instantly convert speech to text with high accuracy, perfect for meetings, lectures, and spontaneous note-taking.',
       borderClass: 'border-2'
     },
@@ -21,8 +21,8 @@ const Advantage = () => {
     },
     {
       icon: PhoneIcon,
-      title: 'Project management',
-      description: 'Instantly convert speech to text with high accuracy, perfect for meetings, lectures, and spontaneous note-taking.',
+      title: 'Customizable Formatting',
+      description: 'Tailor the text output with various formatting options, ensuring the final document meets your specific needs and standards.',
       borderClass: 'border-2'
     }
   ];
@@ -51,7 +51,7 @@ const Advantage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 mt-[4%] mb-[6%]">
+    <div className="container max-w-5xl mx-auto px-4 mt-[4%] mb-[6%]">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ml-[2%]">
         {advantages.map((advantage, index) => (
           <div
@@ -62,8 +62,8 @@ const Advantage = () => {
           >
             <div className="flex flex-col items-center text-center md:items-start md:text-left">
               <img src={advantage.icon} alt="" className="mb-4" />
-              <h3 className="font-bold text-xl inter_ff mb-2">{advantage.title}</h3>
-              <p className="inter_ff text-[#5C606C] text-[17px] font-normal" dangerouslySetInnerHTML={{ __html: formatDescription(advantage.description) }}>
+              <h3 className="text-[22px] font-bold text-[#161C2D] inter_ff mb-2">{advantage.title}</h3>
+              <p className="inter_ff font-normal text-[#161C2D] text-[17px] " dangerouslySetInnerHTML={{ __html: formatDescription(advantage.description) }}>
               </p>
             </div>
           </div>

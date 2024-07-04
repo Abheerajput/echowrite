@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from './components/Login';
 import Signup from './components/Signin';
 import "slick-carousel/slick/slick.css";
+import './App.css';
 import "slick-carousel/slick/slick-theme.css";
 import Homepage from './components/Homepage';
 import Dashboard from './Dashboard/Dashboard';
