@@ -4,7 +4,7 @@ import logo from "../assets/svg/logo.svg";
 import mike from "../assets/svg/mikeicon.svg";
 import { Link } from 'react-router-dom';
 
-const Dashboard2 = () => {
+const Dashboard5 = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -154,7 +154,7 @@ const Dashboard2 = () => {
   );
 };
 
-export default Dashboard2;
+export default Dashboard5;
 
 
 

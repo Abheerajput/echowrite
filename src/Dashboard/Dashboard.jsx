@@ -49,10 +49,10 @@ const Dashboard = () => {
         </span>
       </div>
       <div className="bg-white rounded-lg shadow-md px-12 pb-[3%]">
-      <div className='flex justify-between'>
+      <div className='flex justify-between '>
           <span className='mt-[20px]' style={{marginTop:"20px"}}>
-            <h2 className="text-[30px] font-bold inter_ff mb-1">Recorded to Text</h2>
-            <p className="text-[#808080] mb-4">Quickly transcribe your audio to text.</p>
+            <h2 className="text-[30px] font-bold inter_ff">Recorded to Text</h2>
+            <p className="text-[#808080] mt-[-4px] ">Quickly transcribe your audio to text.</p>
           </span>
           <div className="mt-6 mb-4">
             <p className="text-gray-600">Available conversion minute(s):</p>
@@ -65,13 +65,13 @@ const Dashboard = () => {
             <p className="text-gray-600 mt-1">Remaining: {remainingMinutes} minute(s)</p>
           </div>
         </div>
-        <div className="border-2  border-gray-300 rounded-lg p-10 text-center pb-3 divide-y cursor-pointer"
+        <div className="border-2  border-gray-300 rounded-lg  text-center pb-3  cursor-pointer"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleFileDrop}
         >
           <div className='flex justify-center'>
 
-            <img src={uploadicon} alt="" />
+            <img className='pt-6 ' src={uploadicon} alt="" />
           </div>
           <p className="mt-4 font-bold text-black ">
             Drag and Drop files here
@@ -83,7 +83,7 @@ const Dashboard = () => {
           >
             Click to upload files here
           </button>
-          <p className="mt-2 text-[15px] font-normal text-[#808080]">
+          <p className="mt-2 text-[15px] pb-6 font-normal text-[#808080]">
             Support MP4, MP3 formats.
           </p>
           <input
@@ -95,8 +95,9 @@ const Dashboard = () => {
 
 
 
-<div className="flex mb-4 mt-4  justify-between rounded-xl items-center" style={{ borderTop: "1px solid #808080 " }}>
-          <div className="flex gap-4 ml-[5%] pt-2">
+<div className="flex  mt-4  justify-between  items-center " style={{ borderTopWidth: "1px " }}>
+  
+          <div className="flex gap-4 ml-[5%] pt-2 ">
             <div className="mb-4">
               <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="language">Choose Language</label>
               <select
