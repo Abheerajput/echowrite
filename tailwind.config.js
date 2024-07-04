@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xs': {'min': '320px', 'max': '639.99px'},
+        'xs': {'min': '318px', 'max': '768.99px'},
       },
     },
   },

@@ -29,11 +29,11 @@ const Navbar = () => {
   return (
     <div className="relative bg-white ">
       <div className="flex justify-between items-center py-5 px-4 md:px-8">
-        <div className="flex items-center gap-4 ml-[60px]">
+        <div className="flex items-center gap-4 ml-[60px] xs:ml-2">
           <img src={logo} alt="Logo" />
         </div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-2xl focus:outline-none">
+          <button onClick={toggleMenu} className="text-2xl focus:outline-none xs:mt-[20px]">
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
