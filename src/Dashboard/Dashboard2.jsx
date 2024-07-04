@@ -68,14 +68,14 @@ const Dashboard2 = () => {
         </div>
 
         <div
-          className="border-2 border-gray-300  rounded-lg  w-full flex text-center xs:flex xs:flex-col xs:justify-around  cursor-pointer"
+          className="border-2 border-gray-300  rounded-lg  w-full flex text-center xs:flex xs:flex-col xs:gap-4 xs:justify-around  cursor-pointer"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleFileDrop}
         >
 
 
 
-<div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-aroundl'>
+<div className='flex flex-col w-full    xs:flex xs:flex-col xs:justify-aroundl'>
 
 
 <div className='flex pt-4 xs:flex xs:flex-col xs:justify-around'>
@@ -90,7 +90,7 @@ const Dashboard2 = () => {
 
           </div>
 
-          <div className='w-3/5 border-l border-gray-300 xs:w-full xs:border-2'>
+          <div className='w-3/5 border-l border-gray-300  xs:w-full xs:border-2'>
             <p className='text-[18px] text-[#008CD2] inter_ff font-bold flex justify-start py-2 ml-2'>Converted text Here</p>
             <div className="relative px-4 pb-4">
               <textarea

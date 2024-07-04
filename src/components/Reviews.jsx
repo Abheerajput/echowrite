@@ -10,11 +10,11 @@ const Reviews = () => {
     <>
       <div className='bg-[#F4F7FA] xs:pb-8 pb-[3%]'>
         <div className="container max-w-[1400px] w-full mx-auto px-3">
-          <h1 className="text-[40px] text-[#161C2D] xs:text-[35px] font-bold inter_ff text-center xs:px-2 mb-8 xs:mb-2 xs:pt-4 xs:pb-2 pt-12 pb-8 px-4">
+          <h1 className="text-[40px] text-[#161C2D] xs:text-[30px] font-bold inter_ff text-center xs:px-2 mb-8 xs:mb-2 xs:pt-4 xs:pb-2 pt-12 pb-8 px-4">
             See what users say about EchoWrite
           </h1>
-          <div className="flex flex-col  lg:flex-row h-full xs:px-2 px-4 justify-center lg:space-x-4">
-            <div className="bg-white h-full rounded-3xl p-6 lg:p-8 xs:mx-2  mx-4 mb-4 lg:mb-0 w-full lg:w-1/2">
+          <div className="flex flex-col  lg:flex-row h-full xs:px-1 px-4 justify-center lg:space-x-4">
+            <div className="bg-white h-full rounded-3xl p-6 lg:p-8 xs:mx-1 mx-4 mb-4 lg:mb-0 w-full lg:w-1/2">
               <img className="mx-auto mb-4" src={makeTech} alt="MakeTech Icon" />
               <p className="text-[18px] font-normal inter_ff text-[#212529] text-center">
                 "EchoWrite has revolutionized our meeting documentation. The real-time transcription is incredibly accurate, saving us hours every week. Highly recommend it!"
@@ -26,15 +26,15 @@ const Reviews = () => {
                 <input type="radio" name="rating1" id="rating4" />
               </div>
             </div>
-            <div className="flex flex-col xs:mx-2 gap-8 xs:gap-4 w-full lg:w-1/2  mx-4">
+            <div className="flex flex-col xs:mx-1 gap-8 xs:gap-4 w-full lg:w-1/2  mx-4">
               <div className="bg-white  h-full rounded-3xl p-4 lg:p-6">
-                <div className="flex items-center  mb-4">
-                  <img className="w-12 h-12 rounded-lg xs:mr-2 mr-4" src={Reviewer} alt="Reviewer 1" />
+                <div className="flex items-center xs:flex xs:flex-col  mb-4">
+                  <img className="w-12 h-12 xs:my-4 rounded-lg xs:mr-2 mr-4" src={Reviewer} alt="Reviewer 1" />
                   <p className="text-[18px]  font-normal inter_ff text-[#212529]">
                     "EchoWrite's speech-to-text technology is impressive. It converts my interviews to text effortlessly, allowing me to focus more on writing and less on transcribing."
                   </p>
                 </div>
-                <div className="flex items-center  h-full justify-start  gap-4 md:ml-[9%]">
+                <div className="flex items-center  justify-start  gap-4 md:ml-[9%]">
                   <p className="text-[#212529] text-[15px] font-normal inter_ff">By Christopher</p>
                   <div className="flex gap-1">
                     <GiRoundStar className="text-[#F47D1E]" />
@@ -47,8 +47,8 @@ const Reviews = () => {
               </div>
 
               <div className="bg-white rounded-3xl p-4 lg:p-6">
-                <div className="flex items-center  mb-4 xs:mb-2">
-                  <img className="w-12 h-12 rounded-lg mr-4" src={Reviewer2} alt="Reviewer 2" />
+                <div className="flex items-center xs:flex xs:flex-col mb-4 xs:mb-2">
+                  <img className="w-12 h-12 xs:my-4 rounded-lg mr-4" src={Reviewer2} alt="Reviewer 2" />
                   <p className="text-[18px]  font-normal inter_ff text-[#212529]">
                     "EchoWrite's speech-to-text technology is impressive. It converts my interviews to text effortlessly, allowing me to focus more on writing and less on transcribing."
                   </p>

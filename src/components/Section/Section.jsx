@@ -19,11 +19,11 @@ const Section = () => {
             </button>
           </div>
 
-          <div className="flex justify-center py-8  xs:py-0 lg:py-0">
+          <div className="flex justify-center py-8 md:px-4 xs:px-4 xs:py-0 lg:py-0">
             <img src={sectionImage} alt="Section" className="max-w-full md:max-w-md lg:max-w-lg xl:max-w-none" />
           </div>
 
-          <div className="grid grid-rows-3 gap-8 py-8 xs:py-0 px-4 lg:pr-8 xl:pr-12">
+          <div className="grid grid-rows-3 xs:px-4 gap-8 py-8 xs:py-0 px-4 lg:pr-8 xl:pr-12">
             <div>
               <h1 className='text-[20px] font-bold text-[#161C2D] inter_ff'>1M+ Users Worldwide</h1>
               <p className='text-[17px] font-normal text-[#161C2D] inter_ff'>

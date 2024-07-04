@@ -63,7 +63,7 @@ const Dashboard = () => {
           </div>
         </div>
       
-        <div className="bg-white rounded-lg shadow-md pb-4 px-12 xs:px-2">
+        <div className="bg-white rounded-lg xs:px-4 shadow-md pb-4 px-12 ">
           <div className='flex justify-between xs:flex xs:flex-col xs:justify-around'>
             <span className='mt-[20px]' style={{ marginTop: "20px" }}>
               <h2 className="text-[30px] font-bold inter_ff text-[#000000]">Recorded to Text</h2>
@@ -108,7 +108,7 @@ const Dashboard = () => {
               onChange={handleFileUpload}
             />
 
-            <div className="flex  mt-4  justify-between  items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
+            <div className="flex  mt-4  justify-between xs:flex xs:flex-col items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
 
               <div className="flex gap-4 ml-[5%] pt-2 ">
                 <div className="mb-4">

@@ -76,7 +76,7 @@ const Dashboard5 = () => {
 
 
 
-<div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-aroundl'>
+<div className='flex flex-col xs:px-4 w-full xs:flex xs:flex-col xs:justify-aroundl'>
 
 
 <div className='flex pt-4 xs:flex xs:flex-col xs:justify-around'>

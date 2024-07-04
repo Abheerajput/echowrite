@@ -46,7 +46,7 @@ const Message = () => {
           <div className='flex justify-center items-center'>
           <div className="pt-8 xs:pt-2 lg:pl-8 ">
             <p className='xs:flex xs:justify-center '><img src={messageIcon} alt="Message Icon" className="mx-auto lg:mx-0" /></p>
-            <h1 className='text-white text-[40px] font-bold inter_ff text-center lg:text-left mt-4'>
+            <h1 className='text-white text-[40px] xs:text-[30px] font-bold inter_ff text-center lg:text-left mt-4'>
               Get a free consultancy from our experts!
             </h1>
             <p className='text-[#B2B3B8]   text-[15px] font-normal inter_ff pt-3 text-center lg:text-left'>

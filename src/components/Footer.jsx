@@ -9,8 +9,8 @@ const Footer = () => {
     return (
         <>
             <div className="bg-gray-100 px-4 py-8">
-                <div className="container max-w-[1400px] mx-auto w-full flex flex-wrap justify-around gap-8">
-                    <div className="flex-1 min-w-[20%] mb-8">
+                <div className="container max-w-[1400px] mx-auto xs:full xs:flex  w-full flex flex-wrap justify-around gap-8">
+                    <div className="flex-1 w-[20%] xs:w-2/5 mb-8">
                         <img src={logo} alt="Logo" className="mb-4" />
                         <p className="text-gray-600 text-base mb-4">
                             With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
@@ -23,7 +23,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="flex-1 min-w-[16%] mb-8">
+                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
                         <p className="text-gray-800 text-lg font-semibold mb-2">Product</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Features</li>
@@ -34,7 +34,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex-1 min-w-[16%] mb-8">
+                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
                         <p className="text-gray-800 text-lg font-semibold mb-2">Company</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">About us</li>
@@ -44,7 +44,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex-1 min-w-[16%] mb-8">
+                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
                         <p className="text-gray-800 text-lg font-semibold mb-2">Services</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Recording To Text</li>
@@ -52,7 +52,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex-1 min-w-[16%] mb-8">
+                    <div className="flex-1 w-[16%] mb-8">
                         <p className="text-gray-800 text-lg font-semibold mb-2">Legal</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Privacy Policy</li>
