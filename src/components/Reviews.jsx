@@ -30,13 +30,14 @@ const Reviews = () => {
              
                 <div>
                   <p className="text-[18px] font-normal inter_ff text-[#212529] text-center">
-                  “I recently dined at [RestaurantName] and was thoroughly impressed by both the exquisite cuisine and the impeccable service. The menu showcased a variety of innovative dishes, blending bold flavors and beautiful presentation. The attentive and knowledgeable staff ensured that our meal was a memorable one, providing excellent recommendations and ensuring our satisfaction. I can’t recommend [RestaurantName] enough for a fantastic dining experience.”
+                  "EchoWrite's AI capabilities are unmatched. The ease of use and accuracy are top-notch."
                   </p>
                  
                 </div>
                 <div>
                   <p className="text-[18px] font-normal inter_ff text-[#212529] text-center">
-                    "EchoWrite's AI capabilities are unmatched. The ease of use and accuracy are top-notch."
+                  "EchoWrite's music app text converter is an absolute game-changer. It seamlessly transforms song lyrics into text, capturing every nuance with remarkable accuracy. The real-time processing is impressive, allowing musicians and lyricists to focus on creativity rather than manual transcription. The interface is user-friendly, and the support for multiple languages makes it incredibly versatile. With robust security measures, users can trust their data is safe. Whether you're a professional musician or a hobbyist, EchoWrite's text converter is an indispensable tool for enhancing productivity and ensuring precision in every transcription."
+                   
                   </p>
                 </div>
                 <div>
