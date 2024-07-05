@@ -30,7 +30,7 @@ const Reviews = () => {
              
                 <div>
                   <p className="text-[18px] font-normal inter_ff text-[#212529] text-center">
-                    "EchoWrite has revolutionized our meeting documentation. The real-time transcription is incredibly accurate, saving us hours every week. Highly recommend it!"
+                  “I recently dined at [RestaurantName] and was thoroughly impressed by both the exquisite cuisine and the impeccable service. The menu showcased a variety of innovative dishes, blending bold flavors and beautiful presentation. The attentive and knowledgeable staff ensured that our meal was a memorable one, providing excellent recommendations and ensuring our satisfaction. I can’t recommend [RestaurantName] enough for a fantastic dining experience.”
                   </p>
                  
                 </div>
