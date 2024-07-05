@@ -118,6 +118,31 @@
   background-color: #f8f9fc;
 }
 
+
+/* Reviews.css */
+.custom-carousel .carousel .control-dots {
+  position: static !important;
+  margin-top: 1rem !important;
+  text-align: center !important;
+}
+.carousel.carousel-slider {
+  position: relative;
+  margin: 0;
+  display: flex !important;
+  overflow: hidden;
+}
+.custom-carousel .carousel .control-dots .dot {
+  background-color: #d3d3d3 !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 5px !important;
+  border-radius: 50% !important;
+}
+
+.custom-carousel .carousel .control-dots .dot.selected {
+  background-color: #212529 !important;
+}
+
 /* 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
