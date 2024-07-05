@@ -46,12 +46,12 @@ const Login = () => {
       </div>
 
       {/* Right section */}
-      <div className="w-1/2 xs:w-full md:w-full lg:w-1/2 p-8 flex flex-col items-center justify-center overflow-y-auto">
-        <div className="flex justify-between xs:flex xs:flex-col  items-center mb-4 w-full">
-          <div className='pl-[32px] xs:pl-0 pt-[3%]'>
+      <div className="w-1/2 xs:w-full md:w-full xs:flex xs:justify-start lg:justify-start lg:w-1/2 p-8 flex flex-col items-center justify-center overflow-y-auto">
+        <div className="flex justify-between xs:flex xs:flex-col xs:items-center xs:justify-center lg:items-start  items-center mb-4 w-full">
+          <div className='pl-[32px] xs:pl-0 '>
             <img src={logo} alt="Logo" className="mb-8" />
           </div>
-          <Link to="/signup" className="text-sm xs:hidden">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
+          <Link to="/signup" className="text-sm xs:hidden lg:pt-6 xl:pt-6">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
         </div>
         <h2 className="text-[30px] inter_ff font-semibold mb-4 flex justify-center xs:mt-8 mt-16">Welcome Back</h2>
         <p className="text-[15px] inter_ff text-[#000000] mb-8 flex justify-center mt-[-3%]">Login into your account</p>
@@ -91,9 +91,9 @@ const Login = () => {
             <div className="text-center my-4">
               <p ><img className='h-[34px]' src={loginicon} alt="" /></p>
             </div>
-            <p className='flex justify-center items-center'>
+            <p className='flex justify-center xs:w-full items-center'>
               <button
-                className="bg-white rounded-3xl justify-center text-[#00000] text-[10px] w-1/2 inter_ff border border-gray-300 xs:px-0 xs:mx-2  py-3 px-4 text-nowrap flex items-center"
+                className="bg-white rounded-3xl justify-center text-[#00000] text-[10px] w-1/2 xs:w-3/4 inter_ff border border-gray-300 xs:px-0 xs:mx-2  py-3 px-4 text-nowrap flex items-center"
                 type="button"
               >
                 <FcGoogle className="xs:mr-2" style={{ width: '24px', height: '24px' }} />
