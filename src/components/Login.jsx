@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import bgimg from "../assets/images/loginbgimg.png";
+import thumbicon from "../assets/svg/thumbicon.svg"
 import { Link } from 'react-router-dom';
 
 const ToggleSwitch = ({ isOn, handleToggle }) => {
@@ -24,18 +25,21 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen xs:grid md:grid sm:grid lg:flex lg:w-full xs:h-screen">
+    <div className="flex min-h-screen xs:grid  md:grid sm:grid lg:flex-row-reverse lg:flex lg:w-full xs:h-screen">
       {/* Left section */}
       <div className="flex-1 lg:bg-cover lg:bg-center xs:hidden lg:relative xs:h-[50vh]"
         style={{
           backgroundImage: `url(${bgimg})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
+        
         }}>
-        <div className="flex items-center justify-center lg:mt-[40%] w-2/3 xs:w-1/2 xs:hidden">
-          <div className="text-white backdrop-blur-xl lg:mt-[70%] lg:ml-[4%] xs:m-0 xs:p-2 xs:mt-4 p-8">
-            <h2 className="text-2xl font-semibold mb-4 xs:text-[9px]">Top Notch Stock Resources</h2>
-            <p className='xs:text-[9px]'>Today, we create innovative solutions to the challenges that consumers face in both their everyday lives and events.</p>
+        <div className="flex items-center justify-center h-screen rounded-lg w-2/3 xs:w-1/2 xs:hidden">
+          <div className="text-white backdrop-blur-xl w-2/3  lg:mt-[70%]  lg:ml-[4%] xs:m-0 xs:p-2 xs:mt-4 p-8">
+            <h2 className="text-[13px] font-normal inter_ff py-3 bg-[#008CD2] flex justify-center items-center text-nowrap rounded-3xl  mb-4 xs:text-[9px]">
+             <img src={thumbicon} alt=""  className='pr-4'/>
+               Top Notch Stock Resources</h2>
+            <p className='xs:text-[9px] text-[20px] font-normal inter_ff text-white'>Today, we create innovative solutions to the challenges that consumers face in both their everyday lives and events.</p>
           </div>
         </div>
       </div>

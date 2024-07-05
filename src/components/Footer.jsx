@@ -8,14 +8,15 @@ import logo from "../assets/svg/logo.svg";
 const Footer = () => {
     return (
         <>
-            <div className="bg-gray-100 px-4 py-8 cursor-pointer">
-                <div className="container max-w-[1400px] mx-auto xs:full xs:flex  w-full flex flex-wrap justify-around gap-8">
+            <div className="bg-gray-100 px-4 py-8 cursor-pointer ">
+                <div className="container max-w-[1400px] w-full mx-auto px-4 lg:ps-12">
+                <div className=" xs:full  xs:flex  w-full flex flex-wrap justify-around gap-8">
                     <div className="flex-1 w-[20%] xs:w-2/5 mb-8">
                         <img src={logo} alt="Logo" className="mb-4" />
                         <p className="text-[15px] font-normal inter_ff cursor-default text-[#161C2D] text-base mb-4">
                             With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
                         </p>
-                        <div className="flex space-x-4 w-full">
+                        <div className="flex space-x-4 w-full ">
                             <FaTwitter  className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 md:w-12 md:h-10 lg:w-12 lg:h-10 xs:h-8 xs:w-8 transition-colors duration-300" />
                             <FaFacebook className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1   md:w-12 md:h-10 lg:w-12 lg:h-10 xs:h-8 xs:w-8 transition-colors duration-300" />
                             <FaInstagram className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1   md:w-12 md:h-10 lg:w-12 lg:h-10 xs:h-8 xs:w-8 transition-colors duration-300" />
@@ -23,7 +24,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
+                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8 ps-10 mt-7">
                         <p className=" text-[16px] font-normal inter_ff cursor-default  text-[#5A5E6B] mb-2">Product</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D]  transition-colors duration-300">Features</li>
@@ -34,7 +35,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
+                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8 mt-7">
                         <p className=" text-lg  text-[16px] font-normal inter_ff cursor-default text-[#5A5E6B] mb-2">Company</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">About us</li>
@@ -44,7 +45,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
+                    <div className="flex-1 w-[16%] xs:w-2/5 mb-8 mt-7">
                         <p className=" text-[16px] font-normal inter_ff text-[#5A5E6B] cursor-default  mb-2">Services</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Recording To Text</li>
@@ -52,7 +53,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex-1 w-[16%] mb-8">
+                    <div className="flex-1 w-[16%] mb-8 mt-7">
                         <p className=" text-[16px] font-normal inter_ff text-[#5A5E6B]  cursor-default mb-2">Legal</p>
                         <ul className="space-y-1 ">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Privacy Policy</li>
@@ -60,6 +61,7 @@ const Footer = () => {
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Return Policy</li>
                         </ul>
                     </div>
+                </div>
                 </div>
             </div>
             <hr className="mx-4 md:mx-8 lg:mx-16" />
