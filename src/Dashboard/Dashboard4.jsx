@@ -35,28 +35,41 @@ const Dashboard4 = () => {
 
   return (
     <>
-    <div className="mx-auto mt-16 px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0" style={{
-      backgroundImage: `url(${bgimg})`,
+     <div className=" mx-auto mt-16  px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0 " style={{
+      // backgroundImage: `url(${bgimg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>
-      <div className='py-4 flex justify-between items-center'>
-          <p><img src={logo} alt="Logo" /></p>
-          <div className='flex items-center gap-4'>
-            <div className='flex xs:pt-4 md:hidden lg:hidden'>
-              <button onClick={toggleMenu} className='text-gray-600 focus:outline-none'>
-                {menuOpen ? <FaTimes className='w-6 h-6' /> : <FaBars className='w-6 h-6' />}
-              </button>
-            </div>
-            <div className={`lg:flex md:flex items-center ${menuOpen ? 'flex' : 'hidden'} lg:block`}>
-              <p className='text-16 font-normal inter_ff lg:ml-4'><Link to="/dashboard5">Next</Link></p>
-              <p className='text-16 font-normal inter_ff lg:ml-4'>Support</p>
-              <p className='flex border rounded-2xl font-bold px-2 xs:text-[14px] items-center lg:ml-4'>
-                <span className='w-8 h-8 xs:w-4 xs:h-4 bg-[#FF9A26] flex justify-center items-center rounded-full text-white text-14 xs:text-[10px] inter_ff mr-2'>J</span> John Doe
-              </p>
-            </div>
-          </div>
-        </div>
+      
+<nav className="  bg-[#F1F4F5]  top-0 left-0 right-0 ">
+<div className=" xs:flex xs:justify-between px-4 py-3 flex justify-between items-center">
+  <img src={logo} alt="Logo" className="h-10" />
+  <div className="flex items-center space-x-6">
+    <div className="hidden md:flex space-x-6">
+      <Link to="/dashboard5" className="text-gray-600 hover:text-gray-800 transition">Next</Link>
+      <Link to="#" className="text-gray-600 hover:text-gray-800 transition">Support</Link>
+      <div className="flex items-center space-x-2">
+        <div className="w-8 h-8 bg-[#FF9A26] flex justify-center items-center rounded-full text-white">J</div>
+        <span className="text-gray-600">John Doe</span>
+      </div>
+    </div>
+    <button onClick={toggleMenu} className="md:hidden text-gray-600 focus:outline-none">
+      {menuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
+    </button>
+  </div>
+</div>
+<div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} bg-white shadow-md`}>
+  <div className="flex flex-col items-center py-4 space-y-4">
+    <Link to="/dashboard5" className="text-gray-600 hover:text-gray-800 transition">Next</Link>
+    <Link to="#" className="text-gray-600 hover:text-gray-800 transition">Support</Link>
+    <div className="flex items-center space-x-2">
+      <div className="w-8 h-8 bg-[#FF9A26] flex justify-center items-center rounded-full text-white">J</div>
+      <span className="text-gray-600">John Doe</span>
+    </div>
+  </div>
+</div>
+</nav>
+
       <div className="bg-white rounded-lg shadow-md pb-4 px-12 xs:px-2">
         <div className='flex justify-between md:flex md:flex-col md:justify-around sm:flex sm:flex-col sm:justify-around xs:flex xs:flex-col xs:justify-around lg:flex'>
           <span className='mt-5'>
