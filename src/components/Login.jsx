@@ -9,7 +9,7 @@ import loginicon from "../assets/svg/signinicon3.svg";
 const ToggleSwitch = ({ isOn, handleToggle }) => {
   return (
     <div
-      className={`w-12 h-6 xs:h-4 xs:w-11 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer ${isOn ? "bg-blue-600" : ""}`}
+      className={`w-12 h-6 xs:h-4 xs:w-11 flex items-center rounded-full p-1 cursor-pointer ${isOn ? "bg-[#008CD2]" : "bg-gray-300 "}`}
       onClick={handleToggle}
     >
       <div
@@ -29,11 +29,10 @@ const Login = () => {
   return (
     <div className="flex min-h-screen xs:grid md:grid sm:grid lg:flex-row-reverse lg:flex lg:w-full xs:h-screen overflow-hidden">
       {/* Left section */}
-      <div className="flex-1 lg:bg-cover lg:bg-center  lg:flex sm:hidden xl:bg-cover xs:hidden lg:relative lg:h-screen"
+      <div className="flex-1 lg:bg-cover lg:bg-center lg:flex sm:hidden xl:bg-cover xs:hidden lg:relative lg:h-screen"
         style={{
           backgroundImage: `url(${bgimg})`,
           backgroundSize: 'cover',
-          // backgroundAttachment: 'fixed',
         }}>
         <div className="flex items-center justify-center h-screen rounded-lg w-2/3 xs:w-1/2 xs:hidden">
           <div className="text-white backdrop-blur-xl w-2/3 lg:mt-[70%] lg:ml-[4%] lg:w-4/5 xs:m-0 xs:p-2 xs:mt-4 p-8">
@@ -48,8 +47,8 @@ const Login = () => {
 
       {/* Right section */}
       <div className="w-1/2 xs:w-full md:w-full md:flex md:justify-start xs:flex xs:justify-start lg:justify-start lg:w-1/2 p-8 flex flex-col items-center justify-center overflow-y-auto">
-        <div className="flex justify-between xs:flex xs:flex-col xs:items-center xs:justify-center lg:items-start  items-center mb-4 w-full">
-          <div className='pl-[32px] xs:pl-0 '>
+        <div className="flex justify-between xs:flex xs:flex-col xs:items-center xs:justify-center lg:items-start items-center mb-4 w-full">
+          <div className='pl-[32px] xl:pl-0 lg:pl-0 xs:pl-0 '>
             <img src={logo} alt="Logo" className="mb-8" />
           </div>
           <Link to="/signup" className="text-sm xs:hidden lg:pt-6 xl:pt-6">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
@@ -94,7 +93,7 @@ const Login = () => {
             </div>
             <p className='flex justify-center xs:w-full items-center'>
               <button
-                className="bg-white rounded-3xl justify-center text-[#00000] text-[10px] w-1/2 xs:w-3/4 inter_ff border border-gray-300 xs:px-0 xs:mx-2  py-3 px-4 text-nowrap flex items-center"
+                className="bg-white rounded-3xl justify-center text-[#00000] text-[10px] w-1/2 xs:w-3/4 inter_ff border border-gray-300 xs:px-0 xs:mx-2 py-3 px-4 text-nowrap flex items-center"
                 type="button"
               >
                 <FcGoogle className="xs:mr-2" style={{ width: '24px', height: '24px' }} />
@@ -103,12 +102,9 @@ const Login = () => {
             </p>
 
             <p className='xs:flex xs:justify-center xs:items-center'>
-              
-          <Link to="/signup" className="text-sm pt-3 xs:felx md:hidden lg:hidden xl:hidden xs:justify-center">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
+              <Link to="/signup" className="text-sm pt-3 xs:flex md:hidden lg:hidden xl:hidden xs:justify-center">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
             </p>
           </form>
-
-
         </div>
       </div>
     </div>
@@ -116,6 +112,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 // import React from 'react';
