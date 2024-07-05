@@ -29,10 +29,11 @@ const Login = () => {
   return (
     <div className="flex min-h-screen xs:grid md:grid sm:grid lg:flex-row-reverse lg:flex lg:w-full xs:h-screen overflow-hidden">
       {/* Left section */}
-      <div className="flex-1 lg:bg-cover lg:bg-center xs:hidden lg:relative xs:h-[50vh]"
+      <div className="flex-1 lg:bg-cover lg:bg-center xl:bg-cover xs:hidden lg:relative lg:h-screen"
         style={{
           backgroundImage: `url(${bgimg})`,
-          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          // backgroundAttachment: 'fixed',
         }}>
         <div className="flex items-center justify-center h-screen rounded-lg w-2/3 xs:w-1/2 xs:hidden">
           <div className="text-white backdrop-blur-xl w-2/3 lg:mt-[70%] lg:ml-[4%] lg:w-4/5 xs:m-0 xs:p-2 xs:mt-4 p-8">

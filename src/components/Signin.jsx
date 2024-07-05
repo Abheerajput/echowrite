@@ -39,7 +39,7 @@ const Signup = () => {
       </div>
 
       {/* Right section */}
-      <div className="flex-1 flex flex-col items-center justify-center bg-white p-8">
+      <div className="flex-1 flex flex-col items-center  xs:items-center xs:justify-start justify-center bg-white p-8">
         <p className='mt-4 mb-4 text-sm'>Don’t have an account? <span className='text-[#008CD2]' style={{ borderBottom: "1px solid #008CD2" }}>Sign in!</span></p>
         <div className="w-full max-w-md p-8 bg-white rounded-lg">
           <h2 className="text-[23px] font-semibold inter_ff text-black mb-2 text-center">Get Started With EchoWrite</h2>
