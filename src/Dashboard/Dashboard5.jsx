@@ -87,7 +87,7 @@ const Dashboard5 = () => {
           >
            <div className='flex flex-col w-full    xs:flex xs:flex-col xs:justify-aroundl'>
 <div className='flex pt-4 xs:flex xs:flex-col xs:justify-around'>
-<div className='flex flex-col items-center w-2/5 xs:flex xs:flex-col xs:justify-around xs:w-full xs:mb-2'>
+<div className='flex flex-col items-center w-2/5 xs:flex xs:flex-col xs:py-6 xs:gap-3 xs:justify-around xs:w-full xs:mb-2'>
 
                   <p className='text-[18px] font-bold poppins'>00:55 mins</p>
                   <p className='text-[#808080] text-nowrap text-[15px] font-normal'>Support Multiple Language.</p>

@@ -89,7 +89,7 @@ const Dashboard2 = () => {
 
 <div className='flex flex-col w-full    xs:flex xs:flex-col xs:justify-aroundl'>
 <div className='flex pt-4 xs:flex xs:flex-col xs:justify-around'>
-<div className='flex flex-col items-center w-2/5 xs:flex xs:flex-col xs:justify-around xs:w-full xs:mb-2'>
+<div className='flex flex-col items-center w-2/5 xs:flex xs:flex-col xs:pb-2 xs:justify-around xs:w-full xs:mb-2'>
             <p className='flex justify-center'>
               <img className='w-24 h-24' src={mike} alt="Microphone" />
             </p>
