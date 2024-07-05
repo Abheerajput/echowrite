@@ -79,7 +79,7 @@ const Pricing = () => {
         {pricingPlans.map((plan, index) => (
           <div key={index} className="bg-white rounded-2xl pb-4 px-2  text-center mx-auto max-w-xs">
             <div className="mb-6">
-              <p className={`${plan.textColor} ${plan.titleBgColor} xs:mt-2 xs:px-2 px-10 mt-2 py-2 rounded-full inline-block`}>{plan.title}</p>
+              <p className={`${plan.textColor} ${plan.titleBgColor} xs:mt-2 xs:px-2 px-10 mt-3 py-2 rounded-full inline-block`}>{plan.title}</p>
             </div>
             <p className="text-5xl font-bold inter_ff mb-4">{plan.price}</p>
             <p className="text-[#5C606C] font-bold mb-4">{plan.frequency}</p>
