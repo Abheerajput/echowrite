@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import bgimg from "../assets/images/loginbgimg.png";
-import thumbicon from "../assets/svg/thumbicon.svg"
+import thumbicon from "../assets/svg/thumbicon.svg";
 import { Link } from 'react-router-dom';
+import logo from "../assets/svg/logo.svg";
+import loginicon from "../assets/svg/signinicon3.svg";
 
 const ToggleSwitch = ({ isOn, handleToggle }) => {
   return (
@@ -25,34 +27,36 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen xs:grid  md:grid sm:grid lg:flex-row-reverse lg:flex lg:w-full xs:h-screen">
+    <div className="flex min-h-screen xs:grid md:grid sm:grid lg:flex-row-reverse lg:flex lg:w-full xs:h-screen overflow-hidden">
       {/* Left section */}
       <div className="flex-1 lg:bg-cover lg:bg-center xs:hidden lg:relative xs:h-[50vh]"
         style={{
           backgroundImage: `url(${bgimg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        
+          backgroundAttachment: 'fixed',
         }}>
         <div className="flex items-center justify-center h-screen rounded-lg w-2/3 xs:w-1/2 xs:hidden">
-          <div className="text-white backdrop-blur-xl w-2/3  lg:mt-[70%]  lg:ml-[4%] xs:m-0 xs:p-2 xs:mt-4 p-8">
-            <h2 className="text-[13px] font-normal inter_ff py-3 bg-[#008CD2] flex justify-center items-center text-nowrap rounded-3xl  mb-4 xs:text-[9px]">
-             <img src={thumbicon} alt=""  className='pr-4'/>
-               Top Notch Stock Resources</h2>
+          <div className="text-white backdrop-blur-xl w-2/3 lg:mt-[70%] lg:ml-[4%] lg:w-4/5 xs:m-0 xs:p-2 xs:mt-4 p-8">
+            <h2 className="text-[13px] font-normal inter_ff w-full py-3 lg:px-2 bg-[#008CD2] flex justify-center items-center text-nowrap rounded-3xl mb-4 xs:text-[9px]">
+              <img src={thumbicon} alt="" className='xs:pr-0' />
+              Top Notch Stock Resources
+            </h2>
             <p className='xs:text-[9px] text-[20px] font-normal inter_ff text-white'>Today, we create innovative solutions to the challenges that consumers face in both their everyday lives and events.</p>
           </div>
         </div>
       </div>
 
       {/* Right section */}
-      <div className="w-1/2 xs:w-full md:w-full lg:w-1/2 p-8">
-        <div className=" flex justify-between items-center mb-4">
-          <Link to="/signup" className="text-sm">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
+      <div className="w-1/2 xs:w-full md:w-full lg:w-1/2 p-8 flex flex-col items-center justify-center overflow-y-auto">
+        <div className="flex justify-between xs:flex xs:flex-col  items-center mb-4 w-full">
+          <div className='pl-[32px] xs:pl-0 pt-[3%]'>
+            <img src={logo} alt="Logo" className="mb-8" />
+          </div>
+          <Link to="/signup" className="text-sm xs:hidden">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
         </div>
-        <h2 className="text-[30px] inter_ff font-semibold mb-4 flex justify-center xs:mt-8 mt-[23%]">Welcome Back</h2>
+        <h2 className="text-[30px] inter_ff font-semibold mb-4 flex justify-center xs:mt-8 mt-16">Welcome Back</h2>
         <p className="text-[15px] inter_ff text-[#000000] mb-8 flex justify-center mt-[-3%]">Login into your account</p>
-        <div className='flex justify-center'>
-          <form className='w-2/3 sm:w-2/3  lg:w-2/3 xs:w-full'>
+        <div className='flex justify-center w-full'>
+          <form className='w-2/3 sm:w-2/3 lg:w-2/3 xs:w-full'>
             <div className="mb-4">
               <input
                 className="border rounded-lg w-full py-2 px-3 text-gray-700"
@@ -79,20 +83,31 @@ const Login = () => {
               <Link to="#" className="text-[11px] text-[#D93F21] inter_ff text-nowrap">Recover Password</Link>
             </div>
             <button
-              className="bg-blue-600 text-[15px] font-normal inter_ff text-white py-2 px-4 rounded-lg w-full"
+              className="bg-[#008CD2] text-[15px] font-normal inter_ff text-white py-2 px-4 rounded-3xl w-full"
               type="submit"
             >
               Log In
             </button>
-            <div className="text-center text-gray-500 my-4">Or continue with</div>
-            <button
-              className="bg-white text-[#00000] text-[10px] inter_ff border border-gray-300 py-2 px-4 rounded-lg text-nowrap w-full flex items-center justify-center"
-              type="button"
-            >
-              <FcGoogle className="mr-2 h-[16px] w-[16px] xs:flex" />
-              Continue with Google
-            </button>
+            <div className="text-center my-4">
+              <p ><img className='h-[34px]' src={loginicon} alt="" /></p>
+            </div>
+            <p className='flex justify-center items-center'>
+              <button
+                className="bg-white rounded-3xl justify-center text-[#00000] text-[10px] w-1/2 inter_ff border border-gray-300 xs:px-0 xs:mx-2  py-3 px-4 text-nowrap flex items-center"
+                type="button"
+              >
+                <FcGoogle className="xs:mr-2" style={{ width: '24px', height: '24px' }} />
+                Continue with Google
+              </button>
+            </p>
+
+            <p className='xs:flex xs:justify-center xs:items-center'>
+              
+          <Link to="/signup" className="text-sm pt-3 xs:felx md:hidden lg:hidden xl:hidden xs:justify-center">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
+            </p>
           </form>
+
+
         </div>
       </div>
     </div>
@@ -100,6 +115,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 // import React from 'react';
 // import { FcGoogle } from "react-icons/fc";
