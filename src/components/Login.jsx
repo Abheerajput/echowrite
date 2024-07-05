@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className="flex min-h-screen xs:grid md:grid sm:grid lg:flex-row-reverse lg:flex lg:w-full xs:h-screen overflow-hidden">
       {/* Left section */}
-      <div className="flex-1 lg:bg-cover lg:bg-center xl:bg-cover xs:hidden lg:relative lg:h-screen"
+      <div className="flex-1 lg:bg-cover lg:bg-center  lg:flex sm:hidden xl:bg-cover xs:hidden lg:relative lg:h-screen"
         style={{
           backgroundImage: `url(${bgimg})`,
           backgroundSize: 'cover',
@@ -47,7 +47,7 @@ const Login = () => {
       </div>
 
       {/* Right section */}
-      <div className="w-1/2 xs:w-full md:w-full xs:flex xs:justify-start lg:justify-start lg:w-1/2 p-8 flex flex-col items-center justify-center overflow-y-auto">
+      <div className="w-1/2 xs:w-full md:w-full md:flex md:justify-start xs:flex xs:justify-start lg:justify-start lg:w-1/2 p-8 flex flex-col items-center justify-center overflow-y-auto">
         <div className="flex justify-between xs:flex xs:flex-col xs:items-center xs:justify-center lg:items-start  items-center mb-4 w-full">
           <div className='pl-[32px] xs:pl-0 '>
             <img src={logo} alt="Logo" className="mb-8" />
