@@ -165,7 +165,7 @@ const Dashboard4 = () => {
     <label className="block text-[#808080] text-[15px] inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>
     <select
                       id="language"
-                      className="border border-gray-300  text-[#808080] text-[15px] inter_ff font-normal rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
+                      className="border border-gray-300  text-[#808080] text-[15px] inter_ff xs:w-[100px]  w-[151px] font-normal rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
                       style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}>
                       value={selectedLanguage}
                       onChange={handleLanguageChange}
@@ -180,7 +180,7 @@ const Dashboard4 = () => {
                   <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="format">Output Format</label>
                   <select
                       id="format"
-                      className="border border-gray-300  text-[#808080] text-[15px] inter_ff font-normal rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
+                      className="border border-gray-300  text-[#808080] text-[15px] inter_ff xs:w-[100px]  w-[151px] font-normal rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
                       style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}  >
                       <option value="text">Text</option>
                      

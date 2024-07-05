@@ -117,10 +117,10 @@ const Dashboard2 = () => {
 
               <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2  xs:pt-4">
                 <div className="mb-4">
-                  <label className="block text-[#808080] text-[15px] inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>
+                  <label className="block text-[#808080] text-[15px]   inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>
                   <select
                     id="language"
-                    className="border border-gray-300  text-[#808080] text-[15px] inter_ff font-normal rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
+                    className="border border-gray-300  text-[#808080] text-[15px] w-[151px]  xs:w-[100px] inter_ff font-normal rounded-md px-5 py-1  mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
                     style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}    >
                     <option value="en">English</option>
                     <option value="en">English</option>
@@ -132,7 +132,7 @@ const Dashboard2 = () => {
                   <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="format">Output Format</label>
                   <select
                     id="format"
-                    className="border border-gray-300  text-[#808080] text-[15px] inter_ff font-normal rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
+                    className="border border-gray-300  text-[#808080] text-[15px] inter_ff font-normal xs:w-[100px]  w-[151px] rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
                     style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}  >
                     <option value="text">Text</option>
                     {/* Add more output format options */}
