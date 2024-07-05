@@ -1,8 +1,8 @@
 import React from 'react';
-import { FiTwitter } from "react-icons/fi";
-import { LuFacebook } from "react-icons/lu";
+import { FaTwitter } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { SlSocialLinkedin } from "react-icons/sl";
+import { IoLogoLinkedin } from "react-icons/io5";
 import logo from "../assets/svg/logo.svg";
 
 const Footer = () => {
@@ -16,10 +16,10 @@ const Footer = () => {
                             With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
                         </p>
                         <div className="flex space-x-4 w-full">
-                            <FiTwitter className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
-                            <LuFacebook className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
+                            <FaTwitter  className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
+                            <FaFacebook className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
                             <FaInstagram className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
-                            <SlSocialLinkedin className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
+                            <IoLogoLinkedin className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
                         </div>
                     </div>
 
