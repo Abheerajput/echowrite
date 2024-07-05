@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
 
                     <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
-                        <p className=" text-[16px] font-normal inter_ff cursor-default  text-[#161C2D] mb-2">Product</p>
+                        <p className=" text-[16px] font-normal inter_ff cursor-default  text-[##5A5E6B] mb-2">Product</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D]  transition-colors duration-300">Features</li>
                             <li className="text-lg  text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Pricing</li>
@@ -35,7 +35,7 @@ const Footer = () => {
                     </div>
 
                     <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
-                        <p className=" text-lg  text-[16px] font-normal inter_ff cursor-default text-[#5A5E6B]  mb-2">Company</p>
+                        <p className=" text-lg  text-[16px] font-normal inter_ff cursor-default text-[##5A5E6B] mb-2">Company</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">About us</li>
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Contact us</li>
@@ -45,7 +45,7 @@ const Footer = () => {
                     </div>
 
                     <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
-                        <p className=" text-[16px] font-normal inter_ff text-[#5A5E6B] cursor-default  mb-2">Services</p>
+                        <p className=" text-[16px] font-normal inter_ff text-[##5A5E6B] cursor-default  mb-2">Services</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Recording To Text</li>
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Speech To Text</li>
@@ -53,7 +53,7 @@ const Footer = () => {
                     </div>
 
                     <div className="flex-1 w-[16%] mb-8">
-                        <p className=" text-[16px] font-normal inter_ff text-[#5A5E6B]  cursor-default mb-2">Legal</p>
+                        <p className=" text-[16px] font-normal inter_ff text-[##5A5E6B]  cursor-default mb-2">Legal</p>
                         <ul className="space-y-1 text-gray-600">
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Privacy Policy</li>
                             <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Terms & Conditions</li>
