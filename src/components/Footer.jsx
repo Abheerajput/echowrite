@@ -16,10 +16,10 @@ const Footer = () => {
                             With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
                         </p>
                         <div className="flex space-x-4 w-full">
-                            <FaTwitter  className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
-                            <FaFacebook className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
-                            <FaInstagram className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
-                            <IoLogoLinkedin className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 xs:h-8 xs:w-8 transition-colors duration-300" />
+                            <FaTwitter  className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1 md:w-12 md:h-10 lg:w-12 lg:h-10 xs:h-8 xs:w-8 transition-colors duration-300" />
+                            <FaFacebook className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1   md:w-12 md:h-10 lg:w-12 lg:h-10 xs:h-8 xs:w-8 transition-colors duration-300" />
+                            <FaInstagram className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1   md:w-12 md:h-10 lg:w-12 lg:h-10 xs:h-8 xs:w-8 transition-colors duration-300" />
+                            <IoLogoLinkedin className="social-icon text-gray-600 hover:text-[#FF9A26] rounded-full p-1   md:w-12 md:h-10 lg:w-12 lg:h-10 xs:h-8 xs:w-8 transition-colors duration-300" />
                         </div>
                     </div>
 
