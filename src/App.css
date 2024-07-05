@@ -129,6 +129,7 @@
   position: relative;
   margin: 0;
   display: flex !important;
+  flex-direction: column-reverse !important;
   overflow: hidden;
 }
 .custom-carousel .carousel .control-dots .dot {
