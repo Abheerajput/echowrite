@@ -17,7 +17,7 @@ const Storage = () => {
             <span>
 
            
-            <h1 className='text-[40px] xs:text-[33px] xs:ml-[3%] font-bold inter_ff text-[#161C2D] '>
+            <h1 className='text-[40px] xs:text-[30px] xs:ml-[3%] font-bold inter_ff text-[#161C2D] '>
               Safe and Reliable Cloud Storage
             </h1>
             <p className='text-[#696A6B] text-[17px] font-normal inter_ff pt-4'>

@@ -8,7 +8,7 @@ const Section = () => {
       <div className=" py-8 xs:pt-2 lg:py-12 container max-w-[1400px] w-full mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="flex flex-col  justify-center py-8 xs:py-2  xs:gap-2 xs:pl-6  lg:pl-8 xl:pl-12">
-            <h1 className=' text-[40px]  inter_ff xs:text-[35px] font-bold mb-4  text-[#161C2D] '>
+            <h1 className=' text-[40px]  inter_ff xs:text-[30px] font-bold mb-4  text-[#161C2D] '>
               Innovating Speech-to-Text Solutions
             </h1>
             <p className='section-text-color text-lg font-normal mb-6'>

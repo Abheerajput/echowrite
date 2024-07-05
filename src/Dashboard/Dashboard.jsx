@@ -40,7 +40,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className=" mx-auto mt-16  px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0 " style={{
+      <div className=" mx-auto mt-16 h-screen px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0 " style={{
       // backgroundImage: `url(${bgimg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -51,11 +51,11 @@ const Dashboard = () => {
   <img src={logo} alt="Logo" className="h-10" />
   <div className="flex items-center space-x-6">
     <div className="hidden md:flex space-x-6">
-      <Link to="/dashboard2" className="text-gray-600 hover:text-gray-800 transition">Next</Link>
-      <Link to="#" className="text-gray-600 hover:text-gray-800 transition">Support</Link>
+      <Link to="/dashboard2" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Next</Link>
+      <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Support</Link>
       <div className="flex items-center space-x-2">
         <div className="w-8 h-8 bg-[#FF9A26] flex justify-center items-center rounded-full text-white">J</div>
-        <span className="text-gray-600">John Doe</span>
+        <span className="text-[#000000] hover:text-gray-800 font-bold text-[16px] inter_fff">John Doe</span>
       </div>
     </div>
     <button onClick={toggleMenu} className="md:hidden text-gray-600 focus:outline-none">
@@ -63,13 +63,13 @@ const Dashboard = () => {
     </button>
   </div>
 </div>
-<div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} bg-white mb-4 shadow-md`}>
+<div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} bg-white mb-4 rounded-xl shadow-md`}>
   <div className="flex flex-col items-center py-4 space-y-4">
-    <Link to="/dashboard2" className="text-gray-600 hover:text-gray-800 transition">Next</Link>
-    <Link to="#" className="text-gray-600 hover:text-gray-800 transition">Support</Link>
+    <Link to="/dashboard2" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Next</Link>
+    <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Support</Link>
     <div className="flex items-center space-x-2">
       <div className="w-8 h-8 bg-[#FF9A26] flex justify-center items-center rounded-full text-white">J</div>
-      <span className="text-gray-600">John Doe</span>
+      <span className="text-[#000000] hover:text-gray-800 font-bold text-[16px] inter_ff0">John Doe</span>
     </div>
   </div>
 </div>
@@ -78,15 +78,15 @@ const Dashboard = () => {
 
       
       
-        <div className="bg-white rounded-lg  xs:px-4 shadow-md pb-4  px-12 ">
-          <div className='flex justify-between xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
+        <div className="bg-white rounded-lg  xs:px-4 shadow-md pb-6  px-12 ">
+          <div className='flex justify-between items-center xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
             <span className='mt-[20px] lg:mt-0 xs:mt-0' >
               <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000]">Recorded to Text</h2>
               <p className="text-[15px] text-[#808080] font-normal inter_ff mt-[-4px] ">Quickly transcribe your audio to text.</p>
             </span>
             <div className="mt-6 mb-4">
               <p className=" text-[15px] text-[#808080] font-normal inter_ff0">Available conversion minute(s):</p>
-              <div className="bg-gray-200 rounded-full h-[5px]  overflow-hidden" style={{ height: "5px", backgroundColor: "#808080" }}>
+              <div className="bg-[#EBEEF5] rounded-full h-[5px]  overflow-hidden" style={{ height: "5px" }}>
                 <div
                   className="bg-[#EBEEF5] rounded-full"
                   style={{ width: `${(remainingMinutes / 10) * 100}%` }}></div>
@@ -102,17 +102,17 @@ const Dashboard = () => {
 
               <img className='pt-6 ' src={uploadicon} alt="" />
             </div>
-            <p className="mt-4 text-[18px] inter_ff font-bold text-black ">
+            <p className="mt-4 text-[18px] poppins  font-bold text-black ">
               Drag and Drop files here
             </p>
             <p className="mt-2 text-[15px] font-normal inter_ff text-gray-500">Or</p>
             <button
-              className="text-[15px] font-normal inter_ff text-[#008CD2]  py-2 px-4 rounded-md"
+              className="text-[15px] font-normal poppins text-[#008CD2]  py-2 px-4 rounded-md"
               onClick={handleFileClick}
             >
               Click to upload files here
             </button>
-            <p className="mt-2 text-[15px] pb-6 inter_ff font-normal text-[#808080]">
+            <p className="mt-2 text-[15px] pb-6 poppins font-normal text-[#808080]">
               Support MP4, MP3 formats.
             </p>
             <input
@@ -129,7 +129,7 @@ const Dashboard = () => {
                   <label className="block text-[#808080] text-[15px] inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>
                   <select
                     id="language"
-                    className="border border-gray-300 rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
+                    className="border border-gray-300  text-[#808080] text-[15px] inter_ff font-normal rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
                     style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}    >
                     <option value="en">English</option>
                     <option value="en">English</option>
@@ -141,14 +141,14 @@ const Dashboard = () => {
                   <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="format">Output Format</label>
                   <select
                     id="format"
-                    className="border border-gray-300 rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
+                    className="border border-gray-300  text-[#808080] text-[15px] inter_ff font-normal rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
                     style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}  >
                     <option value="text">Text</option>
                     {/* Add more output format options */}
                   </select>
                 </div>
               </div>
-              <p className='mr-4 xs:mr-0 xs:w-1/4'>
+              <p className=' lg:mr-6 md:mr-6 xl:mr-6 xs:mr-0 xs:w-1/4'>
                 <button
                   className="bg-[#E4E4E4] text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
                   onClick={handleConvert}

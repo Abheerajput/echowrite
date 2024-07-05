@@ -67,7 +67,7 @@ const Pricing = () => {
 
     }}>
       <div className="text-center mb-12 xs:bg-[#04324D]">
-        <h1 className="font-bold text-[40px]  text-white xs:pt-4 inter_ff">Pricing & Plans</h1>
+        <h1 className="font-bold xs:text-[30px] text-[40px]  text-white xs:pt-4 inter_ff">Pricing & Plans</h1>
         <p className="text-[#ffffff] opacity-50 mt-4 xs:px-2 text-[17] font-normal inter_ff">
           With lots of unique blocks, you can easily build a page without coding. Build
           <br />

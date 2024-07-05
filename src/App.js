@@ -11,6 +11,7 @@ import Dashboard from './Dashboard/Dashboard';
 import Dashboard2 from './Dashboard/Dashboard2';
 import Dashboard3 from './Dashboard/Dashboard3';
 import Dashboard4 from './Dashboard/Dashboard4';
+import Dashboard5 from './Dashboard/Dashboard5';
 
 const App = () => {
     return (
@@ -35,6 +36,7 @@ const AppContent = () => {
                 <Route path="/dashboard2" element={<Dashboard2 />} />
                 <Route path="/dashboard3" element={<Dashboard3 />} />
                 <Route path="/dashboard4" element={<Dashboard4 />} />
+                <Route path="/dashboard5" element={<Dashboard5 />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/home" element={<Homepage />} />
                 <Route path="/" element={<Navigate to="/home" />} />

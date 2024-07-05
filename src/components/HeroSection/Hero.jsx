@@ -33,7 +33,7 @@ const Hero = () => {
       }}>
         <div className=" grid grid-cols-1 md:grid-cols-6 gap-4 pb-[26%] mb-[-26%]">
           <div className="md:col-start-2 md:col-span-4 text-center ">
-            <p className="font-bold text-center  xs:text-[40px] text-[50px] text-[#04324D] inter_ff  pt-10 md:pt-20 ">
+            <p className="font-bold text-center  xs:text-[35px] text-[50px] text-[#04324D] inter_ff  pt-10 md:pt-20 ">
               Revolutionary Voice-to-Text Technology
             </p>
           </div>

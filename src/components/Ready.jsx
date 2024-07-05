@@ -29,7 +29,7 @@ const Ready = () => {
       <div className="container max-w-[1400px] w-full mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <div className="  md:py-8  xs:py-2 lg:py-[10%]">
-        <h1 className="text-[40px]  font-bold inter_ff text-white">
+        <h1 className="text-[40px]  font-bold xs:text-[30px] inter_ff text-white">
           Ready to launch your next project?
         </h1>
         <p className="text-[18px] inter_ff text-[#A7B7C1] font-normal mt-4">

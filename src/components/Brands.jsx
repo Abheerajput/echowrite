@@ -10,7 +10,7 @@ import Brand7 from "../assets/svg/Brand7.svg";
 const Brands = () => {
   return (
     <div className="text-center px-3 pt-12">
-      <h1 className="font-bold text-3xl inter_ff md:text-4xl text-[#161C2D]">
+      <h1 className="font-bold xs:text-[30px] inter_ff md:text-4xl text-[#161C2D]">
         Trusted by Various Brands
       </h1>
       <div className="overflow-hidden w-full lg:pt-6cd h-24 md:h-28 lg:h-32 mt-4">
