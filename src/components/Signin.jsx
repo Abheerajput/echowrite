@@ -13,7 +13,7 @@ const Signup = () => {
 
     <div className="flex min-h-screen xs:grid md:grid sm:grid  lg:flex  lg:w-full">
       {/* Left section */}
-      <div className="flex-1 lg:bg-cover lg:bg-center lg:relative"
+      <div className="flex-1 lg:bg-cover xs:hidden lg:bg-center lg:relative"
        style={{
         backgroundImage: `url(${signinimg})`,
         backgroundSize: 'cover',
@@ -45,12 +45,12 @@ const Signup = () => {
       </div>
      
       {/* Right section */}
-      <div className="flex-1 flex items-center justify-center flex-col bg-white">
-        <p className='xs:mt-[3%] xs:pl-[35%] xs:pr-[2%] sm:mt-[3%] sm:pl-[35%] sm:pr-[2%]  '>Don’t have an account?<span className='text-[#008CD2] ' style={{borderBottom:"1px solid #008CD2 "}}>Sign in!</span></p>
+      <div className="flex-1 flex items-center justify-center  flex-col bg-white">
+        <p className='xs:mt-[3%]  xs:pr-[2%] sm:mt-[3%] xs:items-center sm:pr-[2%]  '>Don’t have an account?<span className='text-[#008CD2] ' style={{borderBottom:"1px solid #008CD2 "}}>Sign in!</span></p>
         <div className="w-full max-w-md p-8 bg-white rounded-lg ] ">
           <h2 className="text-[23px] font-semibold inter_ff mb-2 text-center text-nowrap">Get Started With EchoWrite</h2>
           <p className=" mb-6 text-center text-[11px] font-normal text-[#7E7E7E]">Getting started is easy</p>
-          <form>
+          <form className='xs:w-full'>
             <div className="mb-4">
            
               <input

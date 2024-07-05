@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <div className="flex min-h-screen xs:grid md:grid sm:grid lg:flex lg:w-full xs:h-screen">
       {/* Left section */}
-      <div className="flex-1 lg:bg-cover lg:bg-center lg:relative xs:h-[50vh]"
+      <div className="flex-1 lg:bg-cover lg:bg-center xs:hidden lg:relative xs:h-[50vh]"
         style={{
           backgroundImage: `url(${bgimg})`,
           backgroundSize: 'cover',
@@ -42,13 +42,13 @@ const Login = () => {
 
       {/* Right section */}
       <div className="w-1/2 xs:w-full md:w-full lg:w-1/2 p-8">
-        <div className="flex justify-between items-center mb-4">
+        <div className=" flex justify-between items-center mb-4">
           <Link to="/signup" className="text-sm">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
         </div>
-        <h2 className="text-[30px] inter_ff font-semibold mb-4 flex justify-center mt-[23%]">Welcome Back</h2>
+        <h2 className="text-[30px] inter_ff font-semibold mb-4 flex justify-center xs:mt-8 mt-[23%]">Welcome Back</h2>
         <p className="text-[15px] inter_ff text-[#000000] mb-8 flex justify-center mt-[-3%]">Login into your account</p>
         <div className='flex justify-center'>
-          <form className='w-2/3'>
+          <form className='w-2/3 sm:w-2/3  lg:w-2/3 xs:w-full'>
             <div className="mb-4">
               <input
                 className="border rounded-lg w-full py-2 px-3 text-gray-700"
@@ -67,7 +67,7 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="flex items-center justify-between mb-4 xs:flex xs:flex-col">
+            <div className="flex items-center justify-between mb-4 xs:flex xs:flex-row">
               <label className="flex items-center">
                 <ToggleSwitch isOn={isRememberMe} handleToggle={handleToggle} />
                 <span className="ml-2 text-[#1A1A1A] font-normal text-[10px] text-nowrap">Remember me</span>

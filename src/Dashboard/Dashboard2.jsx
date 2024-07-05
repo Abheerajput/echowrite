@@ -35,7 +35,7 @@ const Dashboard2 = () => {
     }}>
       
 <nav className="  bg-[#F1F4F5]  top-0 left-0 right-0 ">
-<div className=" xs:flex xs:justify-between px-4 py-3 flex justify-between items-center">
+<div className=" xs:flex xs:justify-between px-4 py-6  flex justify-between items-center">
   <img src={logo} alt="Logo" className="h-10" />
   <div className="flex items-center space-x-6">
     <div className="hidden md:flex space-x-6">

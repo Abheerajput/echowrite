@@ -47,7 +47,7 @@ const Dashboard = () => {
     }}>
       
 <nav className="  bg-[#F1F4F5]  top-0 left-0 right-0 ">
-<div className=" xs:flex xs:justify-between px-4 py-3 flex justify-between items-center">
+<div className=" xs:flex xs:justify-between xs:px-3 px-4 py-6 flex justify-between items-center">
   <img src={logo} alt="Logo" className="h-10" />
   <div className="flex items-center space-x-6">
     <div className="hidden md:flex space-x-6">
@@ -63,7 +63,7 @@ const Dashboard = () => {
     </button>
   </div>
 </div>
-<div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} bg-white shadow-md`}>
+<div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} bg-white mb-4 shadow-md`}>
   <div className="flex flex-col items-center py-4 space-y-4">
     <Link to="/dashboard2" className="text-gray-600 hover:text-gray-800 transition">Next</Link>
     <Link to="#" className="text-gray-600 hover:text-gray-800 transition">Support</Link>
@@ -78,10 +78,10 @@ const Dashboard = () => {
 
       
       
-        <div className="bg-white rounded-lg xs:px-2 shadow-md pb-4 px-12 ">
-          <div className='flex justify-between xs:flex xs:flex-col xs:justify-around'>
-            <span className='mt-[20px]' style={{ marginTop: "20px" }}>
-              <h2 className="text-[30px] font-bold inter_ff text-[#000000]">Recorded to Text</h2>
+        <div className="bg-white rounded-lg  xs:px-4 shadow-md pb-4  px-12 ">
+          <div className='flex justify-between xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
+            <span className='mt-[20px] lg:mt-0 xs:mt-0' >
+              <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000]">Recorded to Text</h2>
               <p className="text-[15px] text-[#808080] font-normal inter_ff mt-[-4px] ">Quickly transcribe your audio to text.</p>
             </span>
             <div className="mt-6 mb-4">
@@ -94,11 +94,11 @@ const Dashboard = () => {
               <p className="text-[15px] text-[#808080] font-normal inter_ff mt-1">Remaining: {remainingMinutes} minute(s)</p>
             </div>
           </div>
-          <div className="border-2  border-gray-300 rounded-lg  text-center pb-3  cursor-pointer xs:w-full"
+          <div className="border-2  border-gray-300  rounded-lg  text-center pb-3  cursor-pointer xs:w-full"
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleFileDrop}
           >
-            <div className='flex justify-center'>
+            <div className='flex justify-center '>
 
               <img className='pt-6 ' src={uploadicon} alt="" />
             </div>
@@ -122,9 +122,9 @@ const Dashboard = () => {
               onChange={handleFileUpload}
             />
 
-            <div className="flex  mt-4  justify-between xs:flex xs:flex-col items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
+            <div className="flex  mt-4  justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
 
-              <div className="flex gap-4 ml-[5%] pt-2 ">
+              <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2  xs:pt-4">
                 <div className="mb-4">
                   <label className="block text-[#808080] text-[15px] inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>
                   <select
@@ -148,7 +148,7 @@ const Dashboard = () => {
                   </select>
                 </div>
               </div>
-              <p className='mr-4'>
+              <p className='mr-4 xs:mr-0 xs:w-1/4'>
                 <button
                   className="bg-[#E4E4E4] text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
                   onClick={handleConvert}
