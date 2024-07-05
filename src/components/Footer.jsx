@@ -8,11 +8,11 @@ import logo from "../assets/svg/logo.svg";
 const Footer = () => {
     return (
         <>
-            <div className="bg-gray-100 px-4 py-8">
+            <div className="bg-gray-100 px-4 py-8 cursor-pointer">
                 <div className="container max-w-[1400px] mx-auto xs:full xs:flex  w-full flex flex-wrap justify-around gap-8">
                     <div className="flex-1 w-[20%] xs:w-2/5 mb-8">
                         <img src={logo} alt="Logo" className="mb-4" />
-                        <p className="text-gray-600 text-base mb-4">
+                        <p className="text-[15px] font-normal inter_ff cursor-default text-[#161C2D] text-base mb-4">
                             With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
                         </p>
                         <div className="flex space-x-4 w-full">
@@ -24,50 +24,50 @@ const Footer = () => {
                     </div>
 
                     <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
-                        <p className="text-gray-800 text-lg font-semibold mb-2">Product</p>
+                        <p className=" text-[16px] font-normal inter_ff cursor-default  text-[#161C2D] mb-2">Product</p>
                         <ul className="space-y-1 text-gray-600">
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Features</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Pricing</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">News</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Help desk</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Support</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D]  transition-colors duration-300">Features</li>
+                            <li className="text-lg  text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Pricing</li>
+                            <li className="text-lg  text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">News</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Help desk</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Support</li>
                         </ul>
                     </div>
 
                     <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
-                        <p className="text-gray-800 text-lg font-semibold mb-2">Company</p>
+                        <p className=" text-lg  text-[16px] font-normal inter_ff cursor-default text-[#5A5E6B]  mb-2">Company</p>
                         <ul className="space-y-1 text-gray-600">
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">About us</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Contact us</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Careers</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Press</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">About us</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Contact us</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Careers</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Press</li>
                         </ul>
                     </div>
 
                     <div className="flex-1 w-[16%] xs:w-2/5 mb-8">
-                        <p className="text-gray-800 text-lg font-semibold mb-2">Services</p>
+                        <p className=" text-[16px] font-normal inter_ff text-[#5A5E6B] cursor-default  mb-2">Services</p>
                         <ul className="space-y-1 text-gray-600">
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Recording To Text</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Speech To Text</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Recording To Text</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Speech To Text</li>
                         </ul>
                     </div>
 
                     <div className="flex-1 w-[16%] mb-8">
-                        <p className="text-gray-800 text-lg font-semibold mb-2">Legal</p>
+                        <p className=" text-[16px] font-normal inter_ff text-[#5A5E6B]  cursor-default mb-2">Legal</p>
                         <ul className="space-y-1 text-gray-600">
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Privacy Policy</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Terms & Conditions</li>
-                            <li className="text-lg hover:text-[#FF9A26] transition-colors duration-300">Return Policy</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Privacy Policy</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Terms & Conditions</li>
+                            <li className="text-lg text-[16px] font-normal inter_ff text-[#161C2D] transition-colors duration-300">Return Policy</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <hr className="mx-4 md:mx-8 lg:mx-16" />
-            <div className="flex justify-center items-center space-x-1 py-4 bg-gray-100 text-gray-600">
-                <p>Copyright ©</p>
-                <p>2024</p>
-                <p className="text-[#FF9A26]">EchoWrite.</p>
-                <p>All rights reserved.</p>
+            <div className="flex justify-center items-center space-x-1 py-4 cursor-default bg-gray-100 text-gray-600">
+                <p className='text-[15px] font-normal inter_ff text-[#04324D]'>Copyright ©</p>
+                <p className='text-[15px] font-normal inter_ff text-[#04324D]'>2024</p>
+                <p className="text-[#FF9A26] className='text-[15px] font-normal inter_ff'">EchoWrite.</p>
+                <p className='text-[15px] font-normal inter_ff text-[#04324D]'>All rights reserved.</p>
             </div>
         </>
     );
