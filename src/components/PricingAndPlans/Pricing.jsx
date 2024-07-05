@@ -271,11 +271,11 @@ const Pricing = () => {
 <div className=' '>
 
 
-      <div className=" grid grid-rows-1 gap-12  sm:grid-cols-2 md:grid-cols-3 items-center">
+      <div className=" grid grid-rows-1 gap-12  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  items-center">
         {pricingPlans.map((plan, index) => (
-          <div key={index} className="bg-white h-full rounded-lg md:px-10 px-3 py-7 text-center w-full ">
+          <div key={index} className="bg-white h-full rounded-lg md:px-10  px-3 py-7 text-center w-full ">
             <div className="mb-6">
-              <p className={`${plan.textColor} ${plan.titleBgColor}  font-bold px-10 py-2 mt-4 rounded-full inline-block`}>{plan.title}</p>
+              <p className={`${plan.textColor} ${plan.titleBgColor}  font-bold  px-10 py-2 mt-4 rounded-full inline-block`}>{plan.title}</p>
             </div>
             <p className="text-5xl font-bold inter_ff mb-4 pt-3">{plan.price}</p>
             <p className="text-[#5C606C]  inter_ff  font-bold mb-4">{plan.frequency}</p>

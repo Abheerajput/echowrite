@@ -48,11 +48,11 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className=" flex justify-center md:col-start-2 md:col-span-4 relative">
+       
+      </div>
+      <div className=" flex justify-center md:col-start-2 md:col-span-4 relative">
           <img src={mainImg} alt="Main" />
         </div>
-      </div>
-
       {isFormOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg w-full md:w-1/3">
@@ -139,6 +139,7 @@ const Hero = () => {
 
 export default Hero;
 
+
 // import React, { useState } from 'react';
 // import mainImg from "../../assets/svg/mainpage.svg";
 // import background from "../../assets/images/background.png"
@@ -175,13 +176,11 @@ export default Hero;
 //         <div className="col-start-2 col-span-4">
 //           <p className="font-bold text-5xl flex text-color justify-center pt-[70px] lbre_ff text-wrap">Revolutionary Voice-to-Text Technology</p>
 //         </div>
-//         <div className="col-start-2  col-span-4">
-//           <p className="small-text-color px-[5%]">
-//             Experience seamless voice-to-text conversion with our cutting-edge AI. Whether you're dictating notes, writing  
-//           </p>
-//           <p className='small-text-color px-[13%]'> articles, or capturing ideas, our tool guarantees fast, reliable, and accurate transcriptions.</p>
-//         </div>
-
+//                    <div className="md:col-start-2 md:col-span-4 flex jusify-center">
+//              <p className="text-[17px]  font-normal inter_ff text-[#545454] px-4 md:px-0 text-center mt-4 md:mt-6">
+//                Experience seamless voice-to-text conversion with our cutting-edge AI. Whether you're dictating notes, writing articles, or capturing ideas, our tool guarantees fast, reliable, and accurate transcriptions.
+//              </p>
+//            </div>
 //         <div className="col-start-2 flex justify-center col-span-4 pt-5">
 //           <button onClick={handleOpenForm} className="bg-[#008CD2] text-white font-medium inter_ff text-[17px] py-2 px-6 rounded-3xl">Get Started For Free</button>
 //         </div>
