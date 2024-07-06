@@ -35,7 +35,9 @@ const Dashboard2 = () => {
     }}>
       <nav className="  bg-[#F1F4F5]  top-0 left-0 right-0 ">
 <div className=" xs:flex xs:justify-between xs:px-3 px-4 py-6 flex justify-between items-center">
-  <img src={logo} alt="Logo" className="h-10" />
+<Link to="/home"> <img src={logo} alt="Logo" className="h-10" />
+  </Link>
+ 
   <div className="flex items-center space-x-6">
   <div className="hidden md:flex space-x-6 items-center">
     <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">FAQ</Link>
