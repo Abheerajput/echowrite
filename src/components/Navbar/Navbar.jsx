@@ -58,9 +58,8 @@ const Navbar = () => {
           <div className="flex flex-col items-center gap-4 p-4 md:hidden">
             <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/dashboard" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
-            <HashLink to={"/#faq"} className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</HashLink>
-            <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link>
-            <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
+            <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
+            <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
             <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-white font-medium inter_ff">Start Free Trial</button>
           </div>
         )}
