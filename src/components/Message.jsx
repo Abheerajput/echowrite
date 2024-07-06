@@ -36,7 +36,7 @@ const Message = () => {
   };
 
   return (
-    <div className="bg-[#232734] py-8 xs:py-4" style={{
+    <div id='contact' className="bg-[#232734] py-8 xs:py-4" style={{
       backgroundImage: `url(${backgroundImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from "../../assets/svg/logo.svg";
+import { HashLink } from 'react-router-hash-link';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Login from "../Login.jsx";
 
@@ -42,8 +43,10 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-5">
             <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/aboutus" className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</Link>
-            <Link to="/faqs" className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</Link>
-            <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link>
+            {/* <Link className="text-[15px] text-[#161C2D] font-medium inter_ff"><a href="#faq">FAQs</a></Link> */}
+            <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
+            <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
+            {/* <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link> */}
           </div>
           <div className="hidden md:flex gap-4 items-center">
             <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
@@ -55,7 +58,7 @@ const Navbar = () => {
           <div className="flex flex-col items-center gap-4 p-4 md:hidden">
             <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/dashboard" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
-            <Link to="/faqs" className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</Link>
+            <HashLink to={"/#faq"} className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</HashLink>
             <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link>
             <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
             <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-white font-medium inter_ff">Start Free Trial</button>
