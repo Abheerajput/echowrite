@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import bgimg from "../assets/svg/Dashboardbgimg.svg";
-import logo from "../assets/svg/logo.svg";
 import mike from "../assets/svg/mikeicon.svg";
-import { FaBars, FaTimes } from 'react-icons/fa';
 import playicon from "../assets/svg/playicon.svg";
-import { Link } from 'react-router-dom';
 import { jsPDF } from "jspdf";
 import { saveAs } from 'file-saver';
 import axios from 'axios';
+import Navbar from './Navbar';
+import Commonarea from './Commonarea';
 
 const Dashboard3 = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [textContent, setTextContent] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
@@ -44,10 +41,7 @@ const Dashboard3 = () => {
     }
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
+ 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -73,6 +67,11 @@ const Dashboard3 = () => {
       return text;
     }
   };
+  const dashboard3Links = [
+    { name: 'FAQ', path: '#' },
+    { name: 'Next', path: '/dashboard4' }, 
+    { name: 'Support', path: '#' },
+  ];
 
   return (
     <>
@@ -81,44 +80,7 @@ const Dashboard3 = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>
-      
-      <nav className="  bg-[#F1F4F5]  top-0 left-0 right-0 ">
-<div className=" xs:flex xs:justify-between xs:px-3 px-4 py-6 flex justify-between items-center">
-<Link to="/home"> <img src={logo} alt="Logo" className="h-10" />
-  </Link>
- 
-  <div className="flex items-center space-x-6">
-  <div className="hidden md:flex space-x-6 items-center">
-    <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">FAQ</Link>
-      <Link to="/dashboard4" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Next</Link>
-      <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Support</Link>
-      <div className="flex items-center space-x-2 rounded-3xl border-2 p-1">
-        <div className="w-8 h-8 bg-[#EC6518] flex justify-center items-center rounded-full text-white">J</div>
-        <span className="text-[#000000] hover:text-gray-800 font-bold text-[16px] pr-4  inter_ff">John Doe</span>
-      </div>
-    </div>
-    <button onClick={toggleMenu} className="md:hidden text-gray-600 focus:outline-none">
-      {menuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
-    </button>
-  </div>
-</div>
-<div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} bg-white mb-4 rounded-xl shadow-md`}>
-  <div className="flex flex-col items-center py-4 space-y-4">
-  <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">FAQ</Link>
-
-    <Link to="/dashboard4" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Next</Link>
-    <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Support</Link>
-    <div className="flex items-center space-x-2">
-      <div className="w-8 h-8 bg-[#FF9A26] flex justify-center items-center rounded-full text-white">J</div>
-      <span className="text-[#000000] hover:text-gray-800 font-bold text-[16px] inter_ff">John Doe</span>
-    </div>
-  </div>
-</div>
-</nav>
-
-
-
-
+   <Navbar links={dashboard3Links} />
 <div className="bg-white rounded-lg  xs:px-4 shadow-md pb-6  px-12 ">
           <div className='flex justify-between items-center xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
             <span className='mt-[20px] lg:mt-0 xs:mt-0' >
@@ -158,12 +120,7 @@ const Dashboard3 = () => {
                 </div>
                 <div className='w-3/5 border-l border-gray-300  xs:w-full xs:border-2  xs:border-l-0  xs:border-r-0'>
             <p className='text-[18px] text-[#008CD2] inter_ff font-bold flex justify-start py-2 ml-2'>Converted text Here</p>
-            <div className="relative px-4 pb-4">
-              <textarea
-                className="border border-gray-300 rounded-md px-5 py-2 w-full h-48 resize-none focus:outline-none focus:ring-blue-500 focus:ring-1 placeholder-center"
-                placeholder='Text Visible Here'
-              ></textarea>
-            </div>
+            <Commonarea/>
           </div>
               </div>
               

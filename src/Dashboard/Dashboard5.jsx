@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import bgimg from "../assets/svg/Dashboardbgimg.svg";
-import logo from "../assets/svg/logo.svg";
-import { FaBars, FaTimes } from 'react-icons/fa';
 import mike from "../assets/svg/mikeicon.svg";
-import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
+import Commonarea from './Commonarea';
 
 const Dashboard5 = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleFileDrop = (e) => {
     e.preventDefault();
@@ -22,9 +19,12 @@ const Dashboard5 = () => {
     // ... other actions
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+ 
+  const dashboard5Links = [
+    { name: 'FAQ', path: '#' },
+    { name: 'Next', path: '/dashboard' }, 
+    { name: 'Support', path: '#' },
+  ];
 
   return (
     <>
@@ -34,7 +34,9 @@ const Dashboard5 = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>
-        <nav className="  bg-[#F1F4F5]  top-0 left-0 right-0 ">
+        <Navbar links={dashboard5Links} />
+
+        {/* <nav className="  bg-[#F1F4F5]  top-0 left-0 right-0 ">
 <div className=" xs:flex xs:justify-between xs:px-3 px-4 py-6 flex justify-between items-center">
 <Link to="/home"> <img src={logo} alt="Logo" className="h-10" />
   </Link>
@@ -65,7 +67,7 @@ const Dashboard5 = () => {
     </div>
   </div>
 </div>
-</nav>
+</nav> */}
 
 
 <div className="bg-white rounded-lg  xs:px-4 shadow-md pb-6  px-12 ">
@@ -105,12 +107,7 @@ const Dashboard5 = () => {
 
           <div className='w-3/5 border-l border-gray-300 xs:w-full xs:border-2'>
           <p className='text-[18px] text-[#008CD2] inter_ff font-bold flex justify-start py-2 ml-2'>Converted text Here</p>
-            <div className="relative px-4 pb-4">
-              <textarea
-                className="border border-gray-300 rounded-md px-5 py-2 w-full h-48 resize-none focus:outline-none focus:ring-blue-500 focus:ring-1 placeholder-center"
-                placeholder='Text Visible Here'
-              ></textarea>
-            </div>
+          <Commonarea/>
           </div>
 
 </div>
