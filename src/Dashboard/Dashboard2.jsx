@@ -37,12 +37,13 @@ const Dashboard2 = () => {
 <div className=" xs:flex xs:justify-between xs:px-3 px-4 py-6 flex justify-between items-center">
   <img src={logo} alt="Logo" className="h-10" />
   <div className="flex items-center space-x-6">
-    <div className="hidden md:flex space-x-6">
+  <div className="hidden md:flex space-x-6 items-center">
+    <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">FAQ</Link>
       <Link to="/dashboard3" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Next</Link>
       <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Support</Link>
-      <div className="flex items-center space-x-2">
-        <div className="w-8 h-8 bg-[#FF9A26] flex justify-center items-center rounded-full text-white">J</div>
-        <span className="text-[#000000] hover:text-gray-800 font-bold text-[16px] inter_ff">John Doe</span>
+      <div className="flex items-center space-x-2 rounded-3xl border-2 p-1">
+        <div className="w-8 h-8 bg-[#008CD2] flex justify-center items-center rounded-full text-white">J</div>
+        <span className="text-[#000000] hover:text-gray-800 font-bold text-[16px] pr-4 inter_ff">John Doe</span>
       </div>
     </div>
     <button onClick={toggleMenu} className="md:hidden text-gray-600 focus:outline-none">
@@ -52,6 +53,7 @@ const Dashboard2 = () => {
 </div>
 <div className={`md:hidden ${menuOpen ? 'block' : 'hidden'} bg-white mb-4 rounded-xl shadow-md`}>
   <div className="flex flex-col items-center py-4 space-y-4">
+  <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">FAQ</Link>
     <Link to="/dashboard3" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Next</Link>
     <Link to="#" className="text-[#000000] hover:text-gray-800 font-normal text-[16px] inter_ff transition">Support</Link>
     <div className="flex items-center space-x-2">

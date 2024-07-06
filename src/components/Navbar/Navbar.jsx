@@ -41,7 +41,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center gap-5">
             <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
-            <Link to="/dashboard" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
+            <Link to="/aboutus" className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</Link>
             <Link to="/faqs" className="text-[15px] text-[#161C2D] font-medium inter_ff">FAQs</Link>
             <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link>
           </div>

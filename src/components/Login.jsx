@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from 'react-router-dom';
 import bgimg from "../assets/images/loginbgimg.png";
 import thumbicon from "../assets/svg/thumbicon.svg";
 import { Link } from 'react-router-dom';
+import bgcircle from "../assets/images/logincircle.png"
 import logo from "../assets/svg/logo.svg";
 import loginicon from "../assets/svg/signinicon3.svg";
 
@@ -20,10 +22,41 @@ const ToggleSwitch = ({ isOn, handleToggle }) => {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
   const [isRememberMe, setIsRememberMe] = useState(false);
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formErrors, setFormErrors] = useState({ email: '', password: '' });
 
   const handleToggle = () => {
     setIsRememberMe(!isRememberMe);
+  };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+    setFormErrors({ ...formErrors, [id]: '' });
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.email) errors.email = 'Email is required';
+    if (!formData.password) errors.password = 'Password is required';
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0) {
+      // Replace the following with your actual authentication logic
+      if (formData.email === 'user12@gmail.com' && formData.password === 'admin') {
+        navigate('/dashboard2');
+      } else {
+        setFormErrors({ email: 'Invalid email or password' });
+      }
+    } else {
+      setFormErrors(errors);
+    }
   };
 
   return (
@@ -34,7 +67,7 @@ const Login = () => {
           backgroundImage: `url(${bgimg})`,
           backgroundSize: 'cover',
         }}>
-        <div className="flex items-center justify-center h-screen rounded-lg w-2/3 xs:w-1/2 xs:hidden">
+        <div className="flex items-center justify-center h-screen relative rounded-lg w-2/3 xs:w-1/2 xs:hidden">
           <div className="text-white backdrop-blur-xl w-2/3 lg:mt-[70%] lg:ml-[4%] lg:w-4/5 xs:m-0 xs:p-2 xs:mt-4 p-8">
             <h2 className="text-[13px] font-normal inter_ff w-full py-3 lg:px-2 bg-[#008CD2] flex justify-center items-center text-nowrap rounded-3xl mb-4 xs:text-[9px]">
               <img src={thumbicon} alt="" className='xs:pr-0' />
@@ -42,6 +75,10 @@ const Login = () => {
             </h2>
             <p className='xs:text-[9px] text-[20px] font-normal inter_ff text-white'>Today, we create innovative solutions to the challenges that consumers face in both their everyday lives and events.</p>
           </div>
+       
+        </div>
+        <div className='absolute bottom-0 left-[-300px] z-[-1]' >
+          <img src={bgcircle} alt=""  />
         </div>
       </div>
 
@@ -51,20 +88,23 @@ const Login = () => {
           <div className='pl-[32px] xl:pl-0 lg:pl-0 xs:pl-0 '>
             <img src={logo} alt="Logo" className="mb-8" />
           </div>
-          <Link to="/signup" className="text-sm xs:hidden lg:pt-6 xl:pt-6">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
+          <Link to="/signup" className="text-[11px] font-light inter_ff xs:hidden lg:pt-6 xl:pt-6">Don't have an account? <span className="font-medium text-[11px] inter_ff text-blue-600">Sign up!</span></Link>
         </div>
         <h2 className="text-[30px] inter_ff font-semibold mb-4 flex justify-center xs:mt-8 mt-16">Welcome Back</h2>
         <p className="text-[15px] inter_ff text-[#000000] mb-8 flex justify-center mt-[-3%]">Login into your account</p>
         <div className='flex justify-center w-full'>
-          <form className='w-2/3 sm:w-2/3 lg:w-2/3 xs:w-full'>
+          <form className='w-2/3 sm:w-2/3 lg:w-2/3 xs:w-full' onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
                 className="border rounded-lg w-full py-2 px-3 text-gray-700"
                 id="email"
                 type="email"
                 placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
                 required
               />
+              {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
             </div>
             <div className="mb-4">
               <input
@@ -72,8 +112,11 @@ const Login = () => {
                 id="password"
                 type="password"
                 placeholder="Your Password"
+                value={formData.password}
+                onChange={handleChange}
                 required
               />
+              {formErrors.password && <p className="text-red-500 text-xs mt-1">{formErrors.password}</p>}
             </div>
             <div className="flex items-center justify-between mb-4 xs:flex xs:flex-row">
               <label className="flex items-center">
@@ -102,17 +145,17 @@ const Login = () => {
             </p>
 
             <p className='xs:flex xs:justify-center xs:items-center'>
-              <Link to="/signup" className="text-sm pt-3 xs:flex md:hidden lg:hidden xl:hidden xs:justify-center">Don't have an account? <span className="font-semibold text-blue-600">Sign up!</span></Link>
+              <Link to="/signup" className="text-[11px] pt-3 font-light inter_ff  xs:flex md:hidden lg:hidden xl:hidden xs:justify-center">Don't have an account? <span className="font-medium text-[11px] inter_ff text-blue-600">Sign up!</span></Link>
             </p>
           </form>
         </div>
+      
       </div>
     </div>
   );
 };
 
 export default Login;
-
 
 
 // import React from 'react';

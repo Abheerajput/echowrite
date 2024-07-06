@@ -1,17 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from 'react-router-dom';
 import signinimg from "../assets/images/signinimg.png";
 import logo from "../assets/svg/logo.svg";
 import icon1 from "../assets/svg/signinicon1.svg";
 import icon2 from "../assets/svg/signinicon2.svg";
 import icon3 from "../assets/svg/signinicon3.svg";
 import icon4 from "../assets/svg/signinicon4.svg";
-import bgimg from "../assets/svg/signinbg.svg";
+import signincircle from "../assets/images/signincircle.png";
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+    setFormErrors({ ...formErrors, [id]: '' });
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formData.name) errors.name = 'Name is required';
+    if (!formData.email) errors.email = 'Email is required';
+    if (!formData.password) errors.password = 'Password is required';
+    if (formData.password !== formData.confirmPassword) errors.confirmPassword = 'Passwords do not match';
+
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const errors = validateForm();
+
+    if (Object.keys(errors).length === 0) {
+      // Assume account creation is successful
+      navigate('/login');
+    } else {
+      setFormErrors(errors);
+    }
+  };
+
   return (
-    <div className="flex min-h-screen overflow-hidden">
+    <div className="flex min-h-screen overflow-hidden relative z-[234]">
       {/* Left section */}
       <div className="flex-1 hidden lg:flex flex-col justify-between bg-cover bg-center"
         style={{
@@ -36,26 +83,65 @@ const Signup = () => {
             <span className="lg:mr-[5%] lg:ml-[-12%]"><img src={icon4} alt="" /></span> Voice Recording
           </button>
         </div>
+        <div className='absolute lg:block hidden bottom-[-140px] right-[430px] opacity-75'>
+        <img src={signincircle} alt="" />
+        </div>
       </div>
 
       {/* Right section */}
       <div className="flex-1 flex flex-col items-center  xs:items-center xs:justify-start justify-center bg-white p-8">
-        <p className='mt-4 mb-4 text-sm'>Don’t have an account? <span className='text-[#008CD2]' style={{ borderBottom: "1px solid #008CD2" }}>Sign in!</span></p>
-        <div className="w-full max-w-md p-8 bg-white rounded-lg">
+        <p className='mt-4 mb-4 font-light inter_ff text-[11px]'>Don’t have an account? <span className='text-[#008CD2] font-medium text-[11px] inetr_ff' style={{ borderBottom: "1px solid #008CD2" }}>Sign in!</span></p>
+        <div className="w-full max-w-md relative p-8  rounded-lg">
           <h2 className="text-[23px] font-semibold inter_ff text-black mb-2 text-center">Get Started With EchoWrite</h2>
           <p className="mb-6 text-center text-[11px] font-normal text-[#7E7E7E]">Getting started is easy</p>
-          <form className='w-full'>
+          <form className='w-full ' onSubmit={handleSubmit}>
             <div className="mb-4">
-              <input className="border rounded-lg w-full py-2 px-3 text-gray-700" id="name" type="text" placeholder="Full Name" required />
+              <input
+                className="border rounded-lg w-full py-2 px-3 text-gray-700"
+                id="name"
+                type="text"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+              {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
             </div>
             <div className="mb-4">
-              <input className="border rounded-lg w-full py-2 px-3 text-gray-700" id="email" type="email" placeholder="Email" required />
+              <input
+                className="border rounded-lg w-full py-2 px-3 text-gray-700"
+                id="email"
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
             </div>
             <div className="mb-4">
-              <input className="border rounded-lg w-full py-2 px-3 text-gray-700" id="password" type="password" placeholder="Password" required />
+              <input
+                className="border rounded-lg w-full py-2 px-3 text-gray-700"
+                id="password"
+                type="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              {formErrors.password && <p className="text-red-500 text-xs mt-1">{formErrors.password}</p>}
             </div>
             <div className="mb-4">
-              <input className="border rounded-lg w-full py-2 px-3 text-gray-700" id="confirm-password" type="password" placeholder="Confirm Password" required />
+              <input
+                className="border rounded-lg w-full py-2 px-3 text-gray-700"
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+              {formErrors.confirmPassword && <p className="text-red-500 text-xs mt-1">{formErrors.confirmPassword}</p>}
             </div>
             <div className="flex items-center justify-between mb-4">
               <button className="bg-[#008CD2] text-white font-normal py-2 px-4 text-[15px] inter_ff rounded-full w-full" type="submit">Create Account</button>
@@ -72,12 +158,15 @@ const Signup = () => {
           <p className="text-start text-[#5A5A5A] text-[12px] font-light inter_ff lg:text-nowrap mt-4">
             By continuing you indicate that you read and agreed to the <Link className="text-[#008CD2] text-[12px] font-light inter_ff" style={{ borderBottom: "1px solid #008CD2" }}>Terms of Use</Link>
           </p>
+
+          
         </div>
-        <img className='lg:absolute  lg:ml-[-49%] lg:hidden lg:mt-[24%] xl:mt-[19%] xs:hidden sm:hidden md:hidden' src={bgimg} alt="" />
+
+   
       </div>
     </div>
   );
 };
 
 export default Signup;
-;
+
