@@ -13,25 +13,25 @@ const Transcription = () => {
       question: "How accurate is EchoWrite's transcription?",
       answer: "EchoWrite uses advanced AI technology to ensure high accuracy in transcriptions. However, accuracy may vary based on audio quality and clarity.",
       questionClass: "text-black text-[18px] inter_ff font-semibold",
-      answerClass: "text-gray-700 text-[15px] font-normal inter_ff "
+      answerClass: "text-gray-700 text-[15px] font-normal inter_ff"
     },
     {
       question: "What languages does EchoWrite support?",
       answer: "EchoWrite supports multiple languages, making it a versatile tool for users worldwide.",
       questionClass: "text-black text-[18px] inter_ff font-semibold",
-      answerClass: "text-gray-700 text-[15px] font-normal inter_ff "
+      answerClass: "text-gray-700 text-[15px] font-normal inter_ff"
     },
     {
       question: "Is my data secure with EchoWrite?",
       answer: "Yes, EchoWrite prioritizes your data security and employs robust measures to protect your information.",
       questionClass: "text-black text-[18px] inter_ff font-semibold",
-      answerClass: "text-gray-700 text-[15px] font-normal inter_ff "
+      answerClass: "text-gray-700 text-[15px] font-normal inter_ff"
     },
     {
       question: "Can I edit the transcriptions?",
       answer: "Yes, you can easily edit the transcriptions to ensure they meet your exact requirements.",
       questionClass: "text-black text-[18px] inter_ff font-semibold",
-      answerClass: "text-gray-700 text-[15px] font-normal inter_ff "
+      answerClass: "text-gray-700 text-[15px] font-normal inter_ff"
     }
   ];
 
@@ -87,11 +87,11 @@ const Transcription = () => {
                   />
                 </svg>
               </div>
-              {dropdownOpen === index && (
+              <div className={`transition-max-height duration-300 ease-in-out overflow-hidden ${dropdownOpen === index ? 'max-h-40' : 'max-h-0'}`}>
                 <div className={`dropdown-content mt-2 pl-6 ${item.answerClass}`}>
                   {item.answer}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
