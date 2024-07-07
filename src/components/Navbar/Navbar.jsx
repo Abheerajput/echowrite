@@ -49,7 +49,7 @@ const Navbar = () => {
             {/* <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link> */}
           </div>
           <div className="hidden md:flex gap-4 items-center">
-            <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
+          <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
             <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] font-medium inter_ff text-white">Start Free Trial</button>
           </div>
         </div> 
