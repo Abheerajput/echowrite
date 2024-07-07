@@ -60,6 +60,7 @@ const Navbar = () => {
             <Link to="/dashboard" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
+            <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
             <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-white font-medium inter_ff">Start Free Trial</button>
           </div>
         )}
