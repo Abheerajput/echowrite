@@ -71,6 +71,7 @@ const Dashboard2 = () => {
     resetTranscript();
     SpeechRecognition.startListening({ continuous: true });
     setRecordingStarted(true);
+    setIsPlaying(true);
     setShowInstruction(false); // Hide instruction text
     setTimer(0);
 
@@ -94,6 +95,7 @@ const Dashboard2 = () => {
   const handlePauseRecording = () => {
     SpeechRecognition.stopListening();
     setRecordingStarted(false);
+    setIsPlaying(false);
     if (mediaRecorder) {
       mediaRecorder.pause();
     }
@@ -102,6 +104,7 @@ const Dashboard2 = () => {
   const handleResumeRecording = () => {
     SpeechRecognition.startListening({ continuous: true });
     setRecordingStarted(true);
+    setIsPlaying(true);
     if (mediaRecorder) {
       mediaRecorder.resume();
     }
@@ -110,10 +113,8 @@ const Dashboard2 = () => {
   const handlePlayClick = () => {
     if (recordingStarted) {
       handlePauseRecording();
-      setIsPlaying(false);
     } else {
       handleResumeRecording();
-      setIsPlaying(true);
     }
   };
 
@@ -236,45 +237,46 @@ const Dashboard2 = () => {
                     </p>
                   )}
                   <p className='pt-2 flex gap-3'>
-                    <button className={`bg-[#008CD2] text-[14px] font-normal inter_ff text-white px-4 py-2 rounded-2xl ${recordingStarted ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleStartRecording} disabled={recordingStarted}>
-                      <img className='w-5 h-5 inline mr-1' src={playicon} alt="Start" />
-                      Start
+                    <button className={`bg-[#008CD2] text-[14px] xs:text-[14px] w-[100px] xs:w-[80px] xs:h-[30px] text-white p-2 px-6 rounded-md ${recordingStarted ? 'cursor-not-allowed' : ''}`}
+                      onClick={handleStartRecording}
+                      disabled={recordingStarted}
+                    >
+                      {recordingStarted ? 'Recording...' : 'Start'}
                     </button>
-                    <button className='bg-[#FF0000] text-[14px] font-normal inter_ff text-white px-4 py-2 rounded-2xl' onClick={handlePlayClick}>
-                      <img className='w-5 h-5 inline mr-1' src={pauseicon} alt="Pause" />
-                      {recordingStarted ? 'Pause' : 'Resume'}
-                    </button>
-                    <button className='bg-[#FF0000] text-[14px] font-normal inter_ff text-white px-4 py-2 rounded-2xl' onClick={handleReset}>
+                    <button
+                      className="bg-[#D20000] text-[14px] xs:text-[14px] w-[100px] xs:w-[80px] xs:h-[30px] text-white p-2 px-6 rounded-md"
+                      onClick={handleReset}
+                    >
                       Reset
                     </button>
                   </p>
-                  {audioBlob && (
-                    <button
-                      onClick={handleConvert}
-                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mt-4"
-                    >
-                      Download MP3
+                  <p className='pt-2 flex gap-3'>
+                    <button className={`text-white text-[18px] flex items-center justify-center h-12 w-12 rounded-full ${isPlaying ? 'bg-[#D20000]' : 'bg-[#008CD2]'}`} onClick={handlePlayClick}>
+                      <img className='w-8 h-8' src={isPlaying ? pauseicon : playicon} alt={isPlaying ? 'Pause' : 'Play'} />
                     </button>
-                  )}
+                  </p>
+                </div>
+                <div className='flex flex-col w-3/5 p-3 pb-0 mt-5 xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
+                  <div className='pt-2 xs:pb-5'>
+                    <h3 className='text-[25px] xs:text-[18px] flex justify-start items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
+                    <CKEditor
+                      className="custom-ckeditor "
+                      editor={ClassicEditor}
+                      data={recognizedText}
+                      onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setTextContent(data);
+                      }}
+                    />
+                  </div>
+                </div>
                 </div>
 
-                <div className='flex flex-col w-full px-4  border-l border-gray-300  xs:w-full xs:border-2  xs:border-l-0  xs:border-r-0'>
-                <p className='text-[18px] text-[#008CD2] inter_ff font-bold flex justify-start py-2 ml-2'>Converted text Here</p>
 
-                  <CKEditor
-                    editor={ClassicEditor}
-                    data={recognizedText}
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      setTextContent(data);
-                    }}
-                  />
-                </div>
-              </div>
-            
-         
 
-              <div className="flex  mt-4 xs:mb-3  justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
+
+                
+                <div className="flex  mt-4 xs:mb-3  justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
 
 <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2  xs:pt-4">
 <div className=' mb-4'>

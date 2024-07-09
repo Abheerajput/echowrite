@@ -20,6 +20,11 @@
   }
 }
 
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+  border-color: var(--ck-color-base-border);
+  min-height: 180px !important;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
