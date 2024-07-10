@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useMemo,useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import jsPDF from 'jspdf';
+import JoditEditor from 'jodit-react';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import mike from "../assets/svg/mikeicon.svg";
@@ -11,7 +12,7 @@ import pauseicon from "../assets/svg/pauseicon.svg";
 import Navbar from './Navbar';
 import axios from 'axios';
 
-const Dashboard2 = () => {
+const Dashboard2 = ({ placeholder }) => {
   const [remainingMinutes, setRemainingMinutes] = useState(1000);
   const [recordingStarted, setRecordingStarted] = useState(false);
   const [timer, setTimer] = useState(0);
@@ -19,11 +20,15 @@ const Dashboard2 = () => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [stream, setStream] = useState(null);
   const [recognizedText, setRecognizedText] = useState('');
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [showInstruction, setShowInstruction] = useState(true);
   const [textContent, setTextContent] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [selectedFormat, setSelectedFormat] = useState('pdf');
+  const [showRecordingControls, setShowRecordingControls] = useState(false);
+  const editor = useRef(null);
+	const [content, setContent] = useState('');
 
   const {
     transcript,
@@ -31,6 +36,14 @@ const Dashboard2 = () => {
     resetTranscript,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
+
+  const config = useMemo(
+		() => ({
+			readonly: false, // all options from https://xdsoft.net/jodit/docs/,
+			placeholder: placeholder || 'Start typings...'
+		}),
+		[placeholder]
+	);
 
   useEffect(() => {
     if (recordingStarted && remainingMinutes > 0) {
@@ -74,6 +87,7 @@ const Dashboard2 = () => {
     setIsPlaying(true);
     setShowInstruction(false); // Hide instruction text
     setTimer(0);
+    setShowRecordingControls(true); // Show recording controls
 
     navigator.mediaDevices.getUserMedia({ audio: true, video: false })
       .then(stream => {
@@ -125,6 +139,7 @@ const Dashboard2 = () => {
     setAudioBlob(null);
     setRecognizedText('');
     resetTranscript();
+    setShowRecordingControls(false); // Hide recording controls
 
     if (mediaRecorder) {
       mediaRecorder.stop();
@@ -222,14 +237,14 @@ const Dashboard2 = () => {
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleFileDrop}
           >
-            <div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-around'>
+             <div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-around'>
               <div className='flex pt-4 xs:flex xs:flex-col xs:justify-around'>
                 <div className='flex flex-col items-center w-2/5 xs:flex xs:flex-col xs:pb-2 xs:justify-around xs:w-full xs:mb-2'>
                   <p className='flex justify-center'>
                     <img className='w-24 h-24' src={mike} alt="Microphone" />
                   </p>
                   <p className='font-bold text-2xl'>
-                    {timer} Seconds
+                    00.{timer}mins
                   </p>
                   {showInstruction && (
                     <p className='text-[18px] inter_ff text-black font-bold text-center'>
@@ -237,52 +252,50 @@ const Dashboard2 = () => {
                     </p>
                   )}
                   <div className="flex justify-center space-x-8 mt-4 mb-4">
-
-                
-                  <p className='pt-2 flex gap-3'>
-                    <button className={`bg-[#008CD2] text-[14px] xs:text-[14px] w-[100px] xs:w-[80px] xs:h-[30px] text-white p-2 px-6 rounded-md ${recordingStarted ? 'cursor-not-allowed' : ''}`}
-                      onClick={handleStartRecording}
-                      disabled={recordingStarted}
-                    >
-                      {recordingStarted ? 'Recording...' : 'Start'}
-                    </button>
-                    <button
-                      className="bg-[#D20000] text-[14px] xs:text-[14px] w-[100px] xs:w-[80px] xs:h-[30px] text-white p-2 px-6 rounded-md"
-                      onClick={handleReset}
-                    >
-                      Reset
-                    </button>
-                  </p>
-                  <p className='pt-2 flex gap-3'>
-                    <button className={`text-white text-[18px] flex items-center justify-center h-12 w-12 rounded-full ${isPlaying ? 'bg-[#D20000]' : 'bg-[#008CD2]'}`} onClick={handlePlayClick}>
-                      <img className='w-8 h-8' src={isPlaying ? pauseicon : playicon} alt={isPlaying ? 'Pause' : 'Play'} />
-                    </button>
-                  </p>
-                  </div>
-                </div>
-                
-                <div className='flex flex-col w-3/5 p-3 pb-0 mt-5 xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
+                      {!showRecordingControls ? (
+                        <button
+                          className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                          onClick={handleStartRecording}
+                        >
+                          Start
+                        </button>
+                      ) : (
+                        <div id="handlerecording" className="flex justify-center items-center space-x-8 xs:w-full">
+                          <button onClick={handlePlayClick}>
+                            <img src={isPlaying ? pauseicon : playicon} alt="Play/Pause" className="w-8 h-8" />
+                          </button>
+                          <button
+                            className="px-6 py-3 text-white bg-red-500 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                            onClick={handleReset}
+                          >
+                            Stop
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                </div> 
+                  <div className='flex flex-col w-3/5 p-3 pb-0  xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
                   <div className='pt-2 xs:pb-5'>
-                    <h3 className='text-[25px] xs:text-[18px] flex justify-start items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
-                    <CKEditor
-                      className="custom-ckeditor "
-                      editor={ClassicEditor}
-                      data={recognizedText}
-                      onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setTextContent(data);
-                      }}
-                    />
-                  </div>
-                </div>
-                </div>
-
-
-
-
+                    <h3 className='text-[25px] xs:text-[18px] mb-4 flex justify-start items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
+                    <JoditEditor
+                    className='custom-ckeditor'
+              ref={editor}
+              value={textContent}
+              config={config}
+              tabIndex={1}
+                data={recognizedText}
+              onBlur={newContent => setContent(newContent)}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setTextContent(data);
+              }}
+            />
                 
-                <div className="flex  mt-4 xs:mb-3  justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
+                </div>
+                </div>
+                </div>
 
+                <div className="flex  mt-4 xs:mb-3  justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
 <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2  xs:pt-4">
 <div className=' mb-4'>
 <label className="block text-[#808080] text-[15px] inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>
@@ -338,10 +351,11 @@ const Dashboard2 = () => {
                   </button>
                 </div>
               </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+      
     </>
   );
 };

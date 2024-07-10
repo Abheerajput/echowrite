@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { IoClose } from 'react-icons/io5';
 import uploadicon from "../assets/svg/upload.svg";
 import Navbar from './Navbar';
 
@@ -6,49 +8,47 @@ const Dashboard = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
   const [uploadedFile, setUploadedFile] = useState(null);
 
-  const handleFileDrop = (e) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (file && (file.type === 'audio/mp3' || file.type.startsWith('audio/'))) {
-      setUploadedFile(file);
-      console.log('Uploaded file:', file);
-    } else {
-      alert('Please upload a valid MP3 or audio file.');
-    }
-  };
+  
 
-  const handleFileClick = () => {
-    document.getElementById('fileInput').click();
+ 
+  const truncateText = (text) => {
+    return text;
   };
+const onDrop = useCallback((acceptedFiles) => {
+  const file = acceptedFiles[0];
+  if (file && (file.type === 'audio/mp3' || file.type.startsWith('audio/'))) {
+    setUploadedFile(file);
+    // Simulate transcription process or other actions
+    // const transcribedText = 'This is a sample transcribed text'; // Replace with actual transcription API call
+    // setTranscribedText(truncateText(transcribedText));
+  } else {
+    alert('Please upload a valid MP3 or audio file.');
+  }
+}, []);
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    if (file && (file.type === 'audio/mp3' || file.type.startsWith('audio/'))) {
-      setUploadedFile(file);
-      console.log('Uploaded file:', file);
-    } else {
-      alert('Please upload a valid MP3 or audio file.');
-    }
-  };
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+    onDrop,
+    accept: 'audio/*',
+    noClick: true,
+    noKeyboard: true
+  });
 
   const handleConvert = () => {
     setRemainingMinutes(0);
     // Simulate conversion process or other actions
   };
 
-  const truncateText = (text, maxWords) => {
-    const words = text.split(' ');
-    if (words.length > maxWords) {
-      return words.slice(0, maxWords).join(' ') + '...';
-    }
-    return text;
-  };
+
 
   const dashboardLinks = [
     { name: 'FAQ', path: '#' },
     { name: 'Next', path: '/dashboard0' },
     { name: 'Support', path: '#' },
   ];
+
+  const handleDelete = () => {
+    setUploadedFile(null);
+  };
 
   return (
     <>
@@ -70,46 +70,59 @@ const Dashboard = () => {
           </div>
 
           {!uploadedFile && (
-            <div className="border-2 border-gray-300 flex xs:flex-col-reverse justify-center items-center rounded-lg text-center pb-3 cursor-pointer xs:w-full"
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={handleFileDrop}>
-
+            <div {...getRootProps()} className="border-2 border-gray-300 flex xs:flex-col-reverse justify-center items-center rounded-lg text-center pb-3 cursor-pointer xs:w-full">
+              <input {...getInputProps()} id="fileInput" />
               <div className='w-full md:w-1/2 lg:w-1/2 xl:w-1/2'>
-                <div className='flex justify-center'>
+                <div className='flex justify-center' onClick={open}>
                   <img className='pt-6' src={uploadicon} alt="Upload Icon" />
                 </div>
-                <p className="mt-4 text-[18px] poppins font-bold text-black">
-                  Drag and Drop files here
+                <p className="mt-4 text-[18px] poppins font-bold text-black" onClick={open}>
+                  {isDragActive ? 'Drop the files here ...' : 'Drag and Drop files here'}
                 </p>
                 <p className="mt-2 text-[15px] font-normal inter_ff text-gray-500">Or</p>
                 <button
                   className="text-[15px] font-normal poppins text-[#008CD2] py-2 px-4 rounded-md"
-                  onClick={handleFileClick}
+                  onClick={open}
                 >
                   Click to upload files here
                 </button>
                 <p className="mt-2 text-[15px] pb-6 poppins font-normal text-[#808080]">
                   Support MP4, MP3 formats.
                 </p>
-                <input
-                  type="file"
-                  id="fileInput"
-                  className="hidden"
-                  onChange={handleFileUpload}
-                  accept=".mp3,audio/*"
-                />
               </div>
             </div>
           )}
 
-          {uploadedFile && (
-            <div className="mt-4 border-2 border-gray-300 rounded-lg p-4">
-              <h3 className="text-[18px] font-bold text-black mb-2">Uploaded File</h3>
-              <p className="text-[15px] text-[#808080] font-normal">
-                {truncateText(uploadedFile.name, 10)}
-              </p>
-            </div>
-          )}
+{uploadedFile && (
+  <div className="mt-4 border-2 xl:w-1/3 lg:w-1/3 border-gray-300 rounded-lg xs:p-2 p-4 flex items-center justify-between">
+    <div className="flex  flex-col items-baseline xs:w-full ">
+      <p className='flex justify-between items-center lg:gap-40 gap-60 xs:gap-20'>
+      <h3 className="text-[18px] font-bold text-black mb-2  ">Uploaded File</h3>
+      <button onClick={handleDelete} className="text-red-500 hover:text-red-700">
+      <IoClose size={24} />
+    </button>
+      </p>
+     
+      <div className="ml-4 xs:ml-0 text-wrap xs:w-full w-1/2 overflow-scroll text-start">
+      <div className="w-1/2 overflow-hidden">
+  <p className="text-[15px] text-gray-500 truncate">
+    {uploadedFile.name.split(' ').slice(0, 5).join(' ')}
+  </p>
+</div>
+
+      
+        <p className="text-[15px] text-[#808080] font-normal ">Size: {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+        <p className="text-[15px] text-[#808080] font-normal">Type: {uploadedFile.type.split('/')[1]}</p>
+      
+        <p className="text-[15px] text-[#808080] font-normal">Duration: {uploadedFile.duration} seconds</p>
+        <p className="text-[15px] text-[#808080] font-normal">Created At: {new Date(uploadedFile.lastModified).toLocaleString()}</p>
+      </div>
+     
+    </div>
+ 
+  </div>
+)}
+
 
           <div className="flex mt-4 justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap" style={{ borderTopWidth: "1px" }}>
             <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2 xs:pt-4">
@@ -143,8 +156,7 @@ const Dashboard = () => {
                 className="text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
                 onClick={handleConvert}
                 disabled={remainingMinutes === 0}
-                style={{ backgroundColor: uploadedFile ? "#008CD2" : "#E4E4E4",color: uploadedFile ? "white" : "black"  }}
-             
+                style={{ backgroundColor: uploadedFile ? "#008CD2" : "#E4E4E4", color: uploadedFile ? "white" : "black" }}
               >
                 Convert
               </button>
@@ -157,6 +169,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
 
 // import React, { useState } from 'react';

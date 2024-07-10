@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import jsPDF from 'jspdf';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
+import JoditEditor from 'jodit-react';
+
 import mike from "../assets/svg/mikeicon.svg";
 import playicon from "../assets/svg/playicon.svg";
 import pauseicon from "../assets/svg/pauseicon.svg";
@@ -263,18 +265,13 @@ const Dashboard2 = () => {
                       )}
                     </div>
                 </div> 
-                  <div className='flex flex-col w-3/5 p-3 pb-0 mt-5 xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
+                  <div className='flex flex-col w-3/5 p-3 pb-0 mt-2 xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
                   <div className='pt-2 xs:pb-5'>
-                    <h3 className='text-[25px] xs:text-[18px] flex justify-start items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
-                    <CKEditor
-                      className="custom-ckeditor "
-                      editor={ClassicEditor}
-                      data={recognizedText}
-                      onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setTextContent(data);
-                      }}
-                    />
+                    <h3 className='text-[25px] xs:text-[18px] flex justify-start pb-3 items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
+                    <JoditEditor
+    value={recognizedText}
+    onChange={newContent => setTextContent(newContent)}
+  />
                 
                 
                 </div>
