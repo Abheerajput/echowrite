@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+
+
+import React, { useState, useEffect , useMemo} from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -35,6 +37,35 @@ const Dashboard2 = () => {
     resetTranscript,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
+  const editorConfig = useMemo(() => {
+    return {
+      uploader: {
+        insertImageAsBase64URI: true,
+        url: '/upload_image', // Replace with your image upload URL
+        filesVariableName: function (i) {
+          return 'images[' + i + ']';
+        },
+        format: 'json',
+        method: 'POST',
+        process: function (resp) {
+          return {
+            files: resp.files.map(file => file.url)
+          };
+        },
+        error: function (e) {
+          console.error('Error uploading image:', e);
+        }
+      },
+      filebrowser: {
+        ajax: {
+          url: '/browse_images' // Replace with your image browse URL
+        },
+        uploader: {
+          insertImageAsBase64URI: true
+        }
+      }
+    };
+  }, []); // empty dependency array
 
   useEffect(() => {
     if (recordingStarted && remainingMinutes > 0) {
@@ -208,33 +239,6 @@ const Dashboard2 = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
-  const editorConfig = {
-    uploader: {
-      insertImageAsBase64URI: true,
-      url: '/upload_image', // Replace with your image upload URL
-      filesVariableName: function (i) {
-        return 'images[' + i + ']';
-      },
-      format: 'json',
-      method: 'POST',
-      process: function (resp) {
-        return {
-          files: resp.files.map(file => file.url)
-        };
-      },
-      error: function (e) {
-        console.error('Error uploading image:', e);
-      }
-    },
-    filebrowser: {
-      ajax: {
-        url: '/browse_images' // Replace with your image browse URL
-      },
-      uploader: {
-        insertImageAsBase64URI: true
-      }
-    }
-  };
 
 
   return (
@@ -306,14 +310,11 @@ const Dashboard2 = () => {
                   <div className=' xs:pb-5'>
                     <h3 className='text-[25px] xs:text-[18px] flex justify-start  items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
                     <div className="mt-2">
-            <JoditEditor
-           
-              value={textContent}
-              config={editorConfig}
-              tabIndex={1}
-              onBlur={newContent => setTextContent(newContent)}
-              onChange={newContent => setTextContent(newContent)}
-            />
+                    <JoditEditor
+                     config={editorConfig} 
+    value={recognizedText}
+    onChange={newContent => setTextContent(newContent)}
+  />
           </div>
 
                 
