@@ -4,13 +4,17 @@ import Navbar from './Navbar';
 
 const Dashboard = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [uploadedFile, setUploadedFile] = useState(null);
 
   const handleFileDrop = (e) => {
     e.preventDefault();
-    const files = Array.from(e.dataTransfer.files);
-    setUploadedFiles((prevFiles) => [...prevFiles, ...files]);
-    console.log('Uploaded files:', files);
+    const file = e.dataTransfer.files[0];
+    if (file && (file.type === 'audio/mp3' || file.type.startsWith('audio/'))) {
+      setUploadedFile(file);
+      console.log('Uploaded file:', file);
+    } else {
+      alert('Please upload a valid MP3 or audio file.');
+    }
   };
 
   const handleFileClick = () => {
@@ -18,9 +22,13 @@ const Dashboard = () => {
   };
 
   const handleFileUpload = (e) => {
-    const files = Array.from(e.target.files);
-    setUploadedFiles((prevFiles) => [...prevFiles, ...files]);
-    console.log('Uploaded files:', files);
+    const file = e.target.files[0];
+    if (file && (file.type === 'audio/mp3' || file.type.startsWith('audio/'))) {
+      setUploadedFile(file);
+      console.log('Uploaded file:', file);
+    } else {
+      alert('Please upload a valid MP3 or audio file.');
+    }
   };
 
   const handleConvert = () => {
@@ -61,52 +69,47 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="border-2 border-gray-300 flex xs:flex-col-reverse justify-center items-center rounded-lg text-center pb-3 cursor-pointer xs:w-full"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleFileDrop}>
+          {!uploadedFile && (
+            <div className="border-2 border-gray-300 flex xs:flex-col-reverse justify-center items-center rounded-lg text-center pb-3 cursor-pointer xs:w-full"
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleFileDrop}>
 
-            <div className='flex justify-center items-center md:w-1/2 lg:w-1/2 xl:w-1/2 mb-4'>
-              {uploadedFiles.length > 0 && (
-                <div className="mt-4 border-2 border-gray-300 rounded-lg p-4">
-                  <h3 className="text-[18px] font-bold text-black mb-2">Uploaded Files</h3>
-                  <ul>
-                    {uploadedFiles.map((file, index) => (
-                      <li key={index} className="text-[15px] text-[#808080] font-normal">
-                        {truncateText(file.name, 10)}
-                      </li>
-                    ))}
-                  </ul>
+              <div className='w-full md:w-1/2 lg:w-1/2 xl:w-1/2'>
+                <div className='flex justify-center'>
+                  <img className='pt-6' src={uploadicon} alt="Upload Icon" />
                 </div>
-              )}
-            </div>
-
-            <div className='w-full md:w-1/2 lg:w-1/2 xl:w-1/2'>
-              <div className='flex justify-center'>
-                <img className='pt-6' src={uploadicon} alt="Upload Icon" />
+                <p className="mt-4 text-[18px] poppins font-bold text-black">
+                  Drag and Drop files here
+                </p>
+                <p className="mt-2 text-[15px] font-normal inter_ff text-gray-500">Or</p>
+                <button
+                  className="text-[15px] font-normal poppins text-[#008CD2] py-2 px-4 rounded-md"
+                  onClick={handleFileClick}
+                >
+                  Click to upload files here
+                </button>
+                <p className="mt-2 text-[15px] pb-6 poppins font-normal text-[#808080]">
+                  Support MP4, MP3 formats.
+                </p>
+                <input
+                  type="file"
+                  id="fileInput"
+                  className="hidden"
+                  onChange={handleFileUpload}
+                  accept=".mp3,audio/*"
+                />
               </div>
-              <p className="mt-4 text-[18px] poppins font-bold text-black">
-                Drag and Drop files here
-              </p>
-              <p className="mt-2 text-[15px] font-normal inter_ff text-gray-500">Or</p>
-              <button
-                className="text-[15px] font-normal poppins text-[#008CD2] py-2 px-4 rounded-md"
-                onClick={handleFileClick}
-              >
-                Click to upload files here
-              </button>
-              <p className="mt-2 text-[15px] pb-6 poppins font-normal text-[#808080]">
-                Support MP4, MP3 formats.
-              </p>
-              <input
-                type="file"
-                id="fileInput"
-                className="hidden"
-                onChange={handleFileUpload}
-                multiple
-              />
             </div>
+          )}
 
-          </div>
+          {uploadedFile && (
+            <div className="mt-4 border-2 border-gray-300 rounded-lg p-4">
+              <h3 className="text-[18px] font-bold text-black mb-2">Uploaded File</h3>
+              <p className="text-[15px] text-[#808080] font-normal">
+                {truncateText(uploadedFile.name, 10)}
+              </p>
+            </div>
+          )}
 
           <div className="flex mt-4 justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap" style={{ borderTopWidth: "1px" }}>
             <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2 xs:pt-4">
@@ -137,10 +140,11 @@ const Dashboard = () => {
             </div>
             <p className='lg:mr-6 md:mr-6 xl:mr-6 xs:mr-0 xs:w-1/4'>
               <button
-                className="bg-[#E4E4E4] text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
+                className="text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
                 onClick={handleConvert}
                 disabled={remainingMinutes === 0}
-                style={{ backgroundColor: "#E4E4E4" }}
+                style={{ backgroundColor: uploadedFile ? "#008CD2" : "#E4E4E4",color: uploadedFile ? "white" : "black"  }}
+             
               >
                 Convert
               </button>
@@ -153,6 +157,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
 // import React, { useState } from 'react';
 // import { FaBars, FaTimes } from 'react-icons/fa';
