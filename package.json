@@ -14,6 +14,7 @@
     "docx": "^8.5.0",
     "drag-drop": "^7.2.0",
     "file-saver": "^2.0.5",
+    "framer-motion": "^11.2.14",
     "jodit-react": "^4.1.2",
     "jspdf": "^2.5.1",
     "lodash": "^4.17.21",

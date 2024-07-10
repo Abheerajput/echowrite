@@ -162,11 +162,19 @@ const Dashboard2 = () => {
       return text;
     }
   };
+  const stripHtmlTags = (html) => {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+  };
+  
 
   const handleDownload = () => {
+    const plainTextContent = stripHtmlTags(textContent);
+  
     if (selectedFormat === 'pdf') {
       const doc = new jsPDF();
-      doc.text(textContent, 10, 10);
+      doc.text(plainTextContent, 10, 10);
       doc.save('document.pdf');
     } else if (selectedFormat === 'docx') {
       const doc = new Document({
@@ -176,19 +184,20 @@ const Dashboard2 = () => {
             children: [
               new Paragraph({
                 children: [
-                  new TextRun(textContent)
+                  new TextRun(plainTextContent)
                 ]
               })
             ]
           }
         ]
       });
-
+  
       Packer.toBlob(doc).then(blob => {
         saveAs(blob, 'document.docx');
       });
     }
   };
+  
 
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
@@ -199,6 +208,34 @@ const Dashboard2 = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
+  const editorConfig = {
+    uploader: {
+      insertImageAsBase64URI: true,
+      url: '/upload_image', // Replace with your image upload URL
+      filesVariableName: function (i) {
+        return 'images[' + i + ']';
+      },
+      format: 'json',
+      method: 'POST',
+      process: function (resp) {
+        return {
+          files: resp.files.map(file => file.url)
+        };
+      },
+      error: function (e) {
+        console.error('Error uploading image:', e);
+      }
+    },
+    filebrowser: {
+      ajax: {
+        url: '/browse_images' // Replace with your image browse URL
+      },
+      uploader: {
+        insertImageAsBase64URI: true
+      }
+    }
+  };
+
 
   return (
     <>
@@ -265,13 +302,20 @@ const Dashboard2 = () => {
                       )}
                     </div>
                 </div> 
-                  <div className='flex flex-col w-3/5 p-3 pb-0 mt-2 xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
-                  <div className='pt-2 xs:pb-5'>
-                    <h3 className='text-[25px] xs:text-[18px] flex justify-start pb-3 items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
-                    <JoditEditor
-    value={recognizedText}
-    onChange={newContent => setTextContent(newContent)}
-  />
+                  <div className='flex flex-col w-3/5 px-2 pb-0 mt-2 xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
+                  <div className=' xs:pb-5'>
+                    <h3 className='text-[25px] xs:text-[18px] flex justify-start  items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
+                    <div className="mt-2">
+            <JoditEditor
+           
+              value={textContent}
+              config={editorConfig}
+              tabIndex={1}
+              onBlur={newContent => setTextContent(newContent)}
+              onChange={newContent => setTextContent(newContent)}
+            />
+          </div>
+
                 
                 
                 </div>
