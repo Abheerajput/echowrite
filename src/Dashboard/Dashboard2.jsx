@@ -41,7 +41,7 @@ const Dashboard2 = () => {
     return {
       uploader: {
         insertImageAsBase64URI: true,
-        url: '/upload_image', // Replace with your image upload URL
+        url: '/upload_image',
         filesVariableName: function (i) {
           return 'images[' + i + ']';
         },
@@ -198,8 +198,7 @@ const Dashboard2 = () => {
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
   };
-  
-
+   
   const handleDownload = () => {
     const plainTextContent = stripHtmlTags(textContent);
   
@@ -232,7 +231,7 @@ const Dashboard2 = () => {
 
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
-    { name: 'Next', path: '/dashboard3' },
+    { name: 'Next', path: '#' },
     { name: 'Support', path: '#' },
   ];
 

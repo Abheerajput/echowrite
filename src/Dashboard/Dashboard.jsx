@@ -46,7 +46,7 @@ const Dashboard = () => {
 
   const dashboardLinks = [
     { name: 'FAQ', path: '#' },
-    { name: 'Next', path: '/dashboard0' },
+    { name: 'Next', path: '#' },
     { name: 'Support', path: '#' },
   ];
 
@@ -99,51 +99,57 @@ const Dashboard = () => {
             </div>
           )}
 
-          {uploading && (
-            <div className="mt-4 w-full flex flex-col items-center">
-              <p className="text-[15px] text-gray-500">Uploading... {uploadProgress}%</p>
-              <div className="w-full bg-gray-200 rounded-full h-4">
-                <div className="bg-blue-600 h-4 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
+<div className="flex flex-col items-center p-4 w-full">
+      {uploading && (
+        <div className="mt-4 w-full flex flex-col items-center">
+          <p className="text-sm sm:text-base text-gray-500">Uploading... {uploadProgress}%</p>
+          <div className="w-full bg-gray-200 rounded-full h-2 sm:h-4 mt-2">
+            <div className="bg-blue-600 h-2 sm:h-4 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
+          </div>
+        </div>
+      )}
+
+      {uploadSuccess && (
+        <div className="mt-4 w-full flex flex-col items-center">
+          <p className="text-sm sm:text-base text-green-500">File uploaded successfully!</p>
+        </div>
+      )}
+
+      {uploadedFile && (
+        <motion.div
+          className="mt-4 border-2 border-gray-300 rounded-lg p-4 justify-center flex flex-col sm:flex-row items-center sm:items-start  md:w-2/3 lg:w-1/2 xs:w-full  max-w-3xl"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="flex flex-col items-start custom-width md:w-2/3 lg:w-1/2 xs:w-1/2">
+          
+            <div className="flex justify-between items-center custom-width w-full mb-2">
+              <h3 className="text-lg sm:text-xl  font-bold text-black">Uploaded File</h3>
+              <button onClick={handleDelete} className="text-red-500 hover:text-red-700">
+                <IoClose size={24} />
+              </button>
+            </div>
+
+            <div className="w-full mb-2">
+           
+              <div className="w-full bg-gray-200 rounded-full h-2 xs:h-2">
+                <div className="bg-blue-600 h-2 xs:h-2 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
               </div>
             </div>
-          )}
 
-          {uploadSuccess && (
-            <div className="mt-4 w-full flex flex-col items-center">
-              <p className="text-[15px] text-green-500">File uploaded successfully!</p>
+            <div className="w-full text-start">
+            
+              <p className="text-sm sm:text-base text-gray-500 truncate">
+                {uploadedFile.name.split(' ').slice(0, 5).join(' ')}
+              </p>
+              <p className="text-sm sm:text-base text-gray-500">Size: {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+              <p className="text-xs sm:text-sm text-gray-400">Type: {uploadedFile.type.split('/')[1]}</p>
             </div>
-          )}
-
-          <div className='flex justify-center items-center'>
-            {uploadedFile && (
-              <motion.div
-                className="mt-4 border-2 xl:w-1/3 lg:w-1/3 border-gray-300 rounded-lg xs:p-2 p-4 flex items-center justify-between"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="flex flex-col items-baseline xs:w-full">
-                  <div className='flex justify-between items-center lg:gap-40 gap-60 xs:gap-20'>
-                    <h3 className="text-[18px] font-bold text-black mb-2">Uploaded File</h3>
-                    <button onClick={handleDelete} className="text-red-500 hover:text-red-700">
-                      <IoClose size={24} />
-                    </button>
-                  </div>
-                  <div className="ml-4 xs:ml-0 text-wrap xs:w-full w-1/2 text-start">
-                    <div className="w-full overflow-hidden">
-                      <p className="text-[15px] text-gray-500 truncate">
-                        {uploadedFile.name.split(' ').slice(0, 5).join(' ')}
-                      </p>
-                    </div>
-                    <p className="text-[15px] text-[#808080] font-normal">Size: {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
-                    <p className="text-[15px] text-[#808080] font-normal">Type: {uploadedFile.type.split('/')[1]}</p>
-                    <p className="text-[15px] text-[#808080] font-normal">Created At: {new Date(uploadedFile.lastModified).toLocaleString()}</p>
-                  </div>
-                </div>
-              </motion.div>
-            )}
           </div>
-
+        </motion.div>
+      )}
+    </div>
           <div className="flex mt-4 justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap" style={{ borderTopWidth: "1px" }}>
             <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2 xs:pt-4">
               <div className="mb-4">
