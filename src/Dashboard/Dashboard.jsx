@@ -75,7 +75,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {!uploadedFile && (
+          {!uploadedFile ? (
             <div {...getRootProps()} className="border-2 border-gray-300 flex xs:flex-col-reverse justify-center items-center rounded-lg text-center pb-3 cursor-pointer xs:w-full">
               <input {...getInputProps()} id="fileInput" />
               <div className='w-full md:w-1/2 lg:w-1/2 xl:w-1/2'>
@@ -97,59 +97,47 @@ const Dashboard = () => {
                 </p>
               </div>
             </div>
+          ) : (
+            <div className="flex flex-col items-center bg-[#ddf1fc] border-2  border-dashed border-sky-600 rounded-xl p-4 py-24 w-full">
+              {uploading && (
+                <div className="mt-4 w-full flex flex-col items-center">
+                  <p className="text-sm sm:text-base text-gray-500">Uploading... {uploadProgress}%</p>
+                  <div className="w-full bg-gray-200 rounded-full h-2 sm:h-4 mt-2">
+                    <div className="bg-blue-600 h-2 sm:h-4 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
+                  </div>
+                </div>
+              )}
+
+              {uploadedFile && (
+               
+                  <div className="flex flex-col items-start   ">
+                  <button onClick={handleDelete} className="text-black  hover:text-red-700 ml-11">
+                        <IoClose size={24} />
+                      </button>
+                      <p className="text-sm sm:text-base  font-bold"> {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                    <div className="flex justify-between items-center mb-2">
+                  
+                      <p className="text-sm sm:text-base text-gray-500 w-20 truncate">
+                        {uploadedFile.name.split(' ').slice(0, 3).join(' ')}...
+                      </p>
+                    
+                    </div>
+                 
+                    {/* <p className="text-xs sm:text-sm text-gray-400">Type: {uploadedFile.type.split('/')[1]}</p> */}
+                  </div>
+              
+              )}
+            </div>
           )}
+           {uploading && (
+                <div className="mt-4 w-full flex flex-col items-center">
+                  <p className="text-sm sm:text-base text-gray-500">Uploading... {uploadProgress}%</p>
+                  <div className="w-full bg-gray-200 rounded-full h-2 sm:h-4 mt-2">
+                    <div className="bg-blue-600 h-2 sm:h-4 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
+                  </div>
+                </div>
+              )}
 
-<div className="flex flex-col items-center p-4 w-full">
-      {uploading && (
-        <div className="mt-4 w-full flex flex-col items-center">
-          <p className="text-sm sm:text-base text-gray-500">Uploading... {uploadProgress}%</p>
-          <div className="w-full bg-gray-200 rounded-full h-2 sm:h-4 mt-2">
-            <div className="bg-blue-600 h-2 sm:h-4 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
-          </div>
-        </div>
-      )}
-
-      {uploadSuccess && (
-        <div className="mt-4 w-full flex flex-col items-center">
-          <p className="text-sm sm:text-base text-green-500">File uploaded successfully!</p>
-        </div>
-      )}
-
-      {uploadedFile && (
-        <motion.div
-          className="mt-4 border-2 border-gray-300 rounded-lg p-4 justify-center flex flex-col sm:flex-row items-center sm:items-start  md:w-2/3 lg:w-1/2 xs:w-full  max-w-3xl"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="flex flex-col items-start custom-width md:w-2/3 lg:w-1/2 xs:w-1/2">
-          
-            <div className="flex justify-between items-center custom-width w-full mb-2">
-              <h3 className="text-lg sm:text-xl  font-bold text-black">Uploaded File</h3>
-              <button onClick={handleDelete} className="text-red-500 hover:text-red-700">
-                <IoClose size={24} />
-              </button>
-            </div>
-
-            <div className="w-full mb-2">
-           
-              <div className="w-full bg-gray-200 rounded-full h-2 xs:h-2">
-                <div className="bg-blue-600 h-2 xs:h-2 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
-              </div>
-            </div>
-
-            <div className="w-full text-start">
-            
-              <p className="text-sm sm:text-base text-gray-500 truncate">
-                {uploadedFile.name.split(' ').slice(0, 5).join(' ')}
-              </p>
-              <p className="text-sm sm:text-base text-gray-500">Size: {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
-              <p className="text-xs sm:text-sm text-gray-400">Type: {uploadedFile.type.split('/')[1]}</p>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </div>
           <div className="flex mt-4 justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap" style={{ borderTopWidth: "1px" }}>
             <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2 xs:pt-4">
               <div className="mb-4">
@@ -193,6 +181,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
 
 // import React, { useState } from 'react';
