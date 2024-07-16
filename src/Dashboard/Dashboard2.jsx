@@ -245,7 +245,7 @@ const Dashboard2 = () => {
       <div className="mx-auto mt-16 xs:h-screen h-screen px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0">
         <Navbar links={dashboard2Links} />
 
-        <div className="bg-white rounded-lg xs:px-4 shadow-md pb-6 px-12">
+        <div className="bg-white rounded-lg xs:px-4 shadow-md pb-12 px-12">
           <div className='flex justify-between items-center xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
             <span className='mt-[20px] lg:mt-0 xs:mt-0'>
               <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000]">Speech to Text</h2>
@@ -269,7 +269,7 @@ const Dashboard2 = () => {
             onDrop={handleFileDrop}
           >
              <div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-around'>
-              <div className='flex pt-4 xs:flex xs:flex-col xs:justify-around'>
+              <div className='flex lg:py-2 xl:py-2 md:py-8 xs:flex xs:flex-col xs:justify-around'>
                 <div className='flex flex-col items-center w-2/5 xs:flex xs:flex-col xs:pb-2 xs:justify-around xs:w-full xs:mb-2'>
                   <p className='flex justify-center'>
                     <img className='w-24 h-24' src={mike} alt="Microphone" />
@@ -307,9 +307,10 @@ const Dashboard2 = () => {
                 </div> 
                   <div className='flex flex-col w-3/5 px-2 pb-0 mt-2 xs:w-full  border-l border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
                   <div className=' xs:pb-5'>
-                    <h3 className='text-[25px] xs:text-[18px] flex justify-start  items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
+                    <h3 className='text-[25px] xs:text-[18px] flex justify-start mt-[-11px] items-start inter_ff text-[#008CD2] font-bold'>Converted text Here</h3>
                     <div className="mt-2">
                     <JoditEditor
+
                      config={editorConfig} 
     value={recognizedText}
     onChange={newContent => setTextContent(newContent)}
@@ -322,7 +323,7 @@ const Dashboard2 = () => {
                 </div>
                 </div>
 
-                <div className="flex  mt-4 xs:mb-3  justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
+                <div className="flex  mt-4 xs:mb-3 py-6  justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap " style={{ borderTopWidth: "1px " }}>
 <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2  xs:pt-4">
 <div className=' mb-4'>
 <label className="block text-[#808080] text-[15px] inter_ff font-normal mb-2" htmlFor="language">Choose Language</label>

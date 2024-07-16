@@ -1,61 +1,86 @@
 import React, { useState } from 'react';
-import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from 'react-router-dom';
-import signinimg from "../assets/images/signinimg.png";
-import logo from "../assets/svg/logo.svg";
-import icon1 from "../assets/svg/signinicon1.svg";
-import icon2 from "../assets/svg/signinicon2.svg";
-import icon3 from "../assets/svg/signinicon3.svg";
-import icon4 from "../assets/svg/signinicon4.svg";
-import signincircle from "../assets/images/signincircle.png";
+import { GoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
+import signinimg from '../assets/images/signinimg.png';
+import logo from '../assets/svg/logo.svg';
+import icon1 from '../assets/svg/signinicon1.svg';
+import icon2 from '../assets/svg/signinicon2.svg';
+import icon3 from '../assets/svg/signinicon3.svg';
+import icon4 from '../assets/svg/signinicon4.svg';
+import signincircle from '../assets/images/signincircle.png';
+
 const Signup = () => {
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
+  const [user, setUser] = useState({
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
-  });
-
-  const [formErrors, setFormErrors] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-    setFormErrors({ ...formErrors, [id]: '' });
+    setUser({ ...user, [id]: value });
   };
 
-  const validateForm = () => {
-    const errors = {};
-
-    if (!formData.name) errors.name = 'Name is required';
-    if (!formData.email) errors.email = 'Email is required';
-    if (!formData.password) errors.password = 'Password is required';
-    if (formData.password !== formData.confirmPassword) errors.confirmPassword = 'Passwords do not match';
-
-    return errors;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const errors = validateForm();
+    if (user.password !== user.confirmPassword) {
+      toast.error('Passwords do not match.');
+      return;
+    }
 
-    if (Object.keys(errors).length === 0) {
-      // Assume account creation is successful
-      navigate('/login');
-    } else {
-      setFormErrors(errors);
+    const { confirmPassword, ...userData } = user; // Exclude confirmPassword from userData
+
+    try {
+      const response = await axios.post('http://localhost:5000/user/signin', userData);
+
+      if (response.status === 200) {
+        toast.success('Account created successfully!');
+        setUser({
+          name: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        });
+      } else {
+        console.error('Error:', response.data.error);
+        toast.error('Failed to create account. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Failed to create account. Please try again.');
     }
   };
+
+  const handleSuccess = async (credentialResponse) => {
+    console.log(credentialResponse);
+  
+    try {
+      const response = await axios.post('http://localhost:5000/user/googlesignin', {
+        credential: credentialResponse.credential,
+      });
+  
+      if (response.status === 200) {
+        const data = response.data;
+        console.log('Sign-in successful:', data);
+        toast.success('Sign-in successful!');
+        // Optionally, you can navigate to another page upon successful sign-in
+        // Example: navigate('/dashboard');
+      } else {
+        console.error('Sign-in failed:', response.data.error);
+        toast.error('Sign-in failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Sign-in error:', error);
+      toast.error('Sign-in failed. Please try again.');
+    }
+  };
+  
 
   return (
     <div className="flex min-h-screen overflow-hidden relative z-[234]">
@@ -84,7 +109,7 @@ const Signup = () => {
           </button>
         </div>
         <div className='absolute lg:block hidden bottom-[-140px] right-[430px] opacity-75'>
-        <img src={signincircle} alt="" />
+          <img src={signincircle} alt="" />
         </div>
       </div>
 
@@ -101,11 +126,10 @@ const Signup = () => {
                 id="name"
                 type="text"
                 placeholder="Full Name"
-                value={formData.name}
+                value={user.name}
                 onChange={handleChange}
                 required
               />
-              {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
             </div>
             <div className="mb-4">
               <input
@@ -113,11 +137,10 @@ const Signup = () => {
                 id="email"
                 type="email"
                 placeholder="Email"
-                value={formData.email}
+                value={user.email}
                 onChange={handleChange}
                 required
               />
-              {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
             </div>
             <div className="mb-4">
               <input
@@ -125,11 +148,10 @@ const Signup = () => {
                 id="password"
                 type="password"
                 placeholder="Password"
-                value={formData.password}
+                value={user.password}
                 onChange={handleChange}
                 required
               />
-              {formErrors.password && <p className="text-red-500 text-xs mt-1">{formErrors.password}</p>}
             </div>
             <div className="mb-4">
               <input
@@ -137,11 +159,10 @@ const Signup = () => {
                 id="confirmPassword"
                 type="password"
                 placeholder="Confirm Password"
-                value={formData.confirmPassword}
+                value={user.confirmPassword}
                 onChange={handleChange}
                 required
               />
-              {formErrors.confirmPassword && <p className="text-red-500 text-xs mt-1">{formErrors.confirmPassword}</p>}
             </div>
             <div className="flex items-center justify-between mb-4">
               <button className="bg-[#008CD2] text-white font-normal py-2 px-4 text-[15px] inter_ff rounded-full w-full" type="submit">Create Account</button>
@@ -150,23 +171,23 @@ const Signup = () => {
               <p><img className='h-[34px]' src={icon3} alt="" /></p>
             </div>
             <div className="flex justify-center">
-              <button className="bg-white border text-[10px] font-medium inter_ff py-2 px-4 rounded-full flex items-center">
-                <FcGoogle className="mr-2 h-[16px] w-[16px]" /> Continue with Google
-              </button>
+              <GoogleLogin
+                className="rounded-full"
+                onSuccess={handleSuccess}
+                onError={() => {
+                  console.log('Login Failed');
+                }}
+              />
             </div>
           </form>
           <p className="text-start text-[#5A5A5A] text-[12px] font-light inter_ff lg:text-nowrap mt-4">
             By continuing you indicate that you read and agreed to the <Link className="text-[#008CD2] text-[12px] font-light inter_ff" style={{ borderBottom: "1px solid #008CD2" }}>Terms of Use</Link>
           </p>
-
-          
         </div>
-
-   
       </div>
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 };
 
 export default Signup;
-

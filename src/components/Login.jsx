@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import bgimg from "../assets/images/loginbgimg.png";
 import thumbicon from "../assets/svg/thumbicon.svg";
-import { Link } from 'react-router-dom';
-import bgcircle from "../assets/images/logincircle.png"
+import bgcircle from "../assets/images/logincircle.png";
 import logo from "../assets/svg/logo.svg";
 import loginicon from "../assets/svg/signinicon3.svg";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ToggleSwitch = ({ isOn, handleToggle }) => {
   return (
@@ -24,38 +25,55 @@ const ToggleSwitch = ({ isOn, handleToggle }) => {
 const Login = () => {
   const navigate = useNavigate();
   const [isRememberMe, setIsRememberMe] = useState(false);
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [formErrors, setFormErrors] = useState({ email: '', password: '' });
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
 
   const handleToggle = () => {
     setIsRememberMe(!isRememberMe);
   };
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-    setFormErrors({ ...formErrors, [id]: '' });
-  };
-
-  const validateForm = () => {
-    const errors = {};
-    if (!formData.email) errors.email = 'Email is required';
-    if (!formData.password) errors.password = 'Password is required';
-    return errors;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = validateForm();
-    if (Object.keys(errors).length === 0) {
-      // Replace the following with your actual authentication logic
-      if (formData.email === 'user12@gmail.com' && formData.password === 'admin') {
-        navigate('/dashboard2');
+
+    try {
+      const response = await fetch('http://localhost:5000/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: user.email,
+          password: user.password,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data); // Log the response data
+
+        if (data.msg === 'Login successful') {
+        
+          toast.success('Login successfully!');
+          navigate('/dashboard2'); // Navigate to dashboard after successful login
+        } else {
+        
+          toast.error('Login failed',data.error);
+          console.log('Login failed:', data.error);
+        }
       } else {
-        setFormErrors({ email: 'Invalid email or password' });
+        toast.error('Login failed');
+        console.error('HTTP error! Status:', response.status);
       }
-    } else {
-      setFormErrors(errors);
+    } catch (error) {
+      console.error('Error during login:', error);
+      window.alert('Error during login. Please try again.');
     }
   };
 
@@ -98,25 +116,25 @@ const Login = () => {
               <input
                 className="border rounded-lg w-full py-2 px-3 text-gray-700"
                 id="email"
+                name="email"
                 type="email"
                 placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
+                value={user.email}
+                onChange={handleInput}
                 required
               />
-              {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
             </div>
             <div className="mb-4">
               <input
                 className="border rounded-lg w-full py-2 px-3 text-gray-700"
                 id="password"
+                name="password"
                 type="password"
                 placeholder="Your Password"
-                value={formData.password}
-                onChange={handleChange}
+                value={user.password}
+                onChange={handleInput}
                 required
               />
-              {formErrors.password && <p className="text-red-500 text-xs mt-1">{formErrors.password}</p>}
             </div>
             <div className="flex items-center justify-between mb-4 xs:flex xs:flex-row">
               <label className="flex items-center">
@@ -132,7 +150,7 @@ const Login = () => {
               Log In
             </button>
             <div className="text-center my-4">
-              <p ><img className='h-[34px]' src={loginicon} alt="" /></p>
+              <p><img className='h-[34px]' src={loginicon} alt="" /></p>
             </div>
             <p className='flex justify-center xs:w-full items-center'>
               <button
@@ -151,6 +169,7 @@ const Login = () => {
         </div>
       
       </div>
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 };

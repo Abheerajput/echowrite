@@ -19,7 +19,14 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.jodit-container:not(.jodit_inline) .jodit-wysiwyg {
+  margin: 0;
+  outline: 0;
+  overflow-x: auto;
+  padding: 8px;
+  position: relative;
+  height: 150px !important;
+}
 .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
   border-color: var(--ck-color-base-border);
   min-height: 180px !important;
