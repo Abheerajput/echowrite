@@ -92,7 +92,7 @@ const Login = () => {
         console.log('Login successful!', data);
         toast.success('Login successful!');
         // Optionally, you can navigate to another page upon successful sign-in
-        navigate('/dashboard');
+        navigate('/dashboard3');
       } else {
         console.error('Sign-in failed:', response.data.error);
         toast.error('Sign-in failed. Please try again.');
