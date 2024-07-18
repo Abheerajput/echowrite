@@ -6,17 +6,10 @@ import icon2 from "../../src/assets/svg/microphonecolor.svg"
 import icon3 from "../../src/assets/svg/vocals.svg"
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 
 const Dashboard3 = ({ placeholder }) => {
-
-
-
-
-
-
-
-
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
     { name: 'Next', path: '/dashboard3' },
@@ -26,10 +19,12 @@ const Dashboard3 = ({ placeholder }) => {
 
   return (
     <>
-      <div className="mx-auto mt-16 xs:h-screen  h-full px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0 ">
+      <div className="mx-auto mt-16 xs:h-screen  min-h-full flex flex-col px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0 ">
         <Navbar links={dashboard2Links} />
 
-        <div className="bg-white rounded-lg xs:px-4 shadow-md pb-16 px-12  ">
+<div className="flex-grow">
+
+        <div className="bg-white rounded-lg xs:px-4 h-full shadow-md xs:mb-8 xs:pb-0 pb-16 px-12  ">
           <span className='mt-[20px] lg:mt-0 xs:mt-0 w-full'>
             <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000] py-8">Innovating Speech-to-Text Solutions</h2>
           </span>
@@ -84,21 +79,22 @@ const Dashboard3 = ({ placeholder }) => {
            
             </div>
 </div>
-            
-
-
           </div>
         </div>
+        </div>
+        <div className="lg:hidden xl:hidden md:hidden xxl:hidden  xs:flex ">
 
-      
+        <Footer />
+        </div>
       </div>
+        <div className='xs:hidden'>
+        <Footer  />
+     
+        </div>
+       
+      
+   
 
-      <div className="flex justify-center xs:mt-48 xs:shadow-none items-center h-28 xs:h-0 space-x-1 py-4 cursor-default bg-white text-gray-600 shadow-sm md:pt-[60px]">
-                <p className='text-[15px] font-normal inter_ff text-[#04324D]'>Copyright ©</p>
-                <p className='text-[15px] font-normal inter_ff text-[#04324D]'>2024</p>
-                <p className="text-[#FF9A26] className='text-[15px] font-normal inter_ff'">EchoWrite.</p>
-                <p className='text-[15px] font-normal inter_ff text-[#04324D]'>All rights reserved.</p>
-            </div>
     </>
   );
 };
