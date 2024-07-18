@@ -63,7 +63,7 @@ const Login = () => {
         if (data.msg === 'Login successful') {
         
           toast.success('Login successfully!');
-          navigate('/dashboard2'); // Navigate to dashboard after successful login
+          navigate('/dashboard3'); // Navigate to dashboard after successful login
         } else {
         
           toast.error('Login failed',data.error);
