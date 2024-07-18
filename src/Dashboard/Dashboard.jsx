@@ -46,7 +46,7 @@ const Dashboard = () => {
 
   const dashboardLinks = [
     { name: 'FAQ', path: '#' },
-    { name: 'Next', path: '#' },
+    { name: 'Next', path: '/dashboard3' },
     { name: 'Support', path: '#' },
   ];
 
@@ -181,6 +181,32 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Homepage from './components/Homepage';
 import Dashboard from './Dashboard/Dashboard';
 import Dashboard2 from './Dashboard/Dashboard2';
+import Dashboard3 from './Dashboard/Dashboard3';
 
 // import Transcription from './components/Transcription';
 // import Message from './components/Message';
@@ -35,6 +36,7 @@ const AppContent = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/dashboard2" element={<Dashboard2 />} />
+                <Route path="/dashboard3" element={<Dashboard3 />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/home" element={<Homepage />} />
                 <Route path="/" element={<Navigate to="/home" />} />

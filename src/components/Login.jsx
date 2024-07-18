@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
+import axios from 'axios';
+import { GoogleLogin } from '@react-oauth/google';
 import { Link, useNavigate } from 'react-router-dom';
 import bgimg from "../assets/images/loginbgimg.png";
 import thumbicon from "../assets/svg/thumbicon.svg";
@@ -77,6 +79,29 @@ const Login = () => {
     }
   };
 
+  const handleSuccess = async (credentialResponse) => {
+    console.log(credentialResponse);
+  
+    try {
+      const response = await axios.post('http://localhost:5000/user/googlesignin', {
+        credential: credentialResponse.credential,
+      });
+  
+      if (response.status === 200) {
+        const data = response.data;
+        console.log('Login successful!', data);
+        toast.success('Login successful!');
+        // Optionally, you can navigate to another page upon successful sign-in
+        navigate('/dashboard');
+      } else {
+        console.error('Sign-in failed:', response.data.error);
+        toast.error('Sign-in failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Sign-in error:', error);
+      toast.error('Sign-in failed. Please try again.');
+    }
+  };
   return (
     <div className="flex min-h-screen xs:grid md:grid sm:grid lg:flex-row-reverse lg:flex lg:w-full xs:h-screen overflow-hidden">
       {/* Left section */}
@@ -88,7 +113,7 @@ const Login = () => {
         <div className="flex items-center justify-center h-screen relative rounded-lg w-2/3 xs:w-1/2 xs:hidden">
           <div className="text-white backdrop-blur-xl w-2/3 lg:mt-[70%] lg:ml-[4%] lg:w-4/5 xs:m-0 xs:p-2 xs:mt-4 p-8">
             <h2 className="text-[13px] font-normal inter_ff w-full py-3 lg:px-2 bg-[#008CD2] flex justify-center items-center text-nowrap rounded-3xl mb-4 xs:text-[9px]">
-              <img src={thumbicon} alt="" className='xs:pr-0' />
+              <img src={thumbicon} alt="" className='xs:pr-0 pr-[12px]' />
               Top Notch Stock Resources
             </h2>
             <p className='xs:text-[9px] text-[20px] font-normal inter_ff text-white'>Today, we create innovative solutions to the challenges that consumers face in both their everyday lives and events.</p>
@@ -153,13 +178,21 @@ const Login = () => {
               <p><img className='h-[34px]' src={loginicon} alt="" /></p>
             </div>
             <p className='flex justify-center xs:w-full items-center'>
-              <button
-                className="bg-white rounded-3xl justify-center text-[#00000] text-[10px] w-1/2 xs:w-3/4 inter_ff border border-gray-300 xs:px-0 xs:mx-2 py-3 px-4 text-nowrap flex items-center"
+              {/* <button
+                className="bg-white  justify-center text-[#00000] text-[10px] w-1/2 xs:w-3/4 inter_ff border border-gray-300 xs:px-0 xs:mx-2 py-3 px-4 text-nowrap flex items-center"
                 type="button"
               >
                 <FcGoogle className="xs:mr-2" style={{ width: '24px', height: '24px' }} />
                 Continue with Google
-              </button>
+              </button> */}
+               <div className="flex  justify-center">
+              <GoogleLogin
+                className="rounded-3xl"
+                onSuccess={handleSuccess}
+                onError={() => {
+                  console.log('Login Failed');
+                }}
+              /></div>
             </p>
 
             <p className='xs:flex xs:justify-center xs:items-center'>
