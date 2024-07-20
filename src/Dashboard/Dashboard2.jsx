@@ -365,7 +365,7 @@ const Dashboard2 = () => {
                                   {audioBlob && (
                     <button
                       onClick={handleConvert}
-                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mt-4"
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mt-4 xs:mb-4"
                     >
                       Download MP3
                     </button>
