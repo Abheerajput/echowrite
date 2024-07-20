@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(false);
-
+  const token = localStorage.getItem('authToken');
   const handleOpenForm = () => {
     setIsFormOpen(true);
   };
@@ -24,6 +24,7 @@ const Hero = () => {
       handleCloseForm();
     }, 3000);
   };
+  console.log(token)
 
   return (
     <>
@@ -44,21 +45,28 @@ const Hero = () => {
             </p>
           </div>
           <div className="md:col-start-2 flex mb-4 justify-center md:justify-center md:col-span-4 pt-5">
-            <Link to="/signup">  <button onClick={handleOpenForm} className="bg-[#008CD2] text-white font-medium inter_ff text-[17px] py-2 px-6 rounded-3xl">
-              Get Started For Free
-            </button></Link>
-          
+            {
+              token && token !== undefined && token !== null ?
+                <Link to="/dashboard3">  
+                <button  className="bg-[#008CD2] text-white font-medium inter_ff text-[17px] py-2 px-6 rounded-3xl">
+                  Get Started For Free
+                </button></Link>
+                :
+                <Link to="/login">  <button  className="bg-[#008CD2] text-white font-medium inter_ff text-[17px] py-2 px-6 rounded-3xl">
+                  Get Started For Free
+                </button></Link>
+            }
           </div>
         </div>
-       
+
       </div>
       <div className=" flex justify-center md:col-start-2 md:col-span-4 relative">
-          <img src={mainImg} alt="Main" />
-        </div>
+        <img src={mainImg} alt="Main" />
+      </div>
       {isFormOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg w-full md:w-1/3">
-          
+
             <h2 className="text-2xl font-bold mb-4">Get Started</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -175,7 +183,7 @@ export default Hero;
 //       backgroundImage: `url(${background})`,
 //       backgroundSize: 'cover',
 //       backgroundPosition: 'center'
-//     }}> 
+//     }}>
 //         <div className="col-start-2 col-span-4">
 //           <p className="font-bold text-5xl flex text-color justify-center pt-[70px] lbre_ff text-wrap">Revolutionary Voice-to-Text Technology</p>
 //         </div>

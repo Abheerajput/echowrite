@@ -27,20 +27,29 @@ const AppContent = () => {
     const location = useLocation();
     const pathname = location.pathname.toLowerCase();
     const isDashboardRoute = pathname.includes('/dashboard');
-
+ const token = localStorage.getItem('authToken');
     return (
         <div>
             { pathname !== '/login' && pathname !== '/signup' && !isDashboardRoute && <Navbar />}
           
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/dashboard" element={<Dashboard />} />
+            <Routes >
+            <Route path="/home" element={<Homepage />} />
+           
+            {
+                token && token !== undefined && token !== null ? <>
+                  <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/dashboard2" element={<Dashboard2 />} />
                 <Route path="/dashboard3" element={<Dashboard3 />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/home" element={<Homepage />} />
-                <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="*" element={<Navigate to="/home" />} />
+
+                </>:
+                <>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/" element={<Homepage/>} />
+                <Route path="*" element={<Navigate to="/home" />} /></>
+            }
+                
             </Routes>
         </div>
     );

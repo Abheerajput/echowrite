@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 // import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
+
 import { GoogleLogin } from '@react-oauth/google';
 import { Link, useNavigate } from 'react-router-dom';
 import bgimg from "../assets/images/loginbgimg.png";
@@ -10,6 +12,7 @@ import logo from "../assets/svg/logo.svg";
 import loginicon from "../assets/svg/signinicon3.svg";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL} from "../config"
 
 const ToggleSwitch = ({ isOn, handleToggle }) => {
   return (
@@ -44,38 +47,28 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('http://localhost:5000/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+    try {console.log("true")
+      // const response = await (`${BASE_URL}/user/login`, {
+        const response = await axios.post(`${BASE_URL}/user/login`, {
           email: user.email,
           password: user.password,
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data); // Log the response data
-
-        if (data.msg === 'Login successful') {
-        
-          toast.success('Login successfully!');
-          navigate('/dashboard3'); // Navigate to dashboard after successful login
-        } else {
-        
-          toast.error('Login failed',data.error);
-          console.log('Login failed:', data.error);
-        }
-      } else {
-        toast.error('Login failed');
-        console.error('HTTP error! Status:', response.status);
+        });
+console.log(response)
+      if (response.data?.status === "success") {
+        toast.success(response?.data?.msg || 'Login  successfully!');
+        localStorage.setItem('authToken', response.data.token);
+       
+          navigate('/home');
+     
+      
+      } 
+      else{
+       
+        toast.error(response?.data?.msg || 'Login  failes'); 
       }
+    
     } catch (error) {
       console.error('Error during login:', error);
-      window.alert('Error during login. Please try again.');
     }
   };
 
@@ -83,23 +76,29 @@ const Login = () => {
     console.log(credentialResponse);
   
     try {
-      const response = await axios.post('http://localhost:5000/user/googlesignin', {
+      const response = await axios.post(`${BASE_URL}/user/googlesignin`, {
+        email: user.email,
+        password: user.password,
         credential: credentialResponse.credential,
       });
-  
-      if (response.status === 200) {
-        const data = response.data;
-        console.log('Login successful!', data);
-        toast.success('Login successful!');
-        // Optionally, you can navigate to another page upon successful sign-in
-        navigate('/dashboard3');
+      if (response.data?.status === "success") {
+        toast.success(response?.data?.msg || 'Login  successfully!');
+        localStorage.setItem('authToken', response.data.token);
+       setTimeout(
+        () => {
+          navigate('/home');
+        },
+        3000
+       )
+    
+      
+       
       } else {
         console.error('Sign-in failed:', response.data.error);
-        toast.error('Sign-in failed. Please try again.');
+      
       }
     } catch (error) {
-      console.error('Sign-in error:', error);
-      toast.error('Sign-in failed. Please try again.');
+  
     }
   };
   return (

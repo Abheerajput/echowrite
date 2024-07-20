@@ -1,16 +1,17 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { IoClose } from 'react-icons/io5';
-import { motion } from 'framer-motion';
+import axios from 'axios';
 import uploadicon from "../assets/svg/upload.svg";
 import Navbar from './Navbar';
-
+import {BASE_URL} from "../config"
 const Dashboard = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [transcription, setTranscription] = useState('');
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -40,8 +41,28 @@ const Dashboard = () => {
     noKeyboard: true
   });
 
+  const handleFileUpload = async (file) => {
+    const formData = new FormData();
+    formData.append('audio', file);
+
+    try {
+      console.log("Base" +BASE_URL)
+      const response = await axios.post(`${BASE_URL}/user/upload`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',  
+        },
+      });
+      setTranscription(response.data.transcription);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+
   const handleConvert = () => {
-    setRemainingMinutes(0);
+    if (uploadedFile) {
+      handleFileUpload(uploadedFile);
+      setRemainingMinutes(0);
+    }
   };
 
   const dashboardLinks = [
@@ -54,6 +75,7 @@ const Dashboard = () => {
     setUploadedFile(null);
     setUploadProgress(0);
     setUploadSuccess(false);
+    setTranscription('');
   };
 
   return (
@@ -109,34 +131,28 @@ const Dashboard = () => {
               )}
 
               {uploadedFile && (
-               
-                  <div className="flex flex-col items-start   ">
-                  <button onClick={handleDelete} className="text-black  hover:text-red-700 ml-11">
-                        <IoClose size={24} />
-                      </button>
-                      <p className="text-sm sm:text-base  font-bold"> {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
-                    <div className="flex justify-between items-center mb-2">
-                  
-                      <p className="text-sm sm:text-base text-gray-500 w-20 truncate">
-                        {uploadedFile.name.split(' ').slice(0, 3).join(' ')}...
-                      </p>
-                    
-                    </div>
-                 
-                    {/* <p className="text-xs sm:text-sm text-gray-400">Type: {uploadedFile.type.split('/')[1]}</p> */}
-                  </div>
-              
-              )}
-            </div>
-          )}
-           {uploading && (
-                <div className="mt-4 w-full flex flex-col items-center">
-                  <p className="text-sm sm:text-base text-gray-500">Uploading... {uploadProgress}%</p>
-                  <div className="w-full bg-gray-200 rounded-full h-2 sm:h-4 mt-2">
-                    <div className="bg-blue-600 h-2 sm:h-4 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
+                <div className="flex flex-col items-start">
+                  <button onClick={handleDelete} className="text-black hover:text-red-700 ml-11">
+                    <IoClose size={24} />
+                  </button>
+                  <p className="text-sm sm:text-base font-bold">{(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                  <div className="flex justify-between items-center mb-2">
+                    <p className="text-sm sm:text-base text-gray-500 w-20 truncate">
+                      {uploadedFile.name.split(' ').slice(0, 3).join(' ')}...
+                    </p>
                   </div>
                 </div>
               )}
+            </div>
+          )}
+          {uploading && (
+            <div className="mt-4 w-full flex flex-col items-center">
+              <p className="text-sm sm:text-base text-gray-500">Uploading... {uploadProgress}%</p>
+              <div className="w-full bg-gray-200 rounded-full h-2 sm:h-4 mt-2">
+                <div className="bg-blue-600 h-2 sm:h-4 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
+              </div>
+            </div>
+          )}
 
           <div className="flex mt-4 justify-between xs:flex xs:flex-col xs:items-center items-center xs:text-wrap" style={{ borderTopWidth: "1px" }}>
             <div className="flex gap-4 ml-[5%] xs:ml-0 pt-2 xs:pt-4">
@@ -174,6 +190,20 @@ const Dashboard = () => {
               </button>
             </p>
           </div>
+          {transcription && (
+            <div className="mt-4">
+              <h2 className="text-[20px] font-bold inter_ff text-[#000000]">
+                <button
+                className="text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
+                onClick={handleConvert}
+                disabled={remainingMinutes === 0 || !uploadedFile}
+                style={{ backgroundColor: uploadedFile ? "#008CD2" : "#E4E4E4", color: uploadedFile ? "white" : "black" }}
+              >
+                Convert
+              </button>
+              </h2>
+            </div>
+          )}
         </div>
       </div>
     </>
@@ -181,8 +211,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
 
 
 

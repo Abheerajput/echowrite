@@ -3,8 +3,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 import signinimg from '../assets/images/signinimg.png';
 import logo from '../assets/svg/logo.svg';
 import icon1 from '../assets/svg/signinicon1.svg';
@@ -12,8 +11,9 @@ import icon2 from '../assets/svg/signinicon2.svg';
 import icon3 from '../assets/svg/signinicon3.svg';
 import icon4 from '../assets/svg/signinicon4.svg';
 import signincircle from '../assets/images/signincircle.png';
-
+import { BASE_URL } from "../config.js"
 const Signup = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -28,7 +28,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('123456')
     if (user.password !== user.confirmPassword) {
       toast.error('Passwords do not match.');
       return;
@@ -37,19 +37,22 @@ const Signup = () => {
     const { confirmPassword, ...userData } = user; // Exclude confirmPassword from userData
 
     try {
-      const response = await axios.post('http://localhost:5000/user/signin', userData);
-
-      if (response.status === 200) {
-        toast.success('Account created successfully!');
+      console.log('Submitting to URL: 2', `${BASE_URL}/user/signin`);
+      const response = await axios.post(`${BASE_URL}/user/signin`, user);
+      console.log(response)
+      if (response.data?.status === "success") {
+        toast.success(response?.data?.msg || 'Account created successfully!');
         setUser({
           name: '',
           email: '',
           password: '',
           confirmPassword: '',
         });
+        localStorage.setItem('authToken', response.data.token);
+        navigate('/home');
       } else {
-        console.error('Error:', response.data.error);
-        toast.error('Failed to create account. Please try again.');
+        console.error('Error:', response.data);
+        toast.error(response?.data?.msg || 'Failed to create account. Please try again.');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -59,16 +62,21 @@ const Signup = () => {
 
   const handleSuccess = async (credentialResponse) => {
     console.log(credentialResponse);
-  
+
     try {
-      const response = await axios.post('http://localhost:5000/user/googlesignin', {
+      const response = await axios.post(`${BASE_URL}/user/googlesignin`, {
         credential: credentialResponse.credential,
       });
-  
+
       if (response.status === 200) {
         const data = response.data;
         console.log('Sign-in successful:', data);
         toast.success('Sign-in successful!');
+        localStorage.setItem('authToken', response.data.token);
+        setTimeout(() => {
+            navigate('/home');
+          }, 3000)
+
         // Optionally, you can navigate to another page upon successful sign-in
         // Example: navigate('/dashboard');
       } else {
@@ -80,7 +88,7 @@ const Signup = () => {
       toast.error('Sign-in failed. Please try again.');
     }
   };
-  
+
 
   return (
     <div className="flex min-h-screen overflow-hidden relative z-[234]">

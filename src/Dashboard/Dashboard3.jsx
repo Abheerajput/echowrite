@@ -5,11 +5,12 @@ import icon from "../../src/assets/svg/microphone.svg"
 import icon2 from "../../src/assets/svg/microphonecolor.svg"
 import icon3 from "../../src/assets/svg/vocals.svg"
 import Navbar from './Navbar';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 
 
 const Dashboard3 = ({ placeholder }) => {
+  const navigate = useNavigate();
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
     { name: 'Next', path: '/dashboard3' },
@@ -24,7 +25,7 @@ const Dashboard3 = ({ placeholder }) => {
 
 <div className="flex-grow">
 
-        <div className="bg-white rounded-lg xs:px-4 h-full shadow-md xs:mb-8 xs:pb-0 pb-16 px-12  ">
+        <div  className="bg-white rounded-lg xs:px-4 h-full shadow-md xs:mb-8 xs:pb-0 pb-16 px-12  ">
           <span className='mt-[20px] lg:mt-0 xs:mt-0 w-full'>
             <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000] py-8">Innovating Speech-to-Text Solutions</h2>
           </span>
@@ -38,7 +39,9 @@ const Dashboard3 = ({ placeholder }) => {
               <p className='text-[22px] font-medium inter_ff text-white py-8'>Create Text with Speech or Recording
                 <br /> with EchoWrite</p>
               <p className=' bg-white rounded-3xl items-center mt-8' style={{ width: "94%" }}>
+              <Link to="/dashboard">
                 <button className='text-[22px] font-medium inter_ff text-[#161C2D] w-full py-3  '>Start Project Now</button>
+                </Link>
               </p>
 
 
@@ -46,7 +49,7 @@ const Dashboard3 = ({ placeholder }) => {
 <div className='w-2/5 xs:w-full xs:m-0 flex gap-4 ml-4  xs:pt-8'>
 
 
-<div className='w-1/2  xs:w-1/2 md:w-1/2 md:ml-3 xs:m-0   rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between ' >
+<div onClick={()=> navigate('/dashboard2')} className='w-1/2  xs:w-1/2 md:w-1/2 md:ml-3 xs:m-0   rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between ' >
 
               <span className='flex justify-between  w-full items-center'>
                 <p className='text-[18px] font-medium inter_ff '>Speech to Text </p>
@@ -62,7 +65,8 @@ const Dashboard3 = ({ placeholder }) => {
               </div>
           
             </div>
-            <div className='w-1/2 xs:w-1/2 md:w-1/2  xs:m-0  rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between'>
+          
+            <div  onClick={()=> navigate('/dashboard')} className='w-1/2 xs:w-1/2 md:w-1/2  xs:m-0  rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between'>
            
               <span className='flex justify-between w-full items-center'>
                 <p className='text-[18px] font-medium inter_ff '>Speech to Text </p>
@@ -71,9 +75,9 @@ const Dashboard3 = ({ placeholder }) => {
                 
               </span>
               <div className='w-full xs:pt-12 '>
-              <Link to="/dashboard2">
+             
                 <p><img src={icon3} alt="" /></p>
-                </Link>
+                
                 <p className='text-[20px] font-semibold inter_ff text-[#161C2D] pt-4'>Create Text with Recorded Voices  </p>
               </div>
            

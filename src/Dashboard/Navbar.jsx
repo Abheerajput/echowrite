@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import logo from "../assets/svg/logo.svg";
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
 const Navbar = ({ links }) => {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -14,7 +15,10 @@ const Navbar = ({ links }) => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    navigate('/login');
+  };
   return (
     <div>
       <nav className="bg-[#F1F4F5] top-0 left-0 right-0">
@@ -52,9 +56,13 @@ const Navbar = ({ links }) => {
                     <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                       Settings
                     </Link>
-                    <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Logout
+                    <Link>
+                    <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+      Logout
+    </button>
+               
                     </Link>
+                  
                   </div>
                 )}
               </div>
@@ -87,15 +95,24 @@ const Navbar = ({ links }) => {
               </div>
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
-                  <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Profile
+                  <Link >
+                   
+                    <button className="block px-4 w-full py-2 text-sm text-gray-700 hover:bg-gray-100"> Profile</button>
                   </Link>
-                  <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Settings
+                  <Link >
+                  <button className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  Settings
+                  </button>
+                   
                   </Link>
-                  <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Logout
-                  </Link>
+
+                  <Link>
+                      <button onClick={handleLogout} className="block  w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+      Logout
+    </button>
+             
+                 
+                    </Link>
                 </div>
               )}
             </div>

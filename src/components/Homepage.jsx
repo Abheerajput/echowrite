@@ -1,4 +1,3 @@
-import { BrowserRouter  as Router,Route,Routes} from "react-router-dom";
 import React from 'react';
 import Hero from './HeroSection/Hero';
 import Advantage from './Advantage/Advantage';
@@ -16,23 +15,23 @@ import Footer from './Footer';
 const Homepage = () => {
     return (
         <div>
-           
-       
- <Hero />
+
+
+            <Hero />
             <Advantage />
             <Section />
             <Pricing />
             <Reviews />
             <Brands />
             <Stroage />
-            <Transcription/>
-            <Message/>
+            <Transcription />
+            <Message />
             <Ready />
             <Footer />
 
 
-            
-        
+
+
         </div>
     );
 };

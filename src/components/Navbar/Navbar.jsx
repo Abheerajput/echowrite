@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from "../../assets/svg/logo.svg";
-import { HashLink } from 'react-router-hash-link';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Login from "../Login.jsx";
+
+import {  Link } from 'react-router-dom';
+// import login from "../Login.jsx";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTrialFormOpen, setIsTrialFormOpen] = useState(false);
   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(false);
-
+  const token = localStorage.getItem('authToken');
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -49,8 +49,22 @@ const Navbar = () => {
             {/* <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link> */}
           </div>
           <div className="hidden md:flex gap-4 items-center">
-            <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
-            <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] font-medium inter_ff text-white">Start Free Trial</button>
+            <p>
+{
+            token && token !== undefined && token !== null ?  
+          <Link></Link>:
+          <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
+}         
+            </p>
+         
+           {
+             token && token !== undefined && token !== null ?  
+             <Link to="/dashboard3">  <button className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] font-medium inter_ff text-white">Start Free Trial</button></Link>:
+             <Link to="/dashboard3">    <button  className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-white font-medium inter_ff">Start Free Trial</button></Link>
+           }
+
+           
+            
           </div>
         </div> 
 
@@ -61,6 +75,7 @@ const Navbar = () => {
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
             <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
+            <Link to="/dashboard3" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
             <button onClick={toggleTrialForm} className="px-4 py-2 bg-[#FFB531] rounded-3xl text-[15px] text-white font-medium inter_ff">Start Free Trial</button>
           </div>
         )}
