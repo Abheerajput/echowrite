@@ -79,7 +79,7 @@ const Navbar = () => {
           <Link></Link>:
           <Link to="/login" className="text-[15px] text-[#161C2D] font-medium inter_ff">Login</Link>
 }    
-            <Link to="/dashboard3" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
+        
 
             {
              token && token !== undefined && token !== null ?  

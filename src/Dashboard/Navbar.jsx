@@ -50,14 +50,20 @@ const Navbar = ({ links }) => {
                 </div>
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
-                    <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Profile
+                    <Link>
+                    <button className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Profile
+                  </button>
+                     
                     </Link>
-                    <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Settings
+                    <Link >
+                    <button className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  Settings
+                  </button>
+                    
                     </Link>
                     <Link>
-                    <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    <button onClick={handleLogout} className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
       Logout
     </button>
                
