@@ -2,13 +2,10 @@
 
 import React, { useState, useEffect , useMemo} from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import jsPDF from 'jspdf';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import JoditEditor from 'jodit-react';
-
 import mike from "../assets/svg/mikeicon.svg";
 import playicon from "../assets/svg/playicon.svg";
 import pauseicon from "../assets/svg/pauseicon.svg";
@@ -349,7 +346,7 @@ const Dashboard2 = () => {
                       )}
                     </div>
                 </div>
-               
+               {/* <button onClick={handleDownload}> Download</button> */}
                 </div>
               </div>
             </div>

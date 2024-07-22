@@ -138,10 +138,10 @@ width: 100% !important;
   transition: background-color 0.2s;
 }
 .jodit-container:not(.jodit_inline) {
-  background-color: #fdfdff;
+  background-color:white;
   border: 0px solid #ffffff;
   border-radius: 0px;
-  min-height: 500px !important;
+  min-height: 400px !important;
 }
 
 

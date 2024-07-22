@@ -5,6 +5,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import jsPDF from 'jspdf';
+import { Link } from 'react-router-dom';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import JoditEditor from 'jodit-react';
@@ -401,12 +402,15 @@ const Mobileview = () => {
                
               </div>
               <div className='relative mr-6 w-full lg:mr-6 md:mr-6 xl:mr-6 xs:mr-0 xs:w-auto'>
-                  <button
-                    onClick={handleDownload}
+                <Link to="/webview">
+                <button
+                    
                       className="bg-[#008CD2] text-white w-full  font-medium text-[16px] inter_ff py-4 px-4 rounded-3xl"
                   >
                   Start Creating
                   </button>
+                </Link>
+                 
                 </div>
                 </div>
               </div>
