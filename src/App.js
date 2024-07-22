@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Homepage from './components/Homepage';
 import Dashboard from './Dashboard/Dashboard';
 import Dashboard2 from './Dashboard/Dashboard2';
+import Dashboard4 from './Dashboard/webView';
 import Dashboard3 from './Dashboard/Dashboard3';
 
 // import Transcription from './components/Transcription';
@@ -30,7 +31,7 @@ const AppContent = () => {
  const token = localStorage.getItem('authToken');
     return (
         <div>
-            { pathname !== '/login' && pathname !== '/signup' && !isDashboardRoute && <Navbar />}
+            { pathname !== '/login' && pathname !== '/signup' && pathname !== '/webview' && !isDashboardRoute &&  <Navbar />}
           
             <Routes >
             <Route path="/home" element={<Homepage />} />
@@ -46,6 +47,7 @@ const AppContent = () => {
                 <>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/webview" element={<Dashboard4 />} />
                 <Route path="/" element={<Homepage/>} />
                 <Route path="*" element={<Navigate to="/home" />} /></>
             }
