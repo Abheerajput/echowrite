@@ -41,6 +41,7 @@ const AppContent = () => {
                   <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/dashboard2" element={<Dashboard2 />} />
                 <Route path="/dashboard3" element={<Dashboard3 />} />
+                <Route path="/webview" element={<Dashboard4 />} />
                 <Route path="*" element={<Navigate to="/home" />} />
 
                 </>:
