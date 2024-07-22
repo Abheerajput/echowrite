@@ -11,6 +11,7 @@ import Dashboard from './Dashboard/Dashboard';
 import Dashboard2 from './Dashboard/Dashboard2';
 import Dashboard4 from './Dashboard/webView';
 import Dashboard3 from './Dashboard/Dashboard3';
+import Mobileview from './Dashboard/Mobileview';
 
 // import Transcription from './components/Transcription';
 // import Message from './components/Message';
@@ -31,7 +32,7 @@ const AppContent = () => {
  const token = localStorage.getItem('authToken');
     return (
         <div>
-            { pathname !== '/login' && pathname !== '/signup' && pathname !== '/webview' && !isDashboardRoute &&  <Navbar />}
+            { pathname !== '/login' && pathname !== '/signup' && pathname !== '/webview' && pathname !== '/mobileview' && !isDashboardRoute &&  <Navbar />}
           
             <Routes >
             <Route path="/home" element={<Homepage />} />
@@ -41,6 +42,7 @@ const AppContent = () => {
                   <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/dashboard2" element={<Dashboard2 />} />
                 <Route path="/dashboard3" element={<Dashboard3 />} />
+                <Route path="/mobileview" element={<Mobileview />} />
                 <Route path="/webview" element={<Dashboard4 />} />
                 <Route path="*" element={<Navigate to="/home" />} />
 
@@ -49,6 +51,8 @@ const AppContent = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/webview" element={<Dashboard4 />} />
+                <Route path="/mobileview" element={<Mobileview />} />
+
                 <Route path="/" element={<Homepage/>} />
                 <Route path="*" element={<Navigate to="/home" />} /></>
             }

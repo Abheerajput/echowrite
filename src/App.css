@@ -137,6 +137,12 @@ width: 100% !important;
   align-items: center;
   transition: background-color 0.2s;
 }
+.jodit-container:not(.jodit_inline) {
+  background-color: #fdfdff;
+  border: 0px solid #ffffff;
+  border-radius: 0px;
+  min-height: 500px !important;
+}
 
 
 .dropdown-item:hover {

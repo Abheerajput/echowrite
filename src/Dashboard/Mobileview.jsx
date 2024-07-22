@@ -15,7 +15,7 @@ import pauseicon from "../assets/svg/pauseicon.svg";
 import Navbar from './Navbar';
 import axios from 'axios';
 
-const Dashboard2 = () => {
+const Mobileview = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(1000);
   const [recordingStarted, setRecordingStarted] = useState(false);
   const [timer, setTimer] = useState(0);
@@ -196,7 +196,7 @@ const Dashboard2 = () => {
   const stripHtmlTags = (html) => {
     const div = document.createElement('div');
     div.innerHTML = html;
-    return div.textContent || div.innerText || '';
+    return div.textContent || div.innerText || ''
   };
    
   const handleDownload = () => {
@@ -220,33 +220,54 @@ const Dashboard2 = () => {
             ]
           }
         ]
-      });
+      })
   
       Packer.toBlob(doc).then(blob => {
-        saveAs(blob, 'document.docx');
-      });
+        saveAs(blob, 'document.docx')
+      })
     }
-  };
+  }
   
 
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
     { name: 'Next', path: '#' },
     { name: 'Support', path: '#' },
-  ];
+  ]
 
   if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>;
+    return <span>Browser doesn't support speech recognition.</span>
   }
 
 
   return (
     <>
-      <div className="  xs:h-screen h-screen px-2  bg-[#F4F7FA] ">
+      <div className="mx-auto mt-16 xs:h-screen h-screen  px-8 pb-12 bg-[#F4F7FA]  xs:m-0 xs:px-0 md:m-0 sm:m-0">
         <Navbar links={dashboard2Links} />
 
-        <div className="bg-white rounded-lg  mt-12 ">
-          {/* <div className='flex justify-between items-center xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
+
+        <div className="bg-[#F4F7FA]  rounded-lg xs:px-0 shadow-md pb-12 px-12">
+        <div className=' mb-4 xs:px-2'>
+    <p className='flex xs:ml-1 justify-start'><label className=" text-black text-[15px] inter_ff font-normal mb-2 " htmlFor="language"> Language</label></p>
+
+                  <select
+                  
+                    id="language"
+                    value={selectedLanguage}
+                    onChange={handleLanguageChange}
+                    className="bg-white border  xs:h-12   text-[#808080] text-[15px] inter_ff xs:w-full font-normal rounded-md py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
+                    style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}
+                  >
+                    <option value="en">Pathology</option>
+                    <option value="en">English</option>
+                    
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    {/* Add more languages as needed */}
+                  </select>
+                </div>
+
+          <div className='flex justify-between items-center xs:hidden xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2  xs:flex-col xs:justify-around'>
             <span className='mt-[20px] lg:mt-0 xs:mt-0'>
               <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000]">Speech to Text</h2>
               <p className="text-[15px] text-[#808080] font-normal inter_ff mt-[-4px]">Quickly transcribe your audio to text.</p>
@@ -261,28 +282,30 @@ const Dashboard2 = () => {
               <p className="text-[15px] text-[#808080] font-normal inter_ff mt-1">Remaining: {remainingMinutes} minute(s)</p>
               <p className="text-[15px] text-[#808080] font-normal inter_ff mt-1">Recording time seconds</p>
             </div>
-          </div> */}
+          </div>
 
           <div
-            className="border-0   border-gray-300 rounded-lg w-full flex text-center xs:flex xs:flex-col xs:gap-4 xs:justify-around cursor-pointer"
+            className="border-0 border-gray-300 rounded-lg w-full flex xs:px-2 text-center xs:flex xs:flex-col xs:gap-4 xs:justify-around cursor-pointer "
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleFileDrop}
           >
              <div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-around'>
-              <div className='flex lg:py-2 xl:py-2 md:py-8 xs:flex xs:flex-col xs:justify-around'>
-                <div className='flex flex-col items-center w-2/5 xs:hidden bg-[#F4F7FA]  xs:flex-col xs:pb-2 xs:justify-around xs:w-full xs:mb-2'>
+              <div className='flex lg:py-2  xl:py-2 md:py-8 xs:flex xs:flex-col xs:justify-around bg-white mt-4 shadow-sm rounded-3xl'>
+                <div className='flex flex-col items-center w-2/5 xs:flex  xs:flex-col xs:pb-2 xs:justify-around xs:w-full xs:mb-2 xs:pt-12'>
                   <p className='flex justify-center'>
                     <img className='w-24 h-24' src={mike} alt="Microphone" />
                   </p>
-                  <p className='font-bold text-2xl'>
+                  {/* <p className='font-bold text-2xl'>
                     00.{timer}mins
-                  </p>
+                  </p> */}
                   {showInstruction && (
-                    <p className='text-[18px] inter_ff text-black font-bold text-center'>
+                    <p className='text-[18px] inter_ff text-black font-bold text-center py-4'>
                       Start Speaking We’ll Convert <br /> your Voice to Text
                     </p>
                   )}
-                  <div className="flex justify-center space-x-8 mt-4 mb-4">
+                  <p className="py-3">Ready Set Go
+                  </p>
+                  <div className="flex justify-center xs:hidden space-x-8 mt-4 mb-4">
                       {!showRecordingControls ? (
                         <button
                           className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
@@ -305,10 +328,12 @@ const Dashboard2 = () => {
                       )}
                     </div>
                 </div> 
-                  <div className='flex flex-col w-3/5 rounded-3xl  pb-0  xs:w-full shadow-lg  border-0'>
-                  <div className=' xs:pb-0'>
-                    {/* <h3 className='text-[25px] xs:text-[18px] flex justify-start mt-[-11px] items-start inter_ff text-[#008CD2] font-bold xs:mt-4'>Converted text Here</h3> */}
-                    <div className="">
+
+
+                  <div className='flex xs:hidden flex-col w-3/5 px-2 pb-0 mt-2 xs:w-full  border-0 border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
+                  <div className=' xs:pb-5'>
+                    <h3 className='text-[25px] xs:text-[18px] flex justify-start mt-[-11px] items-start inter_ff text-[#008CD2] font-bold xs:mt-4'>Converted text Here</h3>
+                    <div className="mt-2">
                     <JoditEditor
 
                      config={editorConfig} 
@@ -322,41 +347,73 @@ const Dashboard2 = () => {
                 </div>
                 </div>
                 </div>
-                <div className='bg-[#F4F7FA]'>
-                <p className='font-bold text-2xl mt-14'>
-                    00.{timer}mins
-                  </p>
-                  <div className="flex justify-center space-x-8 mt-4 mb-4">
-                      {!showRecordingControls ? (
-                        <button
-                          className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                          onClick={handleStartRecording}
-                        >
-                          Start
-                        </button>
-                      ) : (
-                        <div id="handlerecording" className="flex justify-center items-center space-x-8 xs:w-full">
-                          <button onClick={handlePlayClick}>
-                            <img src={isPlaying ? pauseicon : playicon} alt="Play/Pause" className="w-13 h-13" />
-                          </button>
-                          <button
-                            className=" py-3 text-white bg-red-500 w-1/3 rounded-full h-12 "
-                            onClick={handleReset}
-                          >
-                            Stop
-                          </button>
-                        </div>
-                      )}
-                    </div>
+
+                <div className=" xs:w-full mt-4 xs:mb-3  " >
+<div className="  pt-2  xs:pt-4 xs:w-full">
+<div className=' mb-4'>
+    <p className='flex xs:ml-1 justify-start'><label className=" text-black text-[15px] inter_ff font-normal mb-2 " htmlFor="language"> Language</label></p>
+
+                  <select
+                  
+                    id="language"
+                    value={selectedLanguage}
+                    onChange={handleLanguageChange}
+                    className="bg-white border  xs:h-12   text-[#808080] text-[15px] inter_ff xs:w-full font-normal rounded-md py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
+                    style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}
+                  >
+                    <option value="en">Select Language</option>
+                    <option value="en">English</option>
+                    
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    {/* Add more languages as needed */}
+                  </select>
                 </div>
+
+                
+                  <div className="mb-4 xs:hidden">
+                  <label className="block text-[#808080] text-[15px] font-normal mb-2" htmlFor="format">Output Format</label>
+                  <select
+                    id="format"
+                    value={selectedFormat}
+                    onChange={(e) => setSelectedFormat(e.target.value)}
+                         className="border bg-gray-200 border-gray-300  text-[#808080] text-[15px] inter_ff xs:w-[100px]  w-[151px] font-normal rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
+                         style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }} 
+                  >
+                    <option value="pdf">PDF</option>
+                    <option value="docx">DOCX</option>
+                    {/* Add more formats as needed */}
+                  </select>
+                  </div>
+
+                </div>
+               <div className='flex justify-center items-center mb-4'>
+                
+                                  </div>
+                                  {audioBlob && (
+                    <button
+                      onClick={handleConvert}
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mt-4 xs:mb-4"
+                    >
+                      Download MP3
+                    </button>
+                  )}
                
+              </div>
+              <div className='relative mr-6 w-full lg:mr-6 md:mr-6 xl:mr-6 xs:mr-0 xs:w-auto'>
+                  <button
+                    onClick={handleDownload}
+                      className="bg-[#008CD2] text-white w-full  font-medium text-[16px] inter_ff py-4 px-4 rounded-3xl"
+                  >
+                  Start Creating
+                  </button>
+                </div>
                 </div>
               </div>
             </div>
           </div>
       
     </>
-  );
-};
-
-export default Dashboard2;
+  )
+}
+export default Mobileview;
