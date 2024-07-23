@@ -1,9 +1,6 @@
-
-
 import React, { useState, useEffect , useMemo} from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 import jsPDF from 'jspdf';
 import { Link } from 'react-router-dom';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
@@ -59,7 +56,7 @@ const Mobileview = () => {
       },
       filebrowser: {
         ajax: {
-          url: '/browse_images' // Replace with your image browse URL
+          url: '/browse_images' 
         },
         uploader: {
           insertImageAsBase64URI: true
@@ -334,9 +331,10 @@ const Mobileview = () => {
                   <div className='flex xs:hidden flex-col w-3/5 px-2 pb-0 mt-2 xs:w-full  border-0 border-gray-300   xs:border-2  xs:border-l-0  xs:border-r-0'>
                   <div className=' xs:pb-5'>
                     <h3 className='text-[25px] xs:text-[18px] flex justify-start mt-[-11px] items-start inter_ff text-[#008CD2] font-bold xs:mt-4'>Converted text Here</h3>
-                    <div className="mt-2">
-                    <JoditEditor
+                    <div className="mt-2 h-96">
 
+                    <JoditEditor
+                    
                      config={editorConfig} 
     value={recognizedText}
     onChange={newContent => setTextContent(newContent)}

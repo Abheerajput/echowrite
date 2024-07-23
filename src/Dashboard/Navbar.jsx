@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import logo from "../assets/svg/logo.svg";
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link,useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import logo from "../assets/svg/logo.svg"
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { Link,useNavigate } from 'react-router-dom'
 
 const Navbar = ({ links }) => {
-  const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+    setMenuOpen(!menuOpen)
+  }
 
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
+    setDropdownOpen(!dropdownOpen)
+  }
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    navigate('/login');
-  };
+    localStorage.removeItem("authToken")
+    navigate('/login')
+  }
   return (
     <div>
       <nav className="bg-[#F1F4F5] top-0 left-0 right-0">
@@ -126,10 +126,10 @@ const Navbar = ({ links }) => {
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
 
 
 // import React, { useState } from 'react';

@@ -1,11 +1,14 @@
 
 
-import React, { useState, useEffect , useMemo} from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import jsPDF from 'jspdf';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import JoditEditor from 'jodit-react';
+import keyword from "../assets/svg/keyword.svg"
+import WaveSurfer from 'wavesurfer.js';
+import soundwave from "../assets/svg/soundwave.svg"
 import mike from "../assets/svg/mikeicon.svg";
 import playicon from "../assets/svg/playicon.svg";
 import pauseicon from "../assets/svg/pauseicon.svg";
@@ -13,6 +16,7 @@ import Navbar from './Navbar';
 import axios from 'axios';
 
 const Dashboard2 = () => {
+  const inputRef = useRef(null);
   const [remainingMinutes, setRemainingMinutes] = useState(1000);
   const [recordingStarted, setRecordingStarted] = useState(false);
   const [timer, setTimer] = useState(0);
@@ -20,14 +24,14 @@ const Dashboard2 = () => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [stream, setStream] = useState(null);
   const [recognizedText, setRecognizedText] = useState('');
-  
   const [isPlaying, setIsPlaying] = useState(false);
   const [showInstruction, setShowInstruction] = useState(true);
   const [textContent, setTextContent] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [selectedFormat, setSelectedFormat] = useState('pdf');
   const [showRecordingControls, setShowRecordingControls] = useState(false);
-
+  const waveformRef = useRef(null);
+  const wavesurfer = useRef(null);
   const {
     transcript,
     listening,
@@ -35,13 +39,16 @@ const Dashboard2 = () => {
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
   const editorConfig = useMemo(() => {
+
     return {
+      height: 400,
       uploader: {
         insertImageAsBase64URI: true,
         url: '/upload_image',
         filesVariableName: function (i) {
           return 'images[' + i + ']';
         },
+
         format: 'json',
         method: 'POST',
         process: function (resp) {
@@ -64,6 +71,13 @@ const Dashboard2 = () => {
     };
   }, []); // empty dependency array
 
+  const handleClick = () => {
+
+    inputRef.current.focus();
+
+  };
+
+
   useEffect(() => {
     if (recordingStarted && remainingMinutes > 0) {
       const timerInterval = setInterval(() => {
@@ -74,6 +88,23 @@ const Dashboard2 = () => {
       return () => clearInterval(timerInterval);
     }
   }, [recordingStarted, remainingMinutes]);
+
+  useEffect(() => {
+    if (waveformRef.current) {
+      wavesurfer.current = WaveSurfer.create({
+        container: waveformRef.current,
+        waveColor: '#ddd',
+        progressColor: '#ff5500',
+        cursorColor: '#ff5500',
+        barWidth: 2,
+        barHeight: 1,
+        responsive: true,
+        height: 100,
+      });
+      return () => wavesurfer.current.destroy();
+    }
+  }, []);
+
 
   useEffect(() => {
     if (listening) {
@@ -190,15 +221,16 @@ const Dashboard2 = () => {
       return text;
     }
   };
+  
   const stripHtmlTags = (html) => {
     const div = document.createElement('div');
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
   };
-   
+
   const handleDownload = () => {
     const plainTextContent = stripHtmlTags(textContent);
-  
+
     if (selectedFormat === 'pdf') {
       const doc = new jsPDF();
       doc.text(plainTextContent, 10, 10);
@@ -218,13 +250,13 @@ const Dashboard2 = () => {
           }
         ]
       });
-  
+
       Packer.toBlob(doc).then(blob => {
         saveAs(blob, 'document.docx');
       });
     }
   };
-  
+
 
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
@@ -241,119 +273,113 @@ const Dashboard2 = () => {
     <>
       <div className="  xs:h-screen h-screen px-2  bg-[#F4F7FA] ">
         <Navbar links={dashboard2Links} />
-
         <div className="bg-white rounded-lg  mt-12 ">
-          {/* <div className='flex justify-between items-center xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
-            <span className='mt-[20px] lg:mt-0 xs:mt-0'>
-              <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000]">Speech to Text</h2>
-              <p className="text-[15px] text-[#808080] font-normal inter_ff mt-[-4px]">Quickly transcribe your audio to text.</p>
-            </span>
-            <div className="mt-6 mb-4">
-              <p className="text-[15px] text-[#808080] font-normal inter_ff0">Available conversion minute(s):</p>
-              <div className="bg-[#EBEEF5] rounded-full h-[5px] overflow-hidden" style={{ height: "5px" }}>
-                <div
-                  className="bg-[#EBEEF5] rounded-full"
-                  style={{ width: `${(remainingMinutes / 10) * 100}%` }}></div>
-              </div>
-              <p className="text-[15px] text-[#808080] font-normal inter_ff mt-1">Remaining: {remainingMinutes} minute(s)</p>
-              <p className="text-[15px] text-[#808080] font-normal inter_ff mt-1">Recording time seconds</p>
-            </div>
-          </div> */}
-
-          <div
-            className="border-0   border-gray-300 rounded-lg w-full flex text-center xs:flex xs:flex-col xs:gap-4 xs:justify-around cursor-pointer"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleFileDrop}
-          >
-             <div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-around'>
+          <div className="border-0   border-gray-300 rounded-lg w-full flex text-center xs:flex xs:flex-col xs:gap-4 xs:justify-around cursor-pointer" onDragOver={(e) => e.preventDefault()} onDrop={handleFileDrop}>
+            <div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-around'>
               <div className='flex lg:py-2 xl:py-2 md:py-8 xs:flex xs:flex-col xs:justify-around'>
                 <div className='flex flex-col items-center w-2/5 xs:hidden bg-[#F4F7FA]  xs:flex-col xs:pb-2 xs:justify-around xs:w-full xs:mb-2'>
-                  <p className='flex justify-center'>
-                    <img className='w-24 h-24' src={mike} alt="Microphone" />
-                  </p>
-                  <p className='font-bold text-2xl'>
-                    00.{timer}mins
-                  </p>
+                  <p className='flex justify-center'> <img className='w-24 h-24' src={mike} alt="Microphone" />  </p>
+                  <p className='font-bold text-2xl'>   00.{timer}mins   </p>
                   {showInstruction && (
                     <p className='text-[18px] inter_ff text-black font-bold text-center'>
                       Start Speaking We’ll Convert <br /> your Voice to Text
                     </p>
                   )}
                   <div className="flex justify-center space-x-8 mt-4 mb-4">
-                      {!showRecordingControls ? (
-                        <button
-                          className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                          onClick={handleStartRecording}
-                        >
-                          Start
+                    {!showRecordingControls ? (
+                      <button
+                        className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                        onClick={handleStartRecording}
+                      >
+                        Start
+                      </button>
+                    ) : (
+                      <div id="handlerecording" className="flex justify-center items-center space-x-8 xs:w-full">
+                        <button onClick={handlePlayClick}>
+                          <img src={isPlaying ? pauseicon : playicon} alt="Play/Pause" className="w-8 h-8" />
                         </button>
-                      ) : (
-                        <div id="handlerecording" className="flex justify-center items-center space-x-8 xs:w-full">
-                          <button onClick={handlePlayClick}>
-                            <img src={isPlaying ? pauseicon : playicon} alt="Play/Pause" className="w-8 h-8" />
-                          </button>
-                          <button
-                            className="px-6 py-3 text-white bg-red-500 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
-                            onClick={handleReset}
-                          >
-                            Stop
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                </div> 
-                  <div className='flex flex-col w-3/5 rounded-3xl  pb-0  xs:w-full shadow-lg  border-0'>
+                        <button
+                          className="px-6 py-3 text-white bg-red-500 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                          onClick={handleReset}
+                        >
+                          Stop
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className='flex flex-col w-3/5 rounded-3xl  pb-0  xs:w-full shadow-lg  border-0'>
                   <div className=' xs:pb-0'>
                     {/* <h3 className='text-[25px] xs:text-[18px] flex justify-start mt-[-11px] items-start inter_ff text-[#008CD2] font-bold xs:mt-4'>Converted text Here</h3> */}
-                    <div className="">
-                    <JoditEditor
-
-                     config={editorConfig} 
-    value={recognizedText}
-    onChange={newContent => setTextContent(newContent)}
-  />
-          </div>
-
-                
-                
-                </div>
-                </div>
-                </div>
-                <div className='bg-[#F4F7FA]'>
-                <p className='font-bold text-2xl mt-14'>
-                    00.{timer}mins
-                  </p>
-                  <div className="flex justify-center space-x-8 mt-4 mb-4">
-                      {!showRecordingControls ? (
-                        <button
-                          className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                          onClick={handleStartRecording}
-                        >
-                          Start
-                        </button>
-                      ) : (
-                        <div id="handlerecording" className="flex justify-center items-center space-x-8 xs:w-full">
-                          <button onClick={handlePlayClick}>
-                            <img src={isPlaying ? pauseicon : playicon} alt="Play/Pause" className="w-13 h-13" />
-                          </button>
-                          <button
-                            className=" py-3 text-white bg-red-500 w-1/3 rounded-full h-12 "
-                            onClick={handleReset}
-                          >
-                            Stop
-                          </button>
-                        </div>
-                      )}
+                    <div className="h-96 border-0 border-r-white">
+                      <JoditEditor
+                        config={editorConfig}
+                        value={recognizedText}
+                        onChange={newContent => setTextContent(newContent)}
+                      />
+                      <div>
+                       
+                        <div ref={waveformRef} />
+                      </div>
                     </div>
-                </div>
-               {/* <button onClick={handleDownload}> Download</button> */}
+
+
+                  </div>
                 </div>
               </div>
+              
+              <div className='bg-[#F4F7FA]'>
+                <p className='pt-10 w-full flex justify-center'>
+                <img src={soundwave} alt="" />
+
+                </p>
+
+                <p className='font-bold text-2xl mt-14'>
+                  00.{timer}mins
+                </p>
+                <div className="flex justify-center space-x-8 mt-4 mb-4">
+                  {!showRecordingControls ? (
+                    <button
+                      className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                      onClick={handleStartRecording}
+                    >
+                      Start
+                    </button>
+                  ) : (
+                    <div id="handlerecording" className="flex justify-center items-center space-x-8 xs:w-full">
+                      <button onClick={handlePlayClick}>
+                        <img src={isPlaying ? pauseicon : playicon} alt="Play/Pause" className="w-13 h-13" />
+                      </button>
+                      <button
+                        className=" py-3 text-white bg-red-500 w-1/3 rounded-full h-12 "
+                        onClick={handleReset}
+                      >
+                        Stop
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <div>
+
+<p className='w-full flex justify-end pb-3'>
+
+  <img src={keyword} alt="" onClick={handleClick} />
+
+</p>
+
+<input ref={inputRef} type="text" />
+
+</div>
+              </div>
+
+              {/* <button onClick={handleDownload}> Download</button> */}
             </div>
           </div>
-      
+        </div>
+      </div>
+
     </>
-  );
-};
+  )
+}
 
 export default Dashboard2;
