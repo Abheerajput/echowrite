@@ -16,7 +16,7 @@ import Navbar from './Navbar';
 import axios from 'axios';
 
 const Dashboard2 = () => {
-  const inputRef = useRef(null);
+  
   const [remainingMinutes, setRemainingMinutes] = useState(1000);
   const [recordingStarted, setRecordingStarted] = useState(false);
   const [timer, setTimer] = useState(0);
@@ -70,12 +70,6 @@ const Dashboard2 = () => {
       }
     };
   }, []); // empty dependency array
-
-  const handleClick = () => {
-
-    inputRef.current.focus();
-
-  };
 
 
   useEffect(() => {
@@ -221,7 +215,6 @@ const Dashboard2 = () => {
       return text;
     }
   };
-  
   const stripHtmlTags = (html) => {
     const div = document.createElement('div');
     div.innerHTML = html;
@@ -359,17 +352,7 @@ const Dashboard2 = () => {
                     </div>
                   )}
                 </div>
-                <div>
-
-<p className='w-full flex justify-end pb-3'>
-
-  <img src={keyword} alt="" onClick={handleClick} />
-
-</p>
-
-<input ref={inputRef} type="text" />
-
-</div>
+       
               </div>
 
               {/* <button onClick={handleDownload}> Download</button> */}
