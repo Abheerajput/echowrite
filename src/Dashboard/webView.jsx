@@ -302,7 +302,6 @@ const Dashboard2 = () => {
                 </div>
                 <div className='flex flex-col w-3/5 rounded-3xl  pb-0  xs:w-full shadow-lg  border-0'>
                   <div className=' xs:pb-0 border-0'>
-                    {/* <h3 className='text-[25px] xs:text-[18px] flex justify-start mt-[-11px] items-start inter_ff text-[#008CD2] font-bold xs:mt-4'>Converted text Here</h3> */}
                     <div className="h-96 border-0 border-r-white">
                       <JoditEditor
                         config={editorConfig}
@@ -353,11 +352,19 @@ const Dashboard2 = () => {
                 </div>
 
        <p className='w-100 bg-[#F4F7FA] mb-4 '>
-       <button className='bg-[#008CD2] text-white w-2/3 py-3 rounded-3xl ' onClick={handleDownload}> Download</button>
+       {audioBlob && (
+  <button
+    onClick={handleConvert}
+    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mt-4 xs:mb-4"
+  >
+    Download 
+  </button>
+)}
        </p>
              
               </div>
-
+             
+             
             </div>
           </div>
           </div>
