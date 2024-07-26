@@ -220,8 +220,8 @@ const Dashboard2 = () => {
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
   };
-
   const handleDownload = () => {
+
     const plainTextContent = stripHtmlTags(textContent);
 
     if (selectedFormat === 'pdf') {
@@ -251,11 +251,6 @@ const Dashboard2 = () => {
   };
 
 
-  const dashboard2Links = [
-    { name: 'FAQ', path: '#' },
-    { name: 'Next', path: '#' },
-    { name: 'Support', path: '#' },
-  ];
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -264,9 +259,13 @@ const Dashboard2 = () => {
 
   return (
     <>
+  
       <div className="  xs:h-screen h-screen px-2  bg-[#F4F7FA] ">
-        <Navbar links={dashboard2Links} />
-        <div className="bg-white rounded-lg  mt-12 ">
+    
+        <div className="  ">
+          <div className="bg-[#F4F7FA] border-0 rounded-lg pt-10 ">
+
+          
           <div className="border-0   border-gray-300 rounded-lg w-full flex text-center xs:flex xs:flex-col xs:gap-4 xs:justify-around cursor-pointer" onDragOver={(e) => e.preventDefault()} onDrop={handleFileDrop}>
             <div className='flex flex-col w-full xs:flex xs:flex-col xs:justify-around'>
               <div className='flex lg:py-2 xl:py-2 md:py-8 xs:flex xs:flex-col xs:justify-around'>
@@ -302,7 +301,7 @@ const Dashboard2 = () => {
                   </div>
                 </div>
                 <div className='flex flex-col w-3/5 rounded-3xl  pb-0  xs:w-full shadow-lg  border-0'>
-                  <div className=' xs:pb-0'>
+                  <div className=' xs:pb-0 border-0'>
                     {/* <h3 className='text-[25px] xs:text-[18px] flex justify-start mt-[-11px] items-start inter_ff text-[#008CD2] font-bold xs:mt-4'>Converted text Here</h3> */}
                     <div className="h-96 border-0 border-r-white">
                       <JoditEditor
@@ -352,14 +351,20 @@ const Dashboard2 = () => {
                     </div>
                   )}
                 </div>
-       
+
+       <p className='w-100 bg-[#F4F7FA] mb-4 '>
+       <button className='bg-[#008CD2] text-white w-2/3 py-3 rounded-3xl ' onClick={handleDownload}> Download</button>
+       </p>
+             
               </div>
 
-              {/* <button onClick={handleDownload}> Download</button> */}
             </div>
           </div>
+          </div>
+
         </div>
       </div>
+      
 
     </>
   )

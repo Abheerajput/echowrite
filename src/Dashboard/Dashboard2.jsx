@@ -14,6 +14,7 @@ import playicon from "../assets/svg/playicon.svg";
 import pauseicon from "../assets/svg/pauseicon.svg";
 import Navbar from './Navbar';
 import axios from 'axios';
+import SpeechToTextEditor from './Commonarea';
 
 const Dashboard2 = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(1000);
@@ -382,6 +383,7 @@ const Dashboard2 = () => {
                 </div>
               </div>
             </div>
+          
           </div>
       
     </>
