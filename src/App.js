@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import Login from './components/Login';
@@ -32,6 +33,9 @@ const AppContent = () => {
  const token = localStorage.getItem('authToken');
     return (
         <div>
+<Helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</Helmet>
             { pathname !== '/login' && pathname !== '/signup' && pathname !== '/webview' && pathname !== '/mobileview' && !isDashboardRoute &&  <Navbar />}
           
             <Routes >
