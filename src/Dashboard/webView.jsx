@@ -259,8 +259,10 @@ const Dashboard2 = () => {
 
   return (
     <>
+   
+
   
-      <div className="  xs:h-screen h-screen px-2  bg-[#F4F7FA] ">
+      <div className="  xs:h-screen h-screen px-2  bg-[#F4F7FA] " style={{zoom: 1,MozTransform: 'scale(1)',WebkitTransform: 'scale(1)',OTransform: 'scale(1)',transform: 'scale(1)'}}>
     
         <div className="  ">
           <div className="bg-[#F4F7FA] border-0 rounded-lg pt-10 ">
@@ -371,7 +373,7 @@ const Dashboard2 = () => {
 
         </div>
       </div>
-      
+       
 
     </>
   )
