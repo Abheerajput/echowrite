@@ -47,7 +47,7 @@ const Dashboard = () => {
 
     try {
       console.log("Base" +BASE_URL)
-      const response = await axios.post(`${BASE_URL}/user/upload`, formData, {
+      const response = await axios.post(`${BASE_URL}/api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',  
         },

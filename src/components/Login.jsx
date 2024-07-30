@@ -48,8 +48,8 @@ const Login = () => {
     e.preventDefault();
 
     try {console.log("true")
-      // const response = await (`${BASE_URL}/user/login`, {
-        const response = await axios.post(`${BASE_URL}/user/login`, {
+     
+        const response = await axios.post(`${BASE_URL}/api/login`, {
           email: user.email,
           password: user.password,
         });
@@ -76,7 +76,7 @@ console.log(response)
     console.log(credentialResponse);
   
     try {
-      const response = await axios.post(`${BASE_URL}/user/googlesignin`, {
+      const response = await axios.post(`${BASE_URL}/api/googlesignin`, {
         email: user.email,
         password: user.password,
         credential: credentialResponse.credential,

@@ -37,8 +37,8 @@ const Signup = () => {
     const { confirmPassword, ...userData } = user; // Exclude confirmPassword from userData
 
     try {
-      console.log('Submitting to URL: 2', `${BASE_URL}/user/signin`);
-      const response = await axios.post(`${BASE_URL}/user/signin`, user);
+      console.log('Submitting to URL: 2', `${BASE_URL}/api/signin`);
+      const response = await axios.post(`${BASE_URL}/api/signin`, user);
       console.log(response)
       if (response.data?.status === "success") {
         toast.success(response?.data?.msg || 'Account created successfully!');
@@ -64,7 +64,7 @@ const Signup = () => {
     console.log(credentialResponse);
 
     try {
-      const response = await axios.post(`${BASE_URL}/user/googlesignin`, {
+      const response = await axios.post(`${BASE_URL}/api/googlesignin`, {
         credential: credentialResponse.credential,
       });
 
