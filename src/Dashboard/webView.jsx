@@ -11,6 +11,7 @@ import playicon from "../assets/svg/playicon.svg";
 import pauseicon from "../assets/svg/pauseicon.svg";
 import html2canvas from 'html2canvas';
 import axios from 'axios';
+import {BASE_URL} from "../config.js"
 
 const Dashboard2 = () => {
   const [file, setFile] = useState(null);
@@ -82,7 +83,7 @@ const Dashboard2 = () => {
 
     try {
       // const response = await axios.post(`${BASE_URL}/upload`, formData, {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post(`${BASE_URL}/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -297,7 +298,7 @@ const Dashboard2 = () => {
 
       
   try {
-    const response = await axios.post('http://localhost:5000/upload', formData, {
+    const response = await axios.post(`${BASE_URL}/upload`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
 
