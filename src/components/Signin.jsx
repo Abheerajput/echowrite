@@ -12,6 +12,11 @@ import icon3 from '../assets/svg/signinicon3.svg';
 import icon4 from '../assets/svg/signinicon4.svg';
 import signincircle from '../assets/images/signincircle.png';
 import { BASE_URL } from "../config.js";
+const Spinner = () => {
+  return (
+    <div className="border-t-4 border-blue-500 border-solid rounded-full w-6 h-6 animate-spin"></div>
+  );
+};
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -24,6 +29,7 @@ const Signup = () => {
     confirmPassword: '',
   });
 
+  
   const handleChange = (e) => {
     const { id, value } = e.target;
     setUser({ ...user, [id]: value });
@@ -37,17 +43,17 @@ const Signup = () => {
       return;
     }
 
-    const { confirmPassword, ...userData } = user; // Exclude confirmPassword from userData
+    const { confirmPassword, ...userData } = user;
 
-    setLoading(true); // Set loading to true when submitting
+    setLoading(true);
 
     try {
-      console.log('Submitting to URL: 2', `${BASE_URL}/api/signin`);
-      const response = await axios.post(`${BASE_URL}/api/signin`, user);
-      console.log(response);
+      const response = await axios.post(`${BASE_URL}/api/signin`, userData);
+      console.log('API Response:', response.data);
       if (response.data?.status === "success") {
         toast.success('Sign-in successful!');
         toast.success(response?.data?.msg || 'Account created successfully!');
+
         setUser({
           name: '',
           email: '',
@@ -57,19 +63,17 @@ const Signup = () => {
         localStorage.setItem('authToken', response.data.token);
         navigate('/home');
       } else {
-        console.error('Error:', response.data);
         toast.error(response?.data?.msg || 'Failed to create account. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error);
       toast.error('Failed to create account. Please try again.');
     } finally {
-      setLoading(false); // Set loading to false when done
+      setLoading(false);
     }
   };
 
   const handleSuccess = async (credentialResponse) => {
-    setLoadingGoogle(true); // Set loadingGoogle to true when Google sign-in starts
+    setLoadingGoogle(true);
 
     try {
       const response = await axios.post(`${BASE_URL}/api/googlesignin`, {
@@ -77,28 +81,23 @@ const Signup = () => {
       });
 
       if (response.status === 200) {
-        const data = response.data;
-        console.log('Sign-in successful:', data);
         toast.success('Sign-in successful!');
         localStorage.setItem('authToken', response.data.token);
         setTimeout(() => {
           navigate('/home');
         }, 3000);
       } else {
-        console.error('Sign-in failed:', response.data.error);
         toast.error('Sign-in failed. Please try again.');
       }
     } catch (error) {
-      console.error('Sign-in error:', error);
       toast.error('Sign-in failed. Please try again.');
     } finally {
-      setLoadingGoogle(false); // Set loadingGoogle to false when done
+      setLoadingGoogle(false);
     }
   };
 
   return (
     <div className="flex min-h-screen overflow-hidden relative z-[234]">
-      {/* Left section */}
       <div className="flex-1 hidden lg:flex flex-col justify-between bg-cover bg-center"
         style={{
           backgroundImage: `url(${signinimg})`,
@@ -127,7 +126,6 @@ const Signup = () => {
         </div>
       </div>
 
-      {/* Right section */}
       <div className="flex-1 flex flex-col items-center xs:items-center xs:justify-start justify-center bg-white p-8">
         <p className='mt-4 mb-4 font-light inter_ff text-[11px]'>Don’t have an account? <span className='text-[#008CD2] font-medium text-[11px] inetr_ff' style={{ borderBottom: "1px solid #008CD2" }}><Link to="/login">Sign in! </Link> </span></p>
         <div className="w-full max-w-md relative p-8 rounded-lg">
@@ -143,7 +141,7 @@ const Signup = () => {
                 value={user.name}
                 onChange={handleChange}
                 required
-                disabled={loading} // Disable inputs when loading
+                disabled={loading}
               />
             </div>
             <div className="mb-4">
@@ -155,7 +153,7 @@ const Signup = () => {
                 value={user.email}
                 onChange={handleChange}
                 required
-                disabled={loading} // Disable inputs when loading
+                disabled={loading}
               />
             </div>
             <div className="mb-4">
@@ -167,7 +165,7 @@ const Signup = () => {
                 value={user.password}
                 onChange={handleChange}
                 required
-                disabled={loading} // Disable inputs when loading
+                disabled={loading}
               />
             </div>
             <div className="mb-4">
@@ -179,16 +177,16 @@ const Signup = () => {
                 value={user.confirmPassword}
                 onChange={handleChange}
                 required
-                disabled={loading} // Disable inputs when loading
+                disabled={loading}
               />
             </div>
             <div className="flex items-center justify-between mb-4">
               <button
                 className={`bg-[#008CD2] text-white font-normal py-2 px-4 text-[15px] inter_ff rounded-full w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 type="submit"
-                disabled={loading} // Disable button when loading
+                disabled={loading}
               >
-                {loading ? 'Loading...' : 'Create Account'}
+                {loading ?   <Spinner/> : 'Create Account'}
               </button>
             </div>
             <div className="text-center mb-4">
@@ -196,28 +194,22 @@ const Signup = () => {
             </div>
             <div className="flex justify-center">
               {loadingGoogle ? (
-                  <p>Loading...</p>
-                ):(
-                  <GoogleLogin
+                <div className="spinner"></div>
+              ) : (
+                <GoogleLogin
                   className={`rounded-full ${loadingGoogle ? 'opacity-50 cursor-not-allowed' : ''}`}
                   onSuccess={handleSuccess}
                   onError={() => {
                     console.log('Login Failed');
                   }}
-                  disabled={loadingGoogle} 
-                /> 
-                )
-              }
-             
-             
+                  useOneTap
+                />
+              )}
             </div>
           </form>
-          <p className="text-start text-[#5A5A5A] text-[12px] font-light inter_ff lg:text-nowrap mt-4">
-            By continuing you indicate that you read and agreed to the <Link className="text-[#008CD2] text-[12px] font-light inter_ff" style={{ borderBottom: "1px solid #008CD2" }}>Terms of Use</Link>
-          </p>
         </div>
+        <ToastContainer position="top-center" autoClose={3000} />
       </div>
-      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 };

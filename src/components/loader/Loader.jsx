@@ -2,12 +2,12 @@
 import React from 'react';
 import "./loader.css"; 
 
-const Loader = () => {
+const Spinner = () => {
   return (
-    <div className="loader-overlay">
-      <div className="loader"></div>
+    <div >
+     <div className="spinner border-t-4 border-blue-500 border-solid rounded-full w-6 h-6 animate-spin"></div>
     </div>
   );
 };
 
-export default Loader;
+export default Spinner

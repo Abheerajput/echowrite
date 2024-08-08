@@ -11,6 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from "../config";
 
+
 const ToggleSwitch = ({ isOn, handleToggle }) => {
   return (
     <div
@@ -21,6 +22,12 @@ const ToggleSwitch = ({ isOn, handleToggle }) => {
         className={`bg-white xs:w-3 xs:h-3 w-5 h-5 rounded-full shadow-md transform duration-300 ease-in-out ${isOn ? "translate-x-6" : ""}`}
       ></div>
     </div>
+  );
+};
+
+const Spinner = () => {
+  return (
+    <div className="spinner  border-t-4 border-black border-solid rounded-full w-6 h-6 animate-spin"></div>
   );
 };
 
@@ -160,11 +167,11 @@ const Login = () => {
               <Link to="#" className="text-[11px] text-[#D93F21] inter_ff text-nowrap">Recover Password</Link>
             </div>
             <button
-              className="bg-[#008CD2] text-[15px] font-normal inter_ff text-white py-2 px-4 rounded-3xl w-full"
+              className="bg-[#008CD2] text-[15px] font-normal flex justify-center inter_ff text-white py-2 px-4 rounded-3xl w-full"
               type="submit"
               disabled={loading} 
             >
-              {loading ? 'Loading...' : 'Login'}
+              {loading ? <Spinner /> : 'Login'}
             </button>
             <div className="text-center my-4">
               <p><img className='h-[34px]' src={loginicon} alt="" /></p>
@@ -172,7 +179,7 @@ const Login = () => {
             <div className='flex justify-center xs:w-full items-center'>
               <div className="flex justify-center">
                 {loadingGoogle ? (
-                  <p>Loading...</p>
+                  <Spinner />
                 ) : (
                   <GoogleLogin
                     className="rounded-3xl"
@@ -197,7 +204,6 @@ const Login = () => {
 };
 
 export default Login;
-
 
 
 // import React, { useState } from 'react';
