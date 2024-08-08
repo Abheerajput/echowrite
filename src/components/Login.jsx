@@ -59,12 +59,15 @@ const Login = () => {
         email: user.email,
         password: user.password,
       });
+      console.log("response",response);
+      
 
       if (response.data?.status === "success") {
         toast.success(response?.data?.msg || 'Login successfully!');
         localStorage.setItem('authToken', response.data.token);
         navigate('/home');
       } else {
+        toast.error('Login failed. Please try again.');
         toast.error(response?.data?.msg || 'Login failed');
       }
     } catch (error) {
@@ -92,6 +95,7 @@ const Login = () => {
           navigate('/home');
         }, 3000);
       } else {
+
         console.error('Sign-in failed:', response.data.error);
       }
     } catch (error) {

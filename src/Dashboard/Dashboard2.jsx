@@ -25,10 +25,11 @@ const Dashboard2 = () => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [stream, setStream] = useState(null);
   const [recognizedText, setRecognizedText] = useState('');
-
+  const [textContent, setTextContent] = useState('');
+  const [isTextEditorEmpty, setIsTextEditorEmpty] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showInstruction, setShowInstruction] = useState(true);
-  const [textContent, setTextContent] = useState('');
+  // const [textContent, setTextContent] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [selectedFormat, setSelectedFormat] = useState('pdf');
   const [showRecordingControls, setShowRecordingControls] = useState(false);
@@ -68,6 +69,17 @@ const Dashboard2 = () => {
       }
     };
   }, []); // empty dependency array
+
+
+  useEffect(() => {
+    if (textContent.trim() !== '') {
+      setIsTextEditorEmpty(false);
+    } else {
+      setIsTextEditorEmpty(true);
+    }
+  }, [textContent]);
+
+
 
   useEffect(() => {
     if (recordingStarted && remainingMinutes > 0) {
@@ -201,8 +213,8 @@ const Dashboard2 = () => {
     return div.textContent || div.innerText || '';
   };
 
- 
- 
+
+
   const handleDownload = () => {
     const plainTextContent = stripHtmlTags(textContent);
     const htmlContent = document.querySelector('.jodit-wysiwyg'); // Use querySelector to select the editor content
@@ -251,7 +263,7 @@ const Dashboard2 = () => {
       });
     }
   };
-  
+
 
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
@@ -397,7 +409,8 @@ const Dashboard2 = () => {
                 <div className='relative mr-6 lg:mr-6 md:mr-6 xl:mr-6 xs:mr-0 xs:w-auto'>
                   <button
                     onClick={handleDownload}
-                    className="bg-[#E4E4E4] text-[#808080] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl"
+                    className={`bg-[${isTextEditorEmpty ? 'bg-gray-500 ' : 'bg-blue-500 '}] text-[${isTextEditorEmpty ? 'text-gray-500 ' : 'text-blue-500'}] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl ${isTextEditorEmpty ? 'cursor-not-allowed' : ''}`}
+                    disabled={isTextEditorEmpty}
                   >
                     Download Document
                   </button>
