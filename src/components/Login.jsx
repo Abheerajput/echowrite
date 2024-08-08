@@ -59,22 +59,23 @@ const Login = () => {
         email: user.email,
         password: user.password,
       });
-      console.log("response",response);
-      
-
+      console.log("response", response);
+    
       if (response.data?.status === "success") {
         toast.success(response?.data?.msg || 'Login successfully!');
         localStorage.setItem('authToken', response.data.token);
         navigate('/home');
       } else {
-        toast.error('Login failed. Please try again.');
-        toast.error(response?.data?.msg || 'Login failed');
+        // Combine both toasts into one
+        toast.error(response?.data?.msg || 'Login failed. Please try again.');
       }
     } catch (error) {
       console.error('Error during login:', error);
+      toast.error('Login failed. Please try again.');
     } finally {
       setLoading(false);
     }
+    
   };
 
   const handleSuccess = async (credentialResponse) => {
