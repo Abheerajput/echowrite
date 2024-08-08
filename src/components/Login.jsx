@@ -67,11 +67,11 @@ const Login = () => {
         navigate('/home');
       } else {
         // Combine both toasts into one
-        toast.error(response?.data?.msg || 'Login failed. Please try again.');
+        toast.error(response?.data?.msg || 'Invalid credentials');
       }
     } catch (error) {
       console.error('Error during login:', error);
-      toast.error('Login failed. Please try again.');
+      toast.error('Invalid credentials');
     } finally {
       setLoading(false);
     }
