@@ -172,9 +172,9 @@ const Dashboard2 = () => {
     setRecordingStarted(false);
     setShowInstruction(true); // Show instruction text
     setTimer(0);
-    setAudioBlob(null);
-    setRecognizedText('');
-    resetTranscript();
+    // setAudioBlob(null);
+    // setRecognizedText('');
+    // resetTranscript();
     setShowRecordingControls(false); // Hide recording controls
 
     if (mediaRecorder) {
