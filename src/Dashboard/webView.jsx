@@ -70,14 +70,14 @@ const Dashboard2 = () => {
       },
       filebrowser: {
         ajax: {
-          url: "/browse_images", // Replace with your image browse URL
+          url: "/browse_images", 
         },
         uploader: {
           insertImageAsBase64URI: true,
         },
       },
     };
-  }, []); // empty dependency array
+  }, []); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +85,7 @@ const Dashboard2 = () => {
     formData.append("file", file);
 
     try {
-      // const response = await axios.post(`${BASE_URL}/upload`, formData, {
+    
       const response = await axios.post(`${BASE_URL}/api/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
