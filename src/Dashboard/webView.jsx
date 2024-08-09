@@ -456,14 +456,14 @@ const Dashboard2 = () => {
                       {/* Add more formats as needed */}
                     </select>
                   </div>
-                  <div className="flex justify-between px-5 mt-9 md:hidden lg:hidden">
+                  <div className="flex justify-center px-5 mt-9 md:hidden lg:hidden">
                     {/* <button
                       onClick={handleUploadDocument}
                       className="bg-blue-500 text-white px-4 py-2 rounded-xl mt-4"
                     >
                       Upload Document
                     </button> */}
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <div className="d-flex justify-center ">
                         <img
                           className="mx-auto"
@@ -476,7 +476,7 @@ const Dashboard2 = () => {
                       <p className=" font-sans mt-2 text-base font-semibold ">
                         Upload Document
                       </p>
-                    </div>
+                    </div> */}
 
                     <div className="text-center">
                       <div className="d-flex justify-center ">
