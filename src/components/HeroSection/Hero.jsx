@@ -33,20 +33,22 @@ const Hero = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}>
-        <div className=" grid grid-cols-1 md:grid-cols-6 gap-4 pb-[26%] mb-[-26%]">
-          <div className="md:col-start-2 md:col-span-4 text-center ">
-            <p className="font-bold text-center  xs:text-[35px] text-[50px] text-[#04324D] inter_ff  pt-10 md:pt-20 ">
+        <div className=" flex flex-col gap-4 px-6 pb-[26%] mb-[-26%]">
+          <div className=" text-center ">
+            <p className="font-bold text-center  xs:text-[35px] text-[50px] text-[#04324D] inter_ff  lg:pt-10 pt-20 ">
               Revolutionary Voice-to-Text Technology
             </p>
           </div>
-          <div className="md:col-start-2 md:col-span-4">
-            <p className="text-[17px]  font-normal inter_ff text-[#545454] px-4 md:px-0 text-center mt-4 md:mt-6">
-              Experience seamless voice-to-text conversion with our cutting-edge AI. Whether you're dictating notes, writing articles, or capturing ideas, our tool guarantees fast, reliable, and accurate transcriptions.
+          <div className="">
+            <p className="text-[17px]  font-normal inter_ff text-[#545454] px-4 lgpx-0 text-center lg:mt-4 mt-6">
+              Experience seamless voice-to-text conversion with our cutting-edge AI. Whether you're dictating <br /> notes, writing articles, or capturing ideas, our tool guarantees fast, reliable, <br /> 
+               and accurate transcriptions.
             </p>
           </div>
-          <div className="md:col-start-2 flex mb-4 justify-center md:justify-center md:col-span-4 pt-5">
+          <div className=" flex mb-4 justify-center :col-span-4 pt-5">
             {
               token && token !== undefined && token !== null ?
+
                 <Link to="/dashboard3">  
                 <button  className="bg-[#008CD2] text-white font-medium inter_ff text-[17px] py-2 px-6 rounded-3xl">
                   Get Started For Free
@@ -60,12 +62,12 @@ const Hero = () => {
         </div>
 
       </div>
-      <div className=" flex justify-center md:col-start-2 md:col-span-4 relative">
+      <div className=" flex justify-center col-start-2 col-span-4 relative">
         <img src={mainImg} alt="Main" />
       </div>
       {isFormOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg w-full md:w-1/3">
+          <div className="bg-white p-8 rounded-lg shadow-lg  xs:w-full w-1/3">
 
             <h2 className="text-2xl font-bold mb-4">Get Started</h2>
             <form onSubmit={handleSubmit}>
@@ -202,7 +204,7 @@ export default Hero;
 
 //       {isFormOpen && (
 //         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-//           <div className="bg-white p-8 rounded-lg shadow-lg w-full md:w-1/3">
+//           <div className="bg-white p-8 rounded-lg shadow-lg w-full w-1/3">
 //             <h2 className="text-2xl font-bold mb-4">Get Started</h2>
 //             <form onSubmit={handleSubmit}>
 //               <div className="mb-4">

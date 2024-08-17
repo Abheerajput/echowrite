@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -480,6 +481,7 @@ const Dashboard2 = () => {
 
                     <div className="text-center">
                       <div className="d-flex justify-center ">
+                        
                         <img
                           className="mx-auto"
                           onClick={handleDownload}
@@ -823,7 +825,7 @@ export default Dashboard2;
 //   };
 
 //   if (!browserSupportsSpeechRecognition) {
-//     return <span>Browser doesn't support speech recognition.</span>;
+//     return <span>Browser doesn't support speech recognition.</span>
 //   }
 
 //   return (
