@@ -44,7 +44,7 @@ const Navbar = () => {
             <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/user" className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</Link>
             {/* <Link className="text-[15px] text-[#161C2D] font-medium inter_ff"><a href="#faq">FAQs</a></Link> */}
-            <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
+            <Link to="/faq" className="text-[15px] text-[#161C2D] font-medium inter_ff">Faq</Link>
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
             {/* <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link> */}
           </div>
@@ -72,7 +72,9 @@ const Navbar = () => {
           <div className="flex flex-col items-center gap-4 p-4 md:hidden">
             <Link to="/user" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/dashboard" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
-            <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
+            <Link to="/faq" className="text-[15px] text-[#161C2D] font-medium inter_ff">Faq</Link>
+
+          
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
             {
             token && token !== undefined && token !== null ?  

@@ -1,11 +1,17 @@
 import React from 'react';
 import logo from "../../assets/svg/logo.svg";
 import icon from "../../assets/svg/jicon.svg";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <nav className='flex pt-4 justify-between h-15 px-4 sm:px-8 lg:px-12 items-center'>
-      <p><img src={logo} alt="Logo" /></p>
+      <p> 
+        <Link to="/">
+        <img src={logo} alt="Logo" />
+        </Link>
+
+        </p>
       <ul className='flex gap-4 sm:gap-8 items-center'>
         <li className='text-[14px] sm:text-[16px] inter_ff font-normal'>FAQ</li>
         <li className='text-[14px] sm:text-[16px] inter_ff font-normal'>Support</li>
