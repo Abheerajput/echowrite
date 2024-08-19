@@ -63,7 +63,7 @@ const Faq = () => {
 
       <div className='w-full lg:mt-16 xl:mt-20 mt-8 sm:mt-12 flex-grow  '>
       
-      <div className="mx-4 sm:mx-8 lg:mx-16 px-12  xl:mx-20 shadow-md xs:mx-20 md:mx-12 p-4  sm:p-8 lg:p-10 pb-12 py-4 rounded-xl pt-12 bg-white">
+      <div className="mx-4 sm:mx-2 lg:mx-16 px-12  xl:mx-20 shadow-md  md:mx-12 p-4  sm:p-8 lg:p-10 pb-12 py-4 rounded-xl pt-12 bg-white">
       <h2 className="text-[19px] inter_ff  font-bold mb-4">Frequently Asked Questions</h2>
       <div className=" pt-4">
         {faqs.map((faq, index) => (
