@@ -6,17 +6,20 @@ const Section = () => {
   return (
     <div className="bg-[#F4F7FA] pb-8 xs:pb-0 lg:pb-0">
       <div className=" py-8 xs:pt-2 lg:py-12 container max-w-[1400px] w-full mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="flex flex-col  justify-center py-8 xs:py-2  xs:gap-2 xs:pl-6  lg:pl-8 xl:pl-12">
-            <h1 className=' text-[40px]  inter_ff xs:text-[30px] font-bold mb-4  text-[#161C2D] '>
+        <div className=" gap-8 flex xs:flex-col sm:flex-col md:flex-col">
+          <div className="flex flex-col xs:text-center sm:text-center md:text-center  justify-center py-8 xs:py-2  px-7 xs:gap-2 xs:pl-6  lg:pl-8 xl:pl-12">
+            <h1 className=' text-[40px]  inter_ff xs:text-[30px]  xs:text-center sm:text-center text-start font-bold mb-4  text-[#161C2D] '>
               Innovating Speech-to-Text Solutions
             </h1>
-            <p className='section-text-color text-lg font-normal mb-6'>
+            <p className='section-text-color text-lg lg:text-start xl:text-start font-normal mb-6'>
               Dedicated to revolutionizing speech-to-text technology, our AI ensures accurate, efficient, and seamless transcriptions for users worldwide.
             </p>
-            <button className='text-white inter_ff text-nowrap lg:w-2/3 xs:w-2/3 text-[17px] w-1/2 font-semibold bg-[#008CD2]  py-2 lg:py-3 rounded-full'>
+            <div className='lg:text-start xl:text-start'>
+            <button className='text-white inter_ff  text-nowrap lg:w-2/3 xs:w-2/3 text-[17px] w-1/2 font-semibold bg-[#008CD2]  py-2 lg:py-3 rounded-full'>
               Learn how we work
             </button>
+            </div>
+           
           </div>
 
           <div className="flex justify-center py-8 md:px-4 xs:px-4 xs:py-0 lg:py-0">
@@ -43,6 +46,7 @@ const Section = () => {
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </div>

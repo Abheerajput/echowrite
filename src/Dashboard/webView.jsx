@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -70,14 +71,14 @@ const Dashboard2 = () => {
       },
       filebrowser: {
         ajax: {
-          url: "/browse_images", // Replace with your image browse URL
+          url: "/browse_images", 
         },
         uploader: {
           insertImageAsBase64URI: true,
         },
       },
     };
-  }, []); // empty dependency array
+  }, []); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +86,7 @@ const Dashboard2 = () => {
     formData.append("file", file);
 
     try {
-      // const response = await axios.post(`${BASE_URL}/upload`, formData, {
+    
       const response = await axios.post(`${BASE_URL}/api/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -456,14 +457,14 @@ const Dashboard2 = () => {
                       {/* Add more formats as needed */}
                     </select>
                   </div>
-                  <div className="flex justify-between px-5 mt-9 md:hidden lg:hidden">
+                  <div className="flex justify-center px-5 mt-9 md:hidden lg:hidden">
                     {/* <button
                       onClick={handleUploadDocument}
                       className="bg-blue-500 text-white px-4 py-2 rounded-xl mt-4"
                     >
                       Upload Document
                     </button> */}
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <div className="d-flex justify-center ">
                         <img
                           className="mx-auto"
@@ -476,10 +477,11 @@ const Dashboard2 = () => {
                       <p className=" font-sans mt-2 text-base font-semibold ">
                         Upload Document
                       </p>
-                    </div>
+                    </div> */}
 
                     <div className="text-center">
                       <div className="d-flex justify-center ">
+                        
                         <img
                           className="mx-auto"
                           onClick={handleDownload}
@@ -823,7 +825,7 @@ export default Dashboard2;
 //   };
 
 //   if (!browserSupportsSpeechRecognition) {
-//     return <span>Browser doesn't support speech recognition.</span>;
+//     return <span>Browser doesn't support speech recognition.</span>
 //   }
 
 //   return (

@@ -25,7 +25,7 @@ const Ready = () => {
   };
 
   return (
-    <div className=" bg-[#04324D] p-8 xl:p-4 lg:p-4  lg:p-16">
+    <div className=" bg-[#04324D] p-8 xl:p-4   lg:p-16">
       <div className="container max-w-[1400px] w-full mx-auto lg:ps-12 px-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <div className="  md:py-8  xs:py-2 lg:py-[10%]">

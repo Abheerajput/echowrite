@@ -271,9 +271,9 @@ const Pricing = () => {
 <div className=' '>
 
 
-      <div className=" grid grid-rows-1 gap-12  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  items-center">
+      <div className=" flex sm:flex-col  xs:flex-col gap-12   items-center">
         {pricingPlans.map((plan, index) => (
-          <div key={index} className="bg-white h-full rounded-lg md:px-10  px-3 py-7 text-center w-full ">
+          <div key={index} className="bg-white h-full rounded-lg md:px-10  px-3 py-7 text-center sm:w-2/3 md:w-2/3  w-full ">
             <div className="mb-6">
               <p className={`${plan.textColor} ${plan.titleBgColor}  font-bold  px-10 py-2 mt-4 rounded-full inline-block`}>{plan.title}</p>
             </div>

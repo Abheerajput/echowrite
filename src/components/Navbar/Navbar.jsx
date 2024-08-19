@@ -35,12 +35,12 @@ const Navbar = () => {
       <div className="container max-w-[1400px] w-full mx-auto px-3">
         <div className="flex py-3 justify-between items-center w-full">
           <img src={logo} alt="Logo" />
-          <div className="md:hidden">
+          <div className="hidden  xs:flex sm:flex ">
             <button onClick={toggleMenu} className="text-2xl focus:outline-none">
               {isMenuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
-          <div className="hidden md:flex items-center gap-5">
+          <div className="xs:hidden sm:hidden flex items-center gap-5">
             <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/aboutus" className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</Link>
             {/* <Link className="text-[15px] text-[#161C2D] font-medium inter_ff"><a href="#faq">FAQs</a></Link> */}
@@ -48,7 +48,7 @@ const Navbar = () => {
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
             {/* <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link> */}
           </div>
-          <div className="hidden md:flex gap-4 items-center">
+          <div className="xs:hidden  sm:hidden flex gap-4 items-center">
             <p>
 {
             token && token !== undefined && token !== null ?  
