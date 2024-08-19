@@ -8,7 +8,7 @@ import Footer from '../Layout/Footer';
 import icon from "../../assets/svg/profileheadicon.svg"
 import user from "../../assets/svg/userprofileicon.svg"
 import share from "../../assets/svg/shareicon.svg"
-const Dashboard = () => {
+const UserDashboard = () => {
   return (
     <>
    
@@ -52,4 +52,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default UserDashboard;

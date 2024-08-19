@@ -73,7 +73,15 @@ const AppContent = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/webview" element={<Dashboard4 />} />
                 <Route path="/mobileview" element={<Mobileview />} />
-              
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/faq" element={<Faq />} />
+                <Route path="/consultancy" element={<Consultancy />} />
+                <Route path="/user" element={< UserDashboard />}>
+
+<Route path="profile" element={<ProfileEdit />} />
+<Route path="noti" element={<NotificationsContent />} />
+<Route path="plan" element={<ChoosePlanContent />} />
+</Route>
 
                 <Route path="/" element={<Homepage/>} />
                 <Route path="*" element={<Navigate to="/home" />} /></>
