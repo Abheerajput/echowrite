@@ -42,7 +42,7 @@ const Navbar = () => {
           </div>
           <div className="xs:hidden sm:hidden flex items-center gap-5">
             <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
-            <Link to="/aboutus" className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</Link>
+            <Link to="/user" className="text-[15px] text-[#161C2D] font-medium inter_ff">About Us</Link>
             {/* <Link className="text-[15px] text-[#161C2D] font-medium inter_ff"><a href="#faq">FAQs</a></Link> */}
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
@@ -70,7 +70,7 @@ const Navbar = () => {
 
         {isMenuOpen && (
           <div className="flex flex-col items-center gap-4 p-4 md:hidden">
-            <Link to="/features" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
+            <Link to="/user" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/dashboard" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#faq">FAQs</a>
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
