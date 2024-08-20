@@ -53,7 +53,10 @@ const Signup = () => {
       if (response.data?.status === "success") {
         toast.success('Sign-in successful!');
         toast.success(response?.data?.msg || 'Account created successfully!');
-
+ // Store the user data in localStorage
+ localStorage.setItem('userName', userData.name);
+ localStorage.setItem('email', userData.email);
+ localStorage.setItem('authToken', response.data.token);
         setUser({
           name: '',
           email: '',

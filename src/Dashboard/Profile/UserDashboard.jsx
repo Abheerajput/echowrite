@@ -10,22 +10,22 @@ import Footer from '../Layout/Footer';
 import icon from "../../assets/svg/profileheadicon.svg";
 import user from "../../assets/svg/userprofileicon.svg";
 import share from "../../assets/svg/shareicon.svg";
-import { BASE_URL } from "../../../src/config";
+
 const UserDashboard = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
+
   useEffect(() => {
-    const fetchUserName = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/api/user-name`);
-        setUserName(response.data.name);
-        setEmail(response.data.email);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchUserName();
+    // Fetch user data from localStorage
+    const storedUserName = localStorage.getItem('userName');
+    const storedEmail = localStorage.getItem('email');
+
+    if (storedUserName && storedEmail) {
+      setUserName(storedUserName);
+      setEmail(storedEmail);
+    }
   }, []);
+
   return (
     <>
       <div className="min-h-screen flex flex-col" style={{
