@@ -48,7 +48,7 @@ const Navbar = () => {
             <a className="text-[15px] text-[#161C2D] font-medium inter_ff" href="#contact">Contact</a>
             {/* <Link to="/contact" className="text-[15px] text-[#161C2D] font-medium inter_ff">Contact</Link> */}
           </div>
-          <div className="xs:hidden  sm:hidden flex gap-4 items-center">
+          <div className="xs:hidden md:flex lg:flex xl:flex  sm:hidden flex gap-4 items-center">
             <p>
 {
             token && token !== undefined && token !== null ?  
@@ -69,7 +69,7 @@ const Navbar = () => {
         </div> 
 
         {isMenuOpen && (
-          <div className="flex flex-col items-center gap-4 p-4 md:hidden">
+          <div className="flex flex-col items-center gap-4 p-4 lg:hidden xl:hidden  md:hidden">
             <Link to="/user" className="text-[15px] text-[#161C2D] font-medium inter_ff">Features</Link>
             <Link to="/dashboard" className="text-[15px] text-[#161C2D] font-medium inter_ff">Dashboard</Link>
             <Link to="/faq" className="text-[15px] text-[#161C2D] font-medium inter_ff">Faq</Link>

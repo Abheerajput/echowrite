@@ -5,6 +5,7 @@ import axios from 'axios';
 import uploadicon from "../assets/svg/upload.svg";
 import Navbar from './Navbar';
 import {BASE_URL} from "../config"
+import Footer from './Layout/Footer';
 const Dashboard = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(10);
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -80,8 +81,9 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="mx-auto mt-16 h-screen px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0">
+      <div className="mx-auto  h-screen px-8  bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0">
         <Navbar links={dashboardLinks} />
+        <div className='w-full  mt-12  sm:mt-12 flex-grow'> 
         <div className="bg-white rounded-lg xs:px-4 shadow-md pb-6 px-12">
           <div className='flex justify-between items-center xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
             <span className='mt-[20px] lg:mt-0 xs:mt-0'>
@@ -205,7 +207,10 @@ const Dashboard = () => {
             </div>
           )}
         </div>
+        </div>
+       
       </div>
+      <Footer/>
     </>
   );
 };

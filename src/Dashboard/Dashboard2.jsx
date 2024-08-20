@@ -16,6 +16,7 @@ import Navbar from './Navbar';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
 import SpeechToTextEditor from './Commonarea';
+import Footer from './Layout/Footer';
 
 const Dashboard2 = () => {
   const [remainingMinutes, setRemainingMinutes] = useState(1000);
@@ -278,10 +279,10 @@ const Dashboard2 = () => {
 
   return (
     <>
-      <div className="mx-auto mt-16 xs:h-screen h-screen px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0">
+      <div className="mx-auto  xs:h-full h-full px-8 pb-12 bg-[#F1F4F5] xs:m-0 xs:px-3 md:m-0 sm:m-0">
         <Navbar links={dashboard2Links} />
 
-        <div className="bg-white rounded-lg xs:px-4 shadow-md pb-12 px-12">
+        <div className="w-full  mt-12  sm:mt-12 flex-grow">
           <div className='flex justify-between items-center xs:items-start xs:px-2 xs:pt-3 lg:pt-3 lg:pb-2 xs:flex xs:flex-col xs:justify-around'>
             <span className='mt-[20px] lg:mt-0 xs:mt-0'>
               <h2 className="text-[30px] xs:text-[25px] font-bold inter_ff text-[#000000]">Speech to Text</h2>
@@ -368,7 +369,7 @@ const Dashboard2 = () => {
                       id="language"
                       value={selectedLanguage}
                       onChange={handleLanguageChange}
-                      className="bg-gray-200 border border-gray-400    text-[#808080] text-[15px] inter_ff xs:w-[100px]  w-[151px] font-normal rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
+                      className="bg-gray-200 border border-gray-400 hover:bg-blue-500 hover:text-white   text-[#808080] text-[15px] inter_ff xs:w-[100px]  w-[151px] font-normal rounded-md px-5 py-1 mr-2 focus:outline-none focus:ring-blue-500 focus:ring-1"
                       style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}
                     >
                       <option value="en">English</option>
@@ -385,7 +386,7 @@ const Dashboard2 = () => {
                       id="format"
                       value={selectedFormat}
                       onChange={(e) => setSelectedFormat(e.target.value)}
-                      className="border bg-gray-200 border-gray-300  text-[#808080] text-[15px] inter_ff xs:w-[100px]  w-[151px] font-normal rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
+                      className="border bg-gray-200 border-gray-300 hover:bg-blue-500 hover:text-white  text-[#808080] text-[15px] inter_ff xs:w-[100px]  w-[151px] font-normal rounded-md px-5 py-1 focus:outline-none focus:ring-blue-500 focus:ring-1 mr-[2%]"
                       style={{ padding: "4px 12px 4px 12px", borderRadius: "7px" }}
                     >
                       <option value="pdf">PDF</option>
@@ -407,21 +408,21 @@ const Dashboard2 = () => {
                   </button>
                 )}
                 <div className='relative mr-6 lg:mr-6 md:mr-6 xl:mr-6 xs:mr-0 xs:w-auto'>
-                  <button
-                    onClick={handleDownload}
-                    className={`bg-[${isTextEditorEmpty ? 'bg-gray-500 ' : 'bg-blue-500 '}] text-[${isTextEditorEmpty ? 'text-gray-500 ' : 'text-blue-500'}] font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl ${isTextEditorEmpty ? 'cursor-not-allowed' : ''}`}
-                    disabled={isTextEditorEmpty}
-                  >
-                    Download Document
-                  </button>
-                </div>
+  <button
+    onClick={handleDownload}
+    className={`${isTextEditorEmpty ? 'bg-gray-200 text-black cursor-not-allowed' : 'bg-blue-500 text-white'} font-medium text-[15px] inter_ff py-2 px-4 rounded-2xl`}
+    disabled={isTextEditorEmpty}
+  >
+    Download Document
+  </button>
+</div>
               </div>
             </div>
           </div>
         </div>
 
       </div>
-
+<Footer/>
     </>
   );
 };
