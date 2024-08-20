@@ -68,7 +68,7 @@ const Dashboard3 = ({ placeholder }) => {
                 <div onClick={() => navigate('/dashboard')} className='w-1/2 xs:w-1/2 md:w-1/2  xs:m-0  rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between'>
 
                   <span className='flex justify-between w-full items-center'>
-                    <p className='text-[18px] font-medium inter_ff '>Speech to Text </p>
+                    <p className='text-[18px] font-medium inter_ff '>Audio to Text </p>
 
                     <p ><FaChevronRight />  </p>
 

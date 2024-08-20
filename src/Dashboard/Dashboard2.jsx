@@ -268,7 +268,7 @@ const Dashboard2 = () => {
 
   const dashboard2Links = [
     { name: 'FAQ', path: '#' },
-    { name: 'Next', path: '#' },
+    { name: 'Next', path: '/dashboar3' },
     { name: 'Support', path: '#' },
   ];
 

@@ -68,7 +68,7 @@ const Dashboard = () => {
 
   const dashboardLinks = [
     { name: 'FAQ', path: '#' },
-    { name: 'Next', path: '/dashboard3' },
+    { name: 'Next', path: '/dashboard2' },
     { name: 'Support', path: '#' },
   ];
 
