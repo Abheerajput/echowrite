@@ -12,7 +12,7 @@ const Storage = () => {
   return (
     <>
       <div className='bg-[#F4F7FA] py-8'>
-        <div className=' container max-w-[1400px] w-full mx-auto px-3  flex xs:flex-col sm:flex-col md:flex-col  gap-8'>
+        <div className=' container max-w-[1400px] w-full mx-auto px-3  flex xs:flex-col sm:flex-col md:flex-row  gap-8'>
           <div className='pt-8 xs:pt-0 flex justify-center lg:pl-8 items-center xs:justify-center  '>
             <span>
 

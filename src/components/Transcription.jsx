@@ -37,7 +37,7 @@ const Transcription = () => {
 
   return (
     <div id='faq' className="px-4 lg:px-8 pt-8 lg:pb-4 xl:pb-4 xs:pt-2">
-      <div className="grid grid-cols-1 container max-w-[1400px] w-full mx-auto px-3 md:grid-cols-2 gap-8 bg-white pb-8">
+      <div className="grid xs:grid-cols-1 grid-cols-2 container max-w-[1400px] w-full mx-auto px-3 md:grid-cols-2 gap-8 bg-white pb-8">
         <div className="pt-8 xs:pt-2 md:pt-20 md:ml-20 lg:ml-8">
           <h1 className="text-[40px] text-[#161C2D] xs:text-[30px] inter_ff font-bold">
             Advanced AI for Accurate Transcriptions
