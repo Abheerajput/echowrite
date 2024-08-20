@@ -378,7 +378,7 @@ const Dashboard2 = () => {
 
   return (
     <>
-      <div className="xs:h-screen h-screen px-2 bg-[#F4F7FA]">
+      <div className="xs:h-full h-screen px-2 bg-[#F4F7FA]">
         <div className="">
           <div className="bg-[#F4F7FA] border-0 rounded-lg pt-10 ">
             <div
@@ -508,7 +508,7 @@ const Dashboard2 = () => {
                         onClick={handleConvert}
                         className="bg-blue-500 hover:bg-blue-700 text-white max-w-[310px] w-full font-bold py-2 px-4  rounded-full mt-4 xs:mb-4"
                       >
-                        Download
+                        Download mp3
                       </button>
                     )}
                   </p>

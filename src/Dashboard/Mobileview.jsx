@@ -240,7 +240,7 @@ const Mobileview = () => {
 
   return (
     <>
-      <div className="mx-auto mt-16 xs:h-screen h-screen  px-8 pb-12 bg-[#F4F7FA]  xs:m-0 xs:px-0 md:m-0 sm:m-0">
+      <div className="mx-auto mt-16 xs:h-full  h-screen  px-8 pb-12 bg-[#F4F7FA]  xs:m-0 xs:px-0 md:m-0 sm:m-0">
         <Navbar links={dashboard2Links} />
 
 
