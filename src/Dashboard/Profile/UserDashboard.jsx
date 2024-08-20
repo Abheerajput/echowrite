@@ -10,7 +10,7 @@ import Footer from '../Layout/Footer';
 import icon from "../../assets/svg/profileheadicon.svg";
 import user from "../../assets/svg/userprofileicon.svg";
 import share from "../../assets/svg/shareicon.svg";
-
+import { BASE_URL } from "../../../src/config";
 const UserDashboard = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
