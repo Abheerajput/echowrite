@@ -101,7 +101,7 @@ const Navbar = ({ links }) => {
               </div>
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
-                  <Link >
+                  <Link to="/user">
                    
                     <button className="block px-4 w-full py-2 text-sm text-gray-700 hover:bg-gray-100"> Profile</button>
                   </Link>
