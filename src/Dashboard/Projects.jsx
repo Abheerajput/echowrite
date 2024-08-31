@@ -5,11 +5,15 @@ import { GoChevronRight } from "react-icons/go";
 import mike from "../assets/svg/projectsiconmike.svg";
 import plus from "../assets/svg/projectsplusicon.svg";
 import bgimg from "../assets/images/Frame.jpg";
+import { Link } from 'react-router-dom';
 
 // Reusable ProjectCard component
-const ProjectCard = ({ img, title, description, bgColor, textColor }) => {
+const ProjectCard = ({ img, title, description, bgColor, textColor,link }) => {
   return (
-    <div className={`flex gap-4 sm:gap-6 ${bgColor} ${textColor} items-center py-3 sm:w-[80%] md:w-[48%] xs:w-full min-w-[48%] ps-6 pr-8 rounded-xl`}>
+    <>
+  
+    <Link to={link} className='sm:w-[80%] md:w-[48%] xs:w-full min-w-[48%]'>
+    <div className={`flex gap-4 sm:gap-6 ${bgColor} ${textColor} items-center py-3 w-full ps-6 pr-8 rounded-xl`}>
       <p><img src={img} alt="" className="w-8 h-8 sm:w-10 sm:h-10" /></p>
       <div className='w-full'>
         <p className='text-[18px] sm:text-[21px] inter_ff flex justify-between items-center font-bold'>
@@ -18,6 +22,8 @@ const ProjectCard = ({ img, title, description, bgColor, textColor }) => {
         <p className='text-[15px] sm:text-[17px] inter_ff font-medium pt-2 sm:pt-3'>{description}</p>
       </div>
     </div>
+    </Link>
+    </>
   );
 };
 
@@ -27,7 +33,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = [
-        { id: 1, img: plus, title: "Start New Project", description: "Create Text with Voice Speech with inspire", bgColor: "bg-[#498BF7]", textColor: "text-white" },
+        { id: 1, img: plus, title: "Start New Project", description: "Create Text with Voice Speech with inspire", bgColor: "bg-[#498BF7]", textColor: "text-white",link:"/dashboard2" },
         { id: 2, img: mike, title: "Start New Project", description: "Create Text with Voice Speech with inspire", bgColor: "bg-[#F5FBFF]", textColor: "text-black" },
         { id: 2, img: mike, title: "Start New Project", description: "Create Text with Voice Speech with inspire", bgColor: "bg-[#F5FBFF]", textColor: "text-black" },
         { id: 2, img: mike, title: "Start New Project", description: "Create Text with Voice Speech with inspire", bgColor: "bg-[#F5FBFF]", textColor: "text-black" },
@@ -63,6 +69,7 @@ const Projects = () => {
                 description={project.description}
                 bgColor={project.bgColor}
                 textColor={project.textColor}
+                link={project.link}
               />
             ))}
           </div>

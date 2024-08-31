@@ -21,6 +21,7 @@ import NotificationsContent from './Dashboard/Profile/Notification';
 import ChoosePlanContent from './Dashboard/Profile/Chooseplan';
 import Sidebar from './Dashboard/Profile/Sidebar';
 import Consultancy from './Dashboard/ConsultancyForm/Consultancy';
+import Otp from './components/otp/Otp';
 
 
 
@@ -42,7 +43,7 @@ const AppContent = () => {
 <Helmet>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </Helmet>
-{ pathname !== '/login' && pathname !== '/signup' && pathname !== '/webview' && pathname !== '/mobileview' && pathname !== '/projects' && pathname !== '/faq'  && pathname !== '/consultancy' && !pathname.startsWith('/user') && !isDashboardRoute && <Navbar />}
+{ pathname !== '/login' && pathname !== '/signup' && pathname !== '/webview' && pathname !== '/mobileview' && pathname !== '/projects' && pathname !== '/faq'   && pathname !== '/otp'   && pathname !== '/consultancy' && !pathname.startsWith('/user') && !isDashboardRoute && <Navbar />}
 
           
             <Routes >
@@ -57,9 +58,11 @@ const AppContent = () => {
                 <Route path="/webview" element={<Dashboard4 />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/faq" element={<Faq />} />
+                <Route path="/otp" element={<Otp />} />
                 <Route path="/consultancy" element={<Consultancy />} />
+               
                 <Route path="/user" element={< UserDashboard />}>
-
+                <Route index element={<ProfileEdit />} />
   <Route path="profile" element={<ProfileEdit />} />
   <Route path="noti" element={<NotificationsContent />} />
   <Route path="plan" element={<ChoosePlanContent />} />
@@ -75,9 +78,9 @@ const AppContent = () => {
                 <Route path="/mobileview" element={<Mobileview />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/faq" element={<Faq />} />
+              
                 <Route path="/consultancy" element={<Consultancy />} />
                 <Route path="/user" element={< UserDashboard />}>
-
 <Route path="profile" element={<ProfileEdit />} />
 <Route path="noti" element={<NotificationsContent />} />
 <Route path="plan" element={<ChoosePlanContent />} />

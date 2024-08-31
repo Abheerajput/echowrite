@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import logo from "../../assets/svg/logo.svg";
 import icon from "../../assets/svg/jicon.svg";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const[username,setUsername] = useState("")
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user.name)
+    if (user) {
+     setUsername(user.name);
+    }
+  }, []);
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -17,6 +25,11 @@ const Navbar = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("authToken")
+    localStorage.removeItem("user")
+    navigate('/login')
+  }
   // Add event listener to detect outside click (optional)
   React.useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
@@ -40,7 +53,7 @@ const Navbar = () => {
             className='dropdown-btn flex gap-2 sm:gap-3 border rounded-3xl text-[12px] sm:text-[14px] inter_ff font-bold items-center py-1 px-2 sm:pr-3'
             onClick={toggleDropdown}
           >
-            <span><img src={icon} alt="User Icon" className="w-6 sm:w-8" /></span> John Doe
+            <span><img src={icon} alt="User Icon" className="w-6 sm:w-8" /></span>{username}
           </button>
 
           {/* Dropdown Menu */}
@@ -49,7 +62,9 @@ const Navbar = () => {
               <ul className='py-2 flex flex-col items-center'>
                 <li className='px-4 py-2  cursor-pointer'><Link to="/user">Profile</Link>  </li>
                 <li className='px-4 py-2  cursor-pointer'>Settings</li>
-                <li className='px-4 py-2  cursor-pointer'>Logout</li>
+                <button onClick={handleLogout} className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+      Logout
+    </button>
               </ul>
             </div>
           )}

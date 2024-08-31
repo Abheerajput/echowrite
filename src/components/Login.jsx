@@ -41,6 +41,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [loadingGoogle, setLoadingGoogle] = useState(false); 
 
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -59,11 +60,14 @@ const Login = () => {
         email: user.email,
         password: user.password,
       });
-      console.log("response", response);
     
+      console.log("response", response);
       if (response.data?.status === "success") {
+        console.log("response", response);
+     
         toast.success(response?.data?.msg || 'Login successfully!');
         localStorage.setItem('authToken', response.data.token);
+        localStorage.setItem('user', response.data.user);
         navigate('/home');
       } else {
         // Combine both toasts into one
@@ -92,6 +96,7 @@ const Login = () => {
       if (response.data?.status === "success") {
         toast.success(response?.data?.msg || 'Login successfully!');
         localStorage.setItem('authToken', response.data.token);
+        localStorage.setItem('user',JSON.stringify(response.data.user) );
         setTimeout(() => {
           navigate('/home');
         }, 3000);

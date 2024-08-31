@@ -47,9 +47,8 @@ const Dashboard3 = ({ placeholder }) => {
               </div>
               <div className='w-2/5 sm:pt-4 sm:w-full xs:w-full xs:m-0 flex gap-4 sm:ml-0 ml-4  xs:pt-8'>
 
-
-                <div onClick={() => navigate('/dashboard2')} className='w-1/2  xs:w-1/2 md:w-1/2 md:ml-3 xs:m-0   rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between ' >
-
+<Link to="/projects"  className='w-1/2  xs:w-1/2 md:w-1/2 md:ml-3 xs:m-0   rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between ' >
+                <div onClick={() => navigate('/dashboard2')}  className='w-100 h-full flex flex-col justify-between' >
                   <span className='flex justify-between  w-full items-center'>
                     <p className='text-[18px] font-medium inter_ff '>Speech to Text </p>
 
@@ -64,6 +63,7 @@ const Dashboard3 = ({ placeholder }) => {
                   </div>
 
                 </div>
+</Link>
 
                 <div onClick={() => navigate('/dashboard')} className='w-1/2 xs:w-1/2 md:w-1/2  xs:m-0  rounded-3xl bg-[#EFF9FF] p-4 flex flex-col justify-between'>
 

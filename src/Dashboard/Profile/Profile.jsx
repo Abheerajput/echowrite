@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProfileEditContent = () => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg">
+    <div className="bg-white p-6 rounded-lg ">
       <h2 className="text-2xl font-semibold mb-6">Edit Profile</h2>
 
       <form className="space-y-4">

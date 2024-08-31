@@ -53,7 +53,7 @@ const Advantage = () => {
   return (
     <div className=" px-4 mt-[4%] mb-[6%]">
       <div className="container max-w-[1400px] w-full mx-auto">
-      <div className=" grid grid-cols-1 md:grid-cols-3 gap-6 ml-[2%]">
+      <div className=" grid  grid-cols-3 gap-6 ml-[2%]">
         {advantages.map((advantage, index) => (
           <div
             key={index}

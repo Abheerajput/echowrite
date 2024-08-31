@@ -60,8 +60,9 @@ const Signup = () => {
           password: '',
           confirmPassword: '',
         });
+       
+        navigate('/otp');
         localStorage.setItem('authToken', response.data.token);
-        navigate('/home');
       } else {
         toast.error(response?.data?.msg || 'Failed to create account. Please try again.');
       }
@@ -84,7 +85,7 @@ const Signup = () => {
         toast.success('Sign-in successful!');
         localStorage.setItem('authToken', response.data.token);
         setTimeout(() => {
-          navigate('/home');
+          navigate('/otp');
         }, 3000);
       } else {
         toast.error('Sign-in failed. Please try again.');
@@ -98,7 +99,7 @@ const Signup = () => {
 
   return (
     <div className="flex min-h-screen overflow-hidden relative z-[234]">
-      <div className="flex-1 hidden lg:flex flex-col justify-between bg-cover bg-center"
+      <div className="flex-1 xs:hidden lg:flex flex-col justify-between bg-cover bg-center"
         style={{
           backgroundImage: `url(${signinimg})`,
         }}>

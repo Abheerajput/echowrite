@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import logo from "../assets/svg/logo.svg"
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { Link,useNavigate } from 'react-router-dom'
@@ -7,6 +7,14 @@ const Navbar = ({ links }) => {
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+const[username,setUsername] = useState('')
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user.name)
+    if (user) {
+     setUsername(user.name);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -17,6 +25,7 @@ const Navbar = ({ links }) => {
   }
   const handleLogout = () => {
     localStorage.removeItem("authToken")
+    localStorage.removeItem("user")
     navigate('/login')
   }
   return (
@@ -45,7 +54,7 @@ const Navbar = ({ links }) => {
                 >
                   <div className="w-8 h-8 bg-[#FF9A26] flex justify-center items-center rounded-full text-white">J</div>
                   <span className="text-[#000000] hover:text-gray-800 font-bold text-[16px] pr-4 inter_ff">
-                    John Doe
+                {username}
                   </span>
                 </div>
                 {dropdownOpen && (
